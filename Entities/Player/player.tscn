@@ -118,6 +118,8 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 31
 script = ExtResource("1_y2db8")
 friction = 0.06
 

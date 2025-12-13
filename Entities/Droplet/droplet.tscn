@@ -7,6 +7,8 @@
 radius = 8.062258
 
 [node name="Droplet" type="Area2D"]
+collision_layer = 8
+collision_mask = 18
 script = ExtResource("1_y06n3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -16,4 +18,5 @@ texture = ExtResource("2_pdndv")
 shape = SubResource("CircleShape2D_y06n3")
 debug_color = Color(0.008714891, 0.529545, 0.36803523, 0.41960785)
 
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="child_entered_tree" from="CollisionShape2D" to="." method="_on_collision_shape_2d_child_entered_tree"]
