@@ -47,10 +47,10 @@ shape = SubResource("RectangleShape2D_0ia01")
 debug_color = Color(0.5411765, 0.26666668, 0, 0.41960785)
 
 [node name="Player" parent="." instance=ExtResource("1_0f0hj")]
-position = Vector2(638, 321)
+position = Vector2(150, 234)
 
 [node name="germ" parent="." instance=ExtResource("3_0ia01")]
-position = Vector2(892, 291)
+position = Vector2(404, 204)
 
 [node name="Droplet" parent="." instance=ExtResource("2_hg6cf")]
-position = Vector2(708, 329)
+position = Vector2(220, 242)
