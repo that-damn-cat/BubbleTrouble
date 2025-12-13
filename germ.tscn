@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://dgqdov4kcwtwt"]
+
+[ext_resource type="Texture2D" uid="uid://bqvfed6o0nkvr" path="res://germ.png" id="1_4lhe2"]
+[ext_resource type="Script" uid="uid://ckrld8h53xeb6" path="res://germ.gd" id="1_wjhn7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wjhn7"]
+size = Vector2(22, 23)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o2s4c"]
+size = Vector2(200, 200)
+
+[node name="germ" type="CharacterBody2D"]
+script = ExtResource("1_wjhn7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_4lhe2")
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_wjhn7")
+debug_color = Color(0.98679024, 0, 0.32478166, 0.41960785)
+
+[node name="SeekZone" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SeekZone"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_o2s4c")
+
+[connection signal="body_entered" from="SeekZone" to="." method="seeYou"]
+[connection signal="body_exited" from="SeekZone" to="." method="_on_seek_zone_body_exited"]

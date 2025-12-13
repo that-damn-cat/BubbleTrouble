@@ -1,0 +1,56 @@
+[gd_scene load_steps=6 format=3 uid="uid://dvpursjeaw74i"]
+
+[ext_resource type="PackedScene" uid="uid://bo5tu8ywsry1c" path="res://bubble.tscn" id="1_0f0hj"]
+[ext_resource type="PackedScene" uid="uid://x3otvmpq532f" path="res://droplet.tscn" id="2_hg6cf"]
+[ext_resource type="PackedScene" uid="uid://dgqdov4kcwtwt" path="res://germ.tscn" id="3_0ia01"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hg6cf"]
+size = Vector2(20, 649.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ia01"]
+size = Vector2(1152, 10)
+
+[node name="Sink" type="Node2D"]
+
+[node name="Bounds" type="Node2D" parent="."]
+
+[node name="Left Boundry" type="StaticBody2D" parent="Bounds"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/Left Boundry"]
+position = Vector2(-10, 324.75)
+shape = SubResource("RectangleShape2D_hg6cf")
+debug_color = Color(0.5414169, 0.26582396, 9.62615e-08, 0.41960785)
+
+[node name="Right Boundry" type="StaticBody2D" parent="Bounds"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/Right Boundry"]
+position = Vector2(1162, 324.875)
+shape = SubResource("RectangleShape2D_hg6cf")
+debug_color = Color(0.5411765, 0.26666668, 0, 0.41960785)
+
+[node name="Top Boundry" type="StaticBody2D" parent="Bounds"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/Top Boundry"]
+position = Vector2(576, -5)
+shape = SubResource("RectangleShape2D_0ia01")
+debug_color = Color(0.5411765, 0.26666668, 0, 0.41960785)
+
+[node name="Bottom Boundry" type="StaticBody2D" parent="Bounds"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/Bottom Boundry"]
+position = Vector2(576, 653)
+shape = SubResource("RectangleShape2D_0ia01")
+debug_color = Color(0.5411765, 0.26666668, 0, 0.41960785)
+
+[node name="bubble" parent="." instance=ExtResource("1_0f0hj")]
+unique_name_in_owner = true
+position = Vector2(601, 251)
+
+[node name="Droplet" parent="." instance=ExtResource("2_hg6cf")]
+position = Vector2(697, 317)
+
+[node name="germ" parent="." instance=ExtResource("3_0ia01")]
+position = Vector2(892, 291)
+
+[connection signal="body_entered" from="Droplet" to="Droplet" method="_on_collision_shape_2d_child_entered_tree"]
+[connection signal="sizeup" from="Droplet" to="bubble" method="_on_droplet_sizeup"]
