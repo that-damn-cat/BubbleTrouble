@@ -1,50 +1,38 @@
-[gd_scene load_steps=6 format=3 uid="uid://dvpursjeaw74i"]
+[gd_scene load_steps=8 format=3 uid="uid://dvpursjeaw74i"]
 
 [ext_resource type="PackedScene" uid="uid://bo5tu8ywsry1c" path="res://Entities/Player/player.tscn" id="1_0f0hj"]
 [ext_resource type="PackedScene" uid="uid://x3otvmpq532f" path="res://Entities/Droplet/droplet.tscn" id="2_hg6cf"]
 [ext_resource type="PackedScene" uid="uid://dgqdov4kcwtwt" path="res://Entities/Germ/germ.tscn" id="3_0ia01"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hg6cf"]
-size = Vector2(20, 649.75)
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_feb5d"]
+normal = Vector2(0, 1)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ia01"]
-size = Vector2(1152, 10)
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_fc0e3"]
+distance = -600.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_7jktm"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ryrav"]
+normal = Vector2(-1, 0)
 
 [node name="Game" type="Node"]
 
-[node name="Bounds" type="Node2D" parent="."]
+[node name="Bounds" type="StaticBody2D" parent="."]
 
-[node name="Left Boundry" type="StaticBody2D" parent="Bounds"]
-collision_mask = 14
+[node name="Top" type="CollisionShape2D" parent="Bounds"]
+shape = SubResource("WorldBoundaryShape2D_feb5d")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/Left Boundry"]
-position = Vector2(-10, 324.75)
-shape = SubResource("RectangleShape2D_hg6cf")
-debug_color = Color(0.5414169, 0.26582396, 9.62615e-08, 0.41960785)
+[node name="Bottom" type="CollisionShape2D" parent="Bounds"]
+position = Vector2(800, 0)
+shape = SubResource("WorldBoundaryShape2D_fc0e3")
 
-[node name="Right Boundry" type="StaticBody2D" parent="Bounds"]
-collision_mask = 14
+[node name="Left" type="CollisionShape2D" parent="Bounds"]
+shape = SubResource("WorldBoundaryShape2D_7jktm")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/Right Boundry"]
-position = Vector2(1162, 324.875)
-shape = SubResource("RectangleShape2D_hg6cf")
-debug_color = Color(0.5411765, 0.26666668, 0, 0.41960785)
-
-[node name="Top Boundry" type="StaticBody2D" parent="Bounds"]
-collision_mask = 14
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/Top Boundry"]
-position = Vector2(576, -5)
-shape = SubResource("RectangleShape2D_0ia01")
-debug_color = Color(0.5411765, 0.26666668, 0, 0.41960785)
-
-[node name="Bottom Boundry" type="StaticBody2D" parent="Bounds"]
-collision_mask = 14
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/Bottom Boundry"]
-position = Vector2(576, 653)
-shape = SubResource("RectangleShape2D_0ia01")
-debug_color = Color(0.5411765, 0.26666668, 0, 0.41960785)
+[node name="Right" type="CollisionShape2D" parent="Bounds"]
+position = Vector2(800, 600)
+shape = SubResource("WorldBoundaryShape2D_ryrav")
 
 [node name="Player" parent="." instance=ExtResource("1_0f0hj")]
 position = Vector2(150, 234)

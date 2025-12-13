@@ -4,6 +4,9 @@ extends CharacterBody2D
 @export_category("Components")
 @export var grow_component: GrowComponent
 
+@export_category("Visual")
+@export var grow_anim_mult: float = 1.0
+
 @export_category("Physics")
 @export var acceleration = 15
 @export var max_speed = 500
@@ -23,6 +26,8 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	direction = Input.get_vector("left", "right", "up", "down")
+	grow_component.scaling = grow_anim_mult
+	grow_component.update_size()
 
 
 func _physics_process(delta):

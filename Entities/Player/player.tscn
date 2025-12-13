@@ -1,8 +1,70 @@
-[gd_scene load_steps=5 format=3 uid="uid://bo5tu8ywsry1c"]
+[gd_scene load_steps=8 format=3 uid="uid://bo5tu8ywsry1c"]
 
 [ext_resource type="Script" uid="uid://28w3tm2vv6c7" path="res://Entities/Player/player.gd" id="1_y2db8"]
 [ext_resource type="Texture2D" uid="uid://dot4dglb0ok4a" path="res://Entities/Player/Assets/BubbleTroublePlayer-Sheet.png" id="3_lu8i8"]
 [ext_resource type="Script" uid="uid://clk0dpb5pe8ty" path="res://Components/GrowComponent/GrowComponent.gd" id="3_tekja"]
+
+[sub_resource type="Animation" id="Animation_lu8i8"]
+resource_name = "idle"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bubs:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:grow_anim_mult")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(3, 3, 3),
+"update": 0,
+"values": [1.0, 0.9, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_tekja"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bubs:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:grow_anim_mult")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5c2io"]
+_data = {
+&"RESET": SubResource("Animation_tekja"),
+&"idle": SubResource("Animation_lu8i8")
+}
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0e48y"]
 radius = 28.0
@@ -24,6 +86,10 @@ hframes = 16
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Bubs"]
 root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_5c2io")
+}
+autoplay = "idle"
 
 [node name="PhysicsCollider" type="CollisionShape2D" parent="."]
 unique_name_in_owner = true
