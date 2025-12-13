@@ -11,8 +11,11 @@ func _ready() -> void:
 
 func update_size() -> void:
 	for sprite in sprites:
-		sprite.scale.x = (size / sprite.texture.get_size().x) * globals.scaling_factor
-		sprite.scale.y = (size / sprite.texture.get_size().y) * globals.scaling_factor
+		var sprite_width = sprite.texture.get_size().x / sprite.hframes
+		sprite.scale.x = (size / sprite_width) * globals.scaling_factor
+
+		var sprite_height = sprite.texture.get_size().y / sprite.vframes
+		sprite.scale.y = (size / sprite_height) * globals.scaling_factor
 
 	for collider in collision_shapes:
 		var shape: Shape2D = collider.shape
