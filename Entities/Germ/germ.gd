@@ -1,17 +1,21 @@
+class_name Germ
 extends CharacterBody2D
 
-@export var speed : float = 100.0
+@export var acceleration: float = 3.0
+@export var idle_speed: float = 50.0
+@export var seek_speed: float = 175.0
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+var direction := Vector2.ZERO
+var target_speed: float = idle_speed
 
+func _physics_process(delta: float) -> void:
+	velocity += direction * acceleration
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+	if velocity.length() > target_speed:
+		velocity = lerp(velocity, direction * target_speed, 0.04)
+
 	move_and_slide()
 
-func seeYou(body: Node2D):
-	var direction = global_position.direction_to(body.global_position)
-	velocity = direction * speed
-
+func _on_hurtbox_body_entered(body: Node2D) -> void:
+	body.queue_free()
+	queue_free()

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://28w3tm2vv6c7" path="res://Entities/Player/player.gd" id="1_y2db8"]
 [ext_resource type="Texture2D" uid="uid://dot4dglb0ok4a" path="res://Entities/Player/Assets/BubbleTroublePlayer-Sheet.png" id="3_lu8i8"]
-[ext_resource type="Script" uid="uid://clk0dpb5pe8ty" path="res://Components/GrowComponent.gd" id="3_tekja"]
+[ext_resource type="Script" uid="uid://clk0dpb5pe8ty" path="res://Components/GrowComponent/GrowComponent.gd" id="3_tekja"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0e48y"]
 radius = 28.0
@@ -12,7 +12,9 @@ collision_layer = 2
 collision_mask = 31
 script = ExtResource("1_y2db8")
 grow_component = NodePath("GrowComponent")
+max_speed = 400
 friction = 0.06
+mass = 20.0
 
 [node name="Bubs" type="Sprite2D" parent="."]
 unique_name_in_owner = true
