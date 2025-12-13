@@ -4,15 +4,16 @@
 [ext_resource type="Texture2D" uid="uid://d1oyvpm4x27hr" path="res://Entities/Player/Assets/BubbleTroublePlayer.png" id="2_4a276"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0e48y"]
-radius = 16.0
+radius = 14.0
 
-[node name="bubble" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_y2db8")
+friction = 0.06
 
-[node name="bubs" type="Sprite2D" parent="."]
+[node name="Bubs" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 texture = ExtResource("2_4a276")
 
-[node name="Size" type="CollisionShape2D" parent="."]
+[node name="PhysicsCollider" type="CollisionShape2D" parent="."]
 unique_name_in_owner = true
 shape = SubResource("CircleShape2D_0e48y")

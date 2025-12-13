@@ -1,6 +1,6 @@
 extends Area2D
 
-signal sizeup
+@export var size_bonus: float = 0.25
 
 func _process(delta: float) -> void:
 	pass
