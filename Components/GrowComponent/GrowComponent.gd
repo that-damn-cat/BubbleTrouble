@@ -3,7 +3,6 @@ extends Node
 
 @export var sprites: Array[Sprite2D]
 @export var collision_shapes: Array[CollisionShape2D]
-@export var collider_inset_px: float
 @export var size: float
 @export var scaling: float = 1.0
 
@@ -22,7 +21,7 @@ func update_size() -> void:
 		var shape: Shape2D = collider.shape
 
 		if shape is CircleShape2D:
-			shape.radius = ((size / 2.0) - collider_inset_px) * globals.scaling_factor * scaling
+			shape.radius = ((size / 2.0)) * globals.scaling_factor * scaling
 		else:
 			push_error("Shape type not handled yet. Implement me :(")
 

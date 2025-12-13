@@ -11,6 +11,7 @@ radius = 8.062258
 collision_layer = 8
 collision_mask = 18
 script = ExtResource("1_y06n3")
+size_bonus = 10.0
 grow_component = NodePath("GrowComponent")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

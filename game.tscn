@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dvpursjeaw74i"]
+[gd_scene load_steps=10 format=3 uid="uid://dvpursjeaw74i"]
 
 [ext_resource type="PackedScene" uid="uid://bo5tu8ywsry1c" path="res://Entities/Player/player.tscn" id="1_0f0hj"]
+[ext_resource type="Script" uid="uid://clmbc0or0dlqo" path="res://game.gd" id="1_7jktm"]
 [ext_resource type="PackedScene" uid="uid://x3otvmpq532f" path="res://Entities/Droplet/droplet.tscn" id="2_hg6cf"]
 [ext_resource type="PackedScene" uid="uid://dgqdov4kcwtwt" path="res://Entities/Germ/germ.tscn" id="3_0ia01"]
+[ext_resource type="AudioStream" uid="uid://bpaiu2bwmep05" path="res://Assets/bubbletrubl.wav" id="4_fc0e3"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_feb5d"]
 normal = Vector2(0, 1)
@@ -17,6 +19,7 @@ normal = Vector2(1, 0)
 normal = Vector2(-1, 0)
 
 [node name="Game" type="Node"]
+script = ExtResource("1_7jktm")
 
 [node name="Bounds" type="StaticBody2D" parent="."]
 
@@ -34,11 +37,30 @@ shape = SubResource("WorldBoundaryShape2D_7jktm")
 position = Vector2(800, 600)
 shape = SubResource("WorldBoundaryShape2D_ryrav")
 
-[node name="Player" parent="." instance=ExtResource("1_0f0hj")]
+[node name="Players" type="Node" parent="."]
+unique_name_in_owner = true
+
+[node name="Player" parent="Players" instance=ExtResource("1_0f0hj")]
 position = Vector2(150, 234)
 
-[node name="germ" parent="." instance=ExtResource("3_0ia01")]
+[node name="Enemies" type="Node" parent="."]
+unique_name_in_owner = true
+
+[node name="germ" parent="Enemies" instance=ExtResource("3_0ia01")]
 position = Vector2(404, 204)
 
-[node name="Droplet" parent="." instance=ExtResource("2_hg6cf")]
+[node name="Pickups" type="Node" parent="."]
+unique_name_in_owner = true
+
+[node name="Droplet" parent="Pickups" instance=ExtResource("2_hg6cf")]
 position = Vector2(220, 242)
+
+[node name="Droplet2" parent="Pickups" instance=ExtResource("2_hg6cf")]
+position = Vector2(252, 325)
+
+[node name="Droplet3" parent="Pickups" instance=ExtResource("2_hg6cf")]
+position = Vector2(178, 408)
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_fc0e3")
+autoplay = true
