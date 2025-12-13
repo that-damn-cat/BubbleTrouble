@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bo5tu8ywsry1c"]
 
-[ext_resource type="Script" uid="uid://28w3tm2vv6c7" path="res://playercontroller.gd" id="1_y2db8"]
-[ext_resource type="Texture2D" uid="uid://d1oyvpm4x27hr" path="res://BubbleTroublePlayer.png" id="2_4a276"]
+[ext_resource type="Script" uid="uid://28w3tm2vv6c7" path="res://Entities/Player/player.gd" id="1_y2db8"]
+[ext_resource type="Texture2D" uid="uid://d1oyvpm4x27hr" path="res://Entities/Player/Assets/BubbleTroublePlayer.png" id="2_4a276"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0e48y"]
 radius = 16.0

@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://dvpursjeaw74i"]
 
-[ext_resource type="PackedScene" uid="uid://bo5tu8ywsry1c" path="res://bubble.tscn" id="1_0f0hj"]
-[ext_resource type="PackedScene" uid="uid://x3otvmpq532f" path="res://droplet.tscn" id="2_hg6cf"]
-[ext_resource type="PackedScene" uid="uid://dgqdov4kcwtwt" path="res://germ.tscn" id="3_0ia01"]
+[ext_resource type="PackedScene" uid="uid://bo5tu8ywsry1c" path="res://Entities/Player/player.tscn" id="1_0f0hj"]
+[ext_resource type="PackedScene" uid="uid://x3otvmpq532f" path="res://Entities/Droplet/droplet.tscn" id="2_hg6cf"]
+[ext_resource type="PackedScene" uid="uid://dgqdov4kcwtwt" path="res://Entities/Germ/germ.tscn" id="3_0ia01"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hg6cf"]
 size = Vector2(20, 649.75)
@@ -10,7 +10,7 @@ size = Vector2(20, 649.75)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0ia01"]
 size = Vector2(1152, 10)
 
-[node name="Sink" type="Node2D"]
+[node name="Game" type="Node"]
 
 [node name="Bounds" type="Node2D" parent="."]
 
