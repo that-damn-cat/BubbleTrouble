@@ -140,7 +140,7 @@ animations = [{
 "speed": 4.0
 }]
 
-[node name="Dirt" type="Area2D" node_paths=PackedStringArray("animation", "health_component", "germ_spawn_point", "hurtbox_shape", "germ_sprite")]
+[node name="Dirt" type="CharacterBody2D" node_paths=PackedStringArray("animation", "health_component", "germ_spawn_point", "hurtbox_shape", "germ_sprite") groups=["Enemies"]]
 collision_layer = 4
 collision_mask = 49
 script = ExtResource("1_0h0vm")
@@ -194,7 +194,7 @@ visible = false
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_58vbj")
 autoplay = "default"
-frame_progress = 0.4350911
+frame_progress = 0.39154035
 
 [connection signal="damaged" from="HealthComponent" to="." method="_on_damaged"]
 [connection signal="died" from="HealthComponent" to="." method="_on_died"]

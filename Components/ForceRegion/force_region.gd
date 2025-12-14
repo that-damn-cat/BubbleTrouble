@@ -16,15 +16,15 @@ func _ready() -> void:
 	var collision_shape = find_children("*", "CollisionShape2D", false)[0]
 	var shape = collision_shape.shape
 
-	if shape is CircleShape2D:
-		max_size = shape.radius * 2.0
-
 	if shape is RectangleShape2D:
 		match push_direction:
 			Direction.DOWN, Direction.UP:
 				max_size = shape.size.y
 			Direction.LEFT, Direction.RIGHT:
 				max_size = shape.size.x
+	else:
+		push_error("Shape type not yet supported by force region")
+		queue_free()
 
 func _on_body_entered(body: Node2D):
 	if body is CharacterBody2D:

@@ -1,4 +1,5 @@
-extends Area2D
+class_name Dirt
+extends CharacterBody2D
 
 @export var animation: AnimatedSprite2D
 @export var health_component: HealthComponent

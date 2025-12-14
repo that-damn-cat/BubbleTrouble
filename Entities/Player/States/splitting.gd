@@ -10,6 +10,12 @@ func enter() -> void:
 	controlled_node.animation.play("split")
 
 func split() -> void:
+	if not merge_collider:
+		return
+
+	if not controlled_node:
+		return
+
 	merge_collider.disabled = true
 
 	var player_resource := load(player_scene_path) as PackedScene

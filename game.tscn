@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dvpursjeaw74i"]
+[gd_scene load_steps=18 format=3 uid="uid://dvpursjeaw74i"]
 
 [ext_resource type="PackedScene" uid="uid://bo5tu8ywsry1c" path="res://Entities/Player/player.tscn" id="1_0f0hj"]
 [ext_resource type="Script" uid="uid://clmbc0or0dlqo" path="res://game.gd" id="1_7jktm"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://dgqdov4kcwtwt" path="res://Entities/Germ/germ.tscn" id="3_0ia01"]
 [ext_resource type="Script" uid="uid://j4dd7yhlo1qm" path="res://Components/ForceRegion/force_region.gd" id="3_eow3j"]
 [ext_resource type="AudioStream" uid="uid://bpaiu2bwmep05" path="res://Assets/bubbletrubl.wav" id="4_fc0e3"]
+[ext_resource type="PackedScene" uid="uid://bvsa47mq8yph7" path="res://Entities/Drain/drain.tscn" id="4_vef74"]
+[ext_resource type="PackedScene" uid="uid://mi5q8r0bjsc1" path="res://Entities/Sponge/sponge.tscn" id="5_hve3p"]
 [ext_resource type="PackedScene" uid="uid://ch44dxs3vx8wj" path="res://Entities/Dirt/dirt.tscn" id="6_j5wjh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eow3j"]
@@ -95,6 +97,9 @@ metadata/_custom_type_script = "uid://j4dd7yhlo1qm"
 position = Vector2(-70, 0)
 shape = SubResource("RectangleShape2D_vef74")
 
+[node name="Drain" parent="." instance=ExtResource("4_vef74")]
+position = Vector2(400, 300)
+
 [node name="Bounds" type="StaticBody2D" parent="."]
 
 [node name="Top" type="CollisionShape2D" parent="Bounds"]
@@ -110,6 +115,10 @@ shape = SubResource("WorldBoundaryShape2D_7jktm")
 [node name="Right" type="CollisionShape2D" parent="Bounds"]
 position = Vector2(800, 600)
 shape = SubResource("WorldBoundaryShape2D_ryrav")
+
+[node name="Sponge" parent="." instance=ExtResource("5_hve3p")]
+position = Vector2(70, 70)
+rotation = -0.5235988
 
 [node name="Players" type="Node" parent="."]
 unique_name_in_owner = true

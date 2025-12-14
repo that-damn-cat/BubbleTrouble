@@ -170,7 +170,7 @@ _data = {
 &"split": SubResource("Animation_lub02")
 }
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("grow_component", "health_component", "animation")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("grow_component", "health_component", "animation") groups=["Player"]]
 collision_layer = 2
 collision_mask = 57
 script = ExtResource("1_y2db8")

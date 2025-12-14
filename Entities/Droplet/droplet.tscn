@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://x3otvmpq532f"]
+[gd_scene load_steps=6 format=3 uid="uid://x3otvmpq532f"]
 
 [ext_resource type="Script" uid="uid://br4iys2iat1qg" path="res://Entities/Droplet/droplet.gd" id="1_y06n3"]
 [ext_resource type="Texture2D" uid="uid://cge2onhjc7w8a" path="res://Entities/Droplet/Assets/droplet.png" id="2_pdndv"]
@@ -7,28 +7,38 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_y06n3"]
 radius = 8.0
 
-[node name="Droplet" type="Area2D" node_paths=PackedStringArray("grow_component")]
+[sub_resource type="CircleShape2D" id="CircleShape2D_mmn5u"]
+radius = 9.0
+
+[node name="Droplet" type="CharacterBody2D" node_paths=PackedStringArray("grow_component", "sprite") groups=["Droplets"]]
 collision_layer = 8
-collision_mask = 50
+collision_mask = 62
 script = ExtResource("1_y06n3")
 size_bonus = 10.0
 grow_component = NodePath("GrowComponent")
+sprite = NodePath("Sprite2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 texture = ExtResource("2_pdndv")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_y06n3")
-debug_color = Color(0.008714891, 0.529545, 0.36803523, 0.41960785)
-
 [node name="GrowComponent" type="Node" parent="." node_paths=PackedStringArray("sprites", "collision_offsets")]
 script = ExtResource("3_mmn5u")
 sprites = [NodePath("../Sprite2D")]
 collision_offsets = {
-NodePath("../CollisionShape2D"): 0.0
+NodePath("../PhysicsCollider"): 0.0
 }
 metadata/_custom_type_script = "uid://clk0dpb5pe8ty"
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="child_entered_tree" from="CollisionShape2D" to="." method="_on_collision_shape_2d_child_entered_tree"]
+[node name="PhysicsCollider" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_y06n3")
+debug_color = Color(0.008714891, 0.529545, 0.36803523, 0.41960785)
+
+[node name="MergeArea" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 2
+
+[node name="MergeCollider" type="CollisionShape2D" parent="MergeArea"]
+shape = SubResource("CircleShape2D_mmn5u")
+
+[connection signal="body_entered" from="MergeArea" to="." method="_on_body_entered"]
