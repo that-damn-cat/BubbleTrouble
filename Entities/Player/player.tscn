@@ -1,13 +1,13 @@
-[gd_scene load_steps=20 format=3 uid="uid://bo5tu8ywsry1c"]
+[gd_scene load_steps=18 format=3 uid="uid://bo5tu8ywsry1c"]
 
 [ext_resource type="Script" uid="uid://28w3tm2vv6c7" path="res://Entities/Player/player.gd" id="1_y2db8"]
 [ext_resource type="Texture2D" uid="uid://dot4dglb0ok4a" path="res://Entities/Player/Assets/BubbleTroublePlayer-Sheet.png" id="3_lu8i8"]
 [ext_resource type="Script" uid="uid://clk0dpb5pe8ty" path="res://Components/GrowComponent/GrowComponent.gd" id="3_tekja"]
 [ext_resource type="Script" uid="uid://bgpd4vkv8bjbk" path="res://Entities/Player/state_machine.gd" id="4_5c2io"]
 [ext_resource type="Script" uid="uid://dns8j3tufk62e" path="res://Entities/Player/spawning.gd" id="5_01a4e"]
-[ext_resource type="Script" uid="uid://xmr3p4wrraye" path="res://Components/State/State.gd" id="5_4wf4l"]
 [ext_resource type="Script" uid="uid://dq1wg41ifg4p3" path="res://Entities/Player/active.gd" id="6_7a1se"]
 [ext_resource type="Script" uid="uid://7jdsurafbrdf" path="res://Entities/Player/splitting.gd" id="7_lub02"]
+[ext_resource type="Script" uid="uid://doymo03ie2gh5" path="res://Entities/Player/dying.gd" id="8_7a1se"]
 
 [sub_resource type="Animation" id="Animation_tekja"]
 length = 0.001
@@ -153,21 +153,15 @@ _data = {
 &"split": SubResource("Animation_lub02")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_0e48y"]
-radius = 28.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_7a1se"]
-radius = 34.0
-
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("grow_component", "animation", "collider")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("grow_component", "animation", "collider", "merge_collder")]
 collision_layer = 2
 collision_mask = 31
 script = ExtResource("1_y2db8")
 grow_component = NodePath("GrowComponent")
 animation = NodePath("Bubs/AnimationPlayer")
-max_speed = 400
 friction = 0.06
 collider = NodePath("PhysicsCollider")
+merge_collder = NodePath("MergeArea/MergeCollider")
 
 [node name="Bubs" type="Sprite2D" parent="."]
 unique_name_in_owner = true
@@ -183,18 +177,23 @@ libraries = {
 autoplay = "idle"
 
 [node name="PhysicsCollider" type="CollisionShape2D" parent="."]
-visible = false
-shape = SubResource("CircleShape2D_0e48y")
+debug_color = Color(0.99959034, 0, 0.12267729, 0.41960785)
 
 [node name="MergeArea" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
 
 [node name="MergeCollider" type="CollisionShape2D" parent="MergeArea"]
-shape = SubResource("CircleShape2D_7a1se")
+disabled = true
+debug_color = Color(0, 0.63703483, 0.40133417, 0.41960785)
 
-[node name="GrowComponent" type="Node" parent="." node_paths=PackedStringArray("sprites", "collision_shapes")]
+[node name="GrowComponent" type="Node" parent="." node_paths=PackedStringArray("sprites", "collision_offsets")]
 script = ExtResource("3_tekja")
 sprites = [NodePath("../Bubs")]
-collision_shapes = [NodePath("../PhysicsCollider"), NodePath("../MergeArea/MergeCollider")]
+collision_offsets = {
+NodePath("../PhysicsCollider"): -2.0,
+NodePath("../MergeArea/MergeCollider"): 2.0
+}
 metadata/_custom_type_script = "uid://clk0dpb5pe8ty"
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("controlled_node", "initial_state")]
@@ -215,11 +214,12 @@ metadata/_custom_type_script = "uid://xmr3p4wrraye"
 
 [node name="Splitting" type="Node" parent="StateMachine"]
 script = ExtResource("7_lub02")
+player_scene_path = "res://Entities/Player/player.tscn"
 state_name = "splitting"
 metadata/_custom_type_script = "uid://xmr3p4wrraye"
 
 [node name="Dying" type="Node" parent="StateMachine"]
-script = ExtResource("5_4wf4l")
+script = ExtResource("8_7a1se")
 state_name = "dying"
 metadata/_custom_type_script = "uid://xmr3p4wrraye"
 
@@ -232,4 +232,6 @@ offset_bottom = 48.0
 theme_override_constants/outline_size = 5
 text = "Mass: "
 
+[connection signal="died" from="." to="StateMachine" method="_on_player_died"]
 [connection signal="animation_finished" from="Bubs/AnimationPlayer" to="StateMachine/Splitting" method="_on_animation_player_animation_finished"]
+[connection signal="body_entered" from="MergeArea" to="." method="_on_merge_area_body_entered"]

@@ -2,12 +2,9 @@ class_name GrowComponent
 extends Node
 
 @export var sprites: Array[Sprite2D]
-@export var collision_shapes: Array[CollisionShape2D]
+@export var collision_offsets: Dictionary[CollisionShape2D, float]
 @export var size: float
 @export var scaling: float = 1.0
-
-func _ready() -> void:
-	update_size()
 
 func update_size() -> void:
 	for sprite in sprites:
@@ -17,11 +14,13 @@ func update_size() -> void:
 		var sprite_height = sprite.texture.get_size().y / sprite.vframes
 		sprite.scale.y = (size / sprite_height) * globals.scaling_factor * scaling
 
-	for collider in collision_shapes:
+	for collider in collision_offsets.keys():
+		if not is_instance_valid(collider):
+			print("Bad!")
 		var shape: Shape2D = collider.shape
 
 		if shape is CircleShape2D:
-			shape.radius = ((size / 2.0)) * globals.scaling_factor * scaling
+			shape.radius = ((size / 2.0) + collision_offsets[collider]) * globals.scaling_factor * scaling
 		else:
 			push_error("Shape type not handled yet. Implement me :(")
 

@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var size_bonus: float = 2.0
+@export var size_bonus: float = 5.0
 @export var grow_component: GrowComponent
 
 func _ready() -> void:

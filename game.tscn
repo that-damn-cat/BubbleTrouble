@@ -47,7 +47,7 @@ position = Vector2(150, 234)
 unique_name_in_owner = true
 
 [node name="germ" parent="Enemies" instance=ExtResource("3_0ia01")]
-position = Vector2(404, 204)
+position = Vector2(563, 194)
 
 [node name="Pickups" type="Node" parent="."]
 unique_name_in_owner = true

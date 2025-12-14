@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://clk0dpb5pe8ty" path="res://Components/GrowComponent/GrowComponent.gd" id="3_mmn5u"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_y06n3"]
-radius = 8.062258
+radius = 8.0
 
 [node name="Droplet" type="Area2D" node_paths=PackedStringArray("grow_component")]
 collision_layer = 8
@@ -19,14 +19,15 @@ unique_name_in_owner = true
 texture = ExtResource("2_pdndv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-unique_name_in_owner = true
 shape = SubResource("CircleShape2D_y06n3")
 debug_color = Color(0.008714891, 0.529545, 0.36803523, 0.41960785)
 
-[node name="GrowComponent" type="Node" parent="." node_paths=PackedStringArray("sprites", "collision_shapes")]
+[node name="GrowComponent" type="Node" parent="." node_paths=PackedStringArray("sprites", "collision_offsets")]
 script = ExtResource("3_mmn5u")
 sprites = [NodePath("../Sprite2D")]
-collision_shapes = [NodePath("../CollisionShape2D")]
+collision_offsets = {
+NodePath("../CollisionShape2D"): 0.0
+}
 metadata/_custom_type_script = "uid://clk0dpb5pe8ty"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
