@@ -62,3 +62,13 @@ func _physics_process(_delta: float) -> void:
 				force_direction = Vector2.RIGHT
 
 		body.velocity += force_direction * push_force
+
+func clean_array(arr: Array) -> void:
+	var to_remove: Array[int] = []
+
+	for index in range(arr.size()):
+		if arr[index] == null:
+			to_remove.append(index)
+
+	for index in to_remove:
+		arr.remove_at(index)
