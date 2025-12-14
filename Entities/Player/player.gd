@@ -48,7 +48,7 @@ func merge(consumed: Player) -> void:
 	set_mass(mass + consumed.mass)
 	consumed.queue_free()
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	var acceleration = remap(mass, min_mass, max_mass, max_acceleration, min_acceleration)
 	var speed_cap = remap(mass, min_mass, max_mass, max_speed, min_speed)
 

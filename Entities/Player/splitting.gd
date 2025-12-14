@@ -6,9 +6,10 @@ var controlled_node: Player
 
 func enter() -> void:
 	controlled_node = state_machine.controlled_node
-	controlled_node.merge_collder.disabled = true
 	controlled_node.animation.play("split")
 
+func split() -> void:
+	controlled_node.merge_collder.disabled = true
 	var player_resource := load(player_scene_path) as PackedScene
 	var new_player = player_resource.instantiate()
 	new_player.global_position = controlled_node.global_position

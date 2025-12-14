@@ -70,6 +70,7 @@ shoot={
 2d_physics/layer_3="Enemies"
 2d_physics/layer_4="Droplets"
 2d_physics/layer_5="Drain"
+2d_physics/layer_6="SinkForces"
 
 [rendering]
 

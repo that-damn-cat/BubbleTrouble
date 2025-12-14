@@ -8,7 +8,7 @@ extends CharacterBody2D
 var direction := Vector2.ZERO
 var target_speed: float = idle_speed
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	velocity += direction * acceleration
 
 	if velocity.length() > target_speed:

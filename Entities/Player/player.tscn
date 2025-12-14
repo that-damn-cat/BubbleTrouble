@@ -140,6 +140,20 @@ tracks/0/keys = {
 "update": 1,
 "values": [0, 5, 6, 7, 8, 13, 0]
 }
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StateMachine/Splitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"split"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5c2io"]
 _data = {
@@ -155,7 +169,7 @@ _data = {
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("grow_component", "animation", "collider", "merge_collder")]
 collision_layer = 2
-collision_mask = 31
+collision_mask = 63
 script = ExtResource("1_y2db8")
 grow_component = NodePath("GrowComponent")
 animation = NodePath("Bubs/AnimationPlayer")

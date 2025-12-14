@@ -1,10 +1,21 @@
-[gd_scene load_steps=10 format=3 uid="uid://dvpursjeaw74i"]
+[gd_scene load_steps=15 format=3 uid="uid://dvpursjeaw74i"]
 
 [ext_resource type="PackedScene" uid="uid://bo5tu8ywsry1c" path="res://Entities/Player/player.tscn" id="1_0f0hj"]
 [ext_resource type="Script" uid="uid://clmbc0or0dlqo" path="res://game.gd" id="1_7jktm"]
 [ext_resource type="PackedScene" uid="uid://x3otvmpq532f" path="res://Entities/Droplet/droplet.tscn" id="2_hg6cf"]
+[ext_resource type="Texture2D" uid="uid://cvlyyv8ndt2a7" path="res://Assets/sink.png" id="2_ryrav"]
 [ext_resource type="PackedScene" uid="uid://dgqdov4kcwtwt" path="res://Entities/Germ/germ.tscn" id="3_0ia01"]
+[ext_resource type="Script" uid="uid://j4dd7yhlo1qm" path="res://Components/ForceRegion/force_region.gd" id="3_eow3j"]
 [ext_resource type="AudioStream" uid="uid://bpaiu2bwmep05" path="res://Assets/bubbletrubl.wav" id="4_fc0e3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eow3j"]
+size = Vector2(800, 140)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j5wjh"]
+size = Vector2(800, 140)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vef74"]
+size = Vector2(140, 600)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_feb5d"]
 normal = Vector2(0, 1)
@@ -20,6 +31,68 @@ normal = Vector2(-1, 0)
 
 [node name="Game" type="Node"]
 script = ExtResource("1_7jktm")
+
+[node name="SinkBG" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ryrav")
+expand_mode = 2
+
+[node name="SinkForces" type="Node" parent="."]
+
+[node name="Top" type="Area2D" parent="SinkForces"]
+position = Vector2(400, 0)
+collision_layer = 32
+collision_mask = 14
+script = ExtResource("3_eow3j")
+max_push_force = 80.0
+metadata/_custom_type_script = "uid://j4dd7yhlo1qm"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SinkForces/Top"]
+position = Vector2(0, 70)
+shape = SubResource("RectangleShape2D_eow3j")
+
+[node name="Bottom" type="Area2D" parent="SinkForces"]
+position = Vector2(400, 600)
+collision_layer = 32
+collision_mask = 14
+script = ExtResource("3_eow3j")
+push_direction = 0
+max_push_force = 80.0
+metadata/_custom_type_script = "uid://j4dd7yhlo1qm"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SinkForces/Bottom"]
+position = Vector2(0, -70)
+shape = SubResource("RectangleShape2D_j5wjh")
+
+[node name="Left" type="Area2D" parent="SinkForces"]
+position = Vector2(0, 300)
+collision_layer = 32
+collision_mask = 14
+script = ExtResource("3_eow3j")
+push_direction = 3
+max_push_force = 80.0
+metadata/_custom_type_script = "uid://j4dd7yhlo1qm"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SinkForces/Left"]
+position = Vector2(70, 0)
+shape = SubResource("RectangleShape2D_vef74")
+
+[node name="Right" type="Area2D" parent="SinkForces"]
+position = Vector2(800, 300)
+collision_layer = 32
+collision_mask = 14
+script = ExtResource("3_eow3j")
+push_direction = 2
+max_push_force = 80.0
+metadata/_custom_type_script = "uid://j4dd7yhlo1qm"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SinkForces/Right"]
+position = Vector2(-70, 0)
+shape = SubResource("RectangleShape2D_vef74")
 
 [node name="Bounds" type="StaticBody2D" parent="."]
 
