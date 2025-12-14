@@ -6,8 +6,15 @@ extends State
 var controlled_node: Player
 
 func enter() -> void:
+	merge_collider.set_deferred("disabled", true)
 	controlled_node = state_machine.controlled_node
 	controlled_node.animation.play("split")
+
+func update(_delta: float) -> void:
+	state_machine.controlled_node.direction = Input.get_vector("left", "right", "up", "down")
+
+func exit() -> void:
+	merge_collider.set_deferred("disabled", false)
 
 func split() -> void:
 	if not merge_collider:
@@ -16,8 +23,6 @@ func split() -> void:
 	if not controlled_node:
 		return
 
-	merge_collider.disabled = true
-
 	var player_resource := load(player_scene_path) as PackedScene
 	var new_player = player_resource.instantiate()
 	new_player.global_position = controlled_node.global_position
@@ -25,10 +30,10 @@ func split() -> void:
 	new_player.mass = controlled_node.shot_mass
 	controlled_node.health_component.damage(controlled_node.shot_mass)
 
-	var min_effective_speed = 0.6 * controlled_node.min_speed
+	var min_effective_speed = 0.7 * controlled_node.min_speed
 	if controlled_node.velocity.length() < min_effective_speed:
 		var direction = Vector2(randf_range(-1.0, 1.0), randf_range(-1.0, 1.0)).normalized()
-		controlled_node.velocity = direction * min_effective_speed
+		controlled_node.velocity = 1.25 * direction * min_effective_speed
 
 	new_player.velocity = controlled_node.velocity * 2.1
 	controlled_node.velocity *= Vector2(-1, -1)
@@ -38,10 +43,6 @@ func split() -> void:
 
 	globals.player_container.add_child(new_player)
 
-func update(_delta: float) -> void:
-	state_machine.controlled_node.direction = Input.get_vector("left", "right", "up", "down")
-
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "split":
-		merge_collider.disabled = false
 		transition_to("active")
