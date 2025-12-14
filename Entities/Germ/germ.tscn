@@ -1,35 +1,44 @@
-[gd_scene load_steps=9 format=3 uid="uid://dgqdov4kcwtwt"]
+[gd_scene load_steps=12 format=3 uid="uid://dgqdov4kcwtwt"]
 
 [ext_resource type="Texture2D" uid="uid://bqvfed6o0nkvr" path="res://Entities/Germ/Assets/germ.png" id="1_4lhe2"]
 [ext_resource type="Script" uid="uid://ckrld8h53xeb6" path="res://Entities/Germ/germ.gd" id="1_wjhn7"]
+[ext_resource type="Script" uid="uid://c648tla2l1a3r" path="res://Components/HealthComponent/HealthComponent.gd" id="3_1i5w4"]
 [ext_resource type="Script" uid="uid://b1w078d4c35ow" path="res://Entities/Germ/States/state_machine.gd" id="3_gq1pa"]
+[ext_resource type="Script" uid="uid://b0t6j7npbw78g" path="res://Components/Hitbox2D/Hitbox2D.gd" id="4_0djn2"]
 [ext_resource type="Script" uid="uid://dsj5h86w1cjad" path="res://Entities/Germ/States/idle.gd" id="4_iixjj"]
+[ext_resource type="Script" uid="uid://deho6lgc8wgao" path="res://Components/Hurtbox2D/Hurtbox2D.gd" id="5_7wqt5"]
 [ext_resource type="Script" uid="uid://dfxvsxrit718f" path="res://Entities/Germ/States/seek.gd" id="5_gq1pa"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wjhn7"]
-size = Vector2(18, 18)
+[sub_resource type="CircleShape2D" id="CircleShape2D_5bxlw"]
+radius = 8.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kkfdt"]
 radius = 125.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_gq1pa"]
-radius = 12.649111
+[sub_resource type="CircleShape2D" id="CircleShape2D_1i5w4"]
+radius = 13.0
 
 [node name="Germ" type="CharacterBody2D"]
 collision_layer = 4
-collision_mask = 63
+collision_mask = 53
 script = ExtResource("1_wjhn7")
 seek_speed = 125.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_4lhe2")
 
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("3_1i5w4")
+max_health = 1.0
+metadata/_custom_type_script = "uid://c648tla2l1a3r"
+
 [node name="PhysicsHitbox" type="CollisionShape2D" parent="."]
 visible = false
-shape = SubResource("RectangleShape2D_wjhn7")
+shape = SubResource("CircleShape2D_5bxlw")
 debug_color = Color(0.7741504, 0.4439164, 0, 0.41960785)
 
 [node name="SeekZone" type="Area2D" parent="."]
+visible = false
 collision_layer = 4
 collision_mask = 2
 
@@ -37,13 +46,25 @@ collision_mask = 2
 position = Vector2(0, -0.5)
 shape = SubResource("CircleShape2D_kkfdt")
 
-[node name="Hurtbox" type="Area2D" parent="."]
+[node name="Hitbox2D" type="Area2D" parent="."]
 collision_layer = 4
 collision_mask = 2
+script = ExtResource("4_0djn2")
+damage = 10.0
+metadata/_custom_type_script = "uid://b0t6j7npbw78g"
 
-[node name="HurtShape" type="CollisionShape2D" parent="Hurtbox"]
-shape = SubResource("CircleShape2D_gq1pa")
-debug_color = Color(0.97960764, 0, 0.3905215, 0.41960785)
+[node name="HitboxCollider" type="CollisionShape2D" parent="Hitbox2D"]
+shape = SubResource("CircleShape2D_1i5w4")
+
+[node name="Hurtbox2D" type="Area2D" parent="." node_paths=PackedStringArray("health")]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("5_7wqt5")
+health = NodePath("../HealthComponent")
+metadata/_custom_type_script = "uid://deho6lgc8wgao"
+
+[node name="HurtboxCollider" type="CollisionShape2D" parent="Hurtbox2D"]
+shape = SubResource("CircleShape2D_1i5w4")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("controlled_node", "initial_state")]
 script = ExtResource("3_gq1pa")
@@ -61,6 +82,6 @@ script = ExtResource("5_gq1pa")
 state_name = "seek"
 metadata/_custom_type_script = "uid://xmr3p4wrraye"
 
+[connection signal="died" from="HealthComponent" to="." method="_on_died"]
 [connection signal="body_entered" from="SeekZone" to="StateMachine/Idle" method="_on_seek_body_entered"]
 [connection signal="body_exited" from="SeekZone" to="StateMachine/Seek" method="_on_seek_body_exited"]
-[connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]

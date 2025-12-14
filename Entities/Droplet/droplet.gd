@@ -8,6 +8,11 @@ func _ready() -> void:
 	grow_component.update_size()
 
 func _on_body_entered(body: Node2D) -> void:
-	if body is Player:
-		body.health_component.heal(size_bonus)
-		queue_free()
+	if not body is Player:
+		return
+
+	body = body as Player
+
+	body.health_component.heal(size_bonus)
+
+	queue_free()
