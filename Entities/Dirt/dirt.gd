@@ -58,18 +58,18 @@ func random_point_from_polygon(shape: CollisionPolygon2D) -> Vector2:
 		push_error("No Triangles in Polygon!")
 		return(Vector2.INF)
 
-	var cumulated_triangle_areas: Array[float]
-	cumulated_triangle_areas.resize(triangle_count)
-	cumulated_triangle_areas[-1] = 0.0
+	var triangle_area_sums: Array[float]
+	triangle_area_sums.resize(triangle_count)
+	triangle_area_sums[-1] = 0.0
 
 	for i in range(triangle_count):
 		var a: Vector2 = polygon[triangle_points[3 * i + 0]]
 		var b: Vector2 = polygon[triangle_points[3 * i + 1]]
 		var c: Vector2 = polygon[triangle_points[3 * i + 2]]
-		cumulated_triangle_areas[i] = cumulated_triangle_areas[i - 1] + triangle_area(a, b, c)
+		triangle_area_sums[i] = triangle_area_sums[i - 1] + triangle_area(a, b, c)
 
-	var total_area: float = cumulated_triangle_areas[-1]
-	var choosen_triangle_index: int = cumulated_triangle_areas.bsearch(randf() * total_area)
+	var total_area: float = triangle_area_sums[-1]
+	var choosen_triangle_index: int = triangle_area_sums.bsearch(randf() * total_area)
 	var chosen_a = polygon[triangle_points[3 * choosen_triangle_index + 0]]
 	var chosen_b = polygon[triangle_points[3 * choosen_triangle_index + 1]]
 	var chosen_c = polygon[triangle_points[3 * choosen_triangle_index + 2]]
