@@ -6,6 +6,7 @@ extends CharacterBody2D
 @export var sprite: Sprite2D
 
 @export_category("Physics")
+@export var mass: float = 8.0
 @export var friction: float = 0.03
 @export var bounce_damping: float = 0.6
 
@@ -22,13 +23,20 @@ func _physics_process(delta: float) -> void:
 	apply_attraction()
 
 	velocity = lerp(velocity, Vector2.ZERO, friction)
+
+	velocity *= 0.995
+
 	var collision := move_and_collide(velocity * delta)
 
 	if collision:
-		handle_collision(collision)
+		velocity = velocity.bounce(collision.get_normal()) * bounce_damping
 
+# Help, I was in a fugue state late last night and don't know what these physics do anymore
 func apply_attraction() -> void:
-	for droplet in get_tree().get_nodes_in_group("Droplets"):
+	var attractors := get_tree().get_nodes_in_group("Droplets")
+	attractors.append_array(get_tree().get_nodes_in_group("Players"))
+
+	for droplet in attractors:
 		droplet = droplet as Droplet
 
 		if droplet == self:
@@ -44,18 +52,3 @@ func apply_attraction() -> void:
 		force = min(force, max_attract_force)
 
 		velocity += direction.normalized() * force
-		velocity *= 0.995
-
-
-func handle_collision(collision: KinematicCollision2D) -> void:
-	velocity = velocity.bounce(collision.get_normal()) * bounce_damping
-
-func _on_body_entered(body: Node2D) -> void:
-	if not body is Player:
-		return
-
-	body = body as Player
-
-	body.health_component.heal(size_bonus)
-
-	queue_free()
