@@ -1,6 +1,6 @@
 extends State
 
-var physics_delay_secs: float = 0.75
+@export var physics_delay_secs: float = 0.25
 var elapsed_time: float = 0.0
 var controlled_node: Player
 

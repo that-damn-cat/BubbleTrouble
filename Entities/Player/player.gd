@@ -37,6 +37,8 @@ func set_mass(amount: float) -> void:
 	mass = clamp(amount, 0, max_mass)
 	grow_component.size = mass
 	grow_component.update_size()
+
+	%MassLabel.position.y = -(mass + 32.0)
 	%MassLabel.text = "Mass: %0.1f" % mass
 
 	if mass < min_mass:
