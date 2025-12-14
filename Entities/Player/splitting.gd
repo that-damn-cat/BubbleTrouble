@@ -16,12 +16,12 @@ func enter() -> void:
 	new_player.mass = controlled_node.shot_mass
 	controlled_node.set_mass(controlled_node.mass - controlled_node.shot_mass)
 
-	var min_effective_speed = 0.4 * controlled_node.min_speed
+	var min_effective_speed = 0.6 * controlled_node.min_speed
 	if controlled_node.velocity.length() < min_effective_speed:
 		var direction = Vector2(randf_range(-1.0, 1.0), randf_range(-1.0, 1.0)).normalized()
 		controlled_node.velocity = direction * min_effective_speed
 
-	new_player.velocity = controlled_node.velocity * 2.0
+	new_player.velocity = controlled_node.velocity * 2.1
 	controlled_node.velocity *= Vector2(-1, -1)
 	controlled_node.velocity *= 0.8
 
