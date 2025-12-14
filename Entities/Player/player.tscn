@@ -172,7 +172,7 @@ _data = {
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("grow_component", "health_component", "animation") groups=["Player"]]
 collision_layer = 2
-collision_mask = 57
+collision_mask = 51
 script = ExtResource("1_y2db8")
 grow_component = NodePath("GrowComponent")
 health_component = NodePath("HealthComponent")
@@ -196,7 +196,7 @@ script = ExtResource("3_tekja")
 sprites = [NodePath("../Bubs")]
 collision_offsets = {
 NodePath("../PhysicsCollider"): -5.0,
-NodePath("../MergeArea/MergeCollider"): 2.0,
+NodePath("../MergeArea/MergeCollider"): 3.0,
 NodePath("../Hitbox2D/HitboxCollider"): 0.0,
 NodePath("../Hurtbox2D/HurtboxCollider"): 0.0
 }
@@ -212,10 +212,10 @@ debug_color = Color(0.99959034, 0, 0.12267729, 0.41960785)
 
 [node name="MergeArea" type="Area2D" parent="."]
 collision_layer = 2
-collision_mask = 2
+collision_mask = 10
 
 [node name="MergeCollider" type="CollisionShape2D" parent="MergeArea"]
-disabled = true
+unique_name_in_owner = true
 debug_color = Color(0, 0.63703483, 0.40133417, 0.41960785)
 
 [node name="Hitbox2D" type="Area2D" parent="."]
@@ -249,6 +249,7 @@ state_name = "spawning"
 metadata/_custom_type_script = "uid://xmr3p4wrraye"
 
 [node name="Active" type="Node" parent="StateMachine"]
+unique_name_in_owner = true
 script = ExtResource("6_7a1se")
 state_name = "active"
 metadata/_custom_type_script = "uid://xmr3p4wrraye"
