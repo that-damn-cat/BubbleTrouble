@@ -18,11 +18,12 @@ radius = 125.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_1i5w4"]
 radius = 13.0
 
-[node name="Germ" type="CharacterBody2D"]
+[node name="Germ" type="CharacterBody2D" node_paths=PackedStringArray("health_component")]
 collision_layer = 4
 collision_mask = 53
 script = ExtResource("1_wjhn7")
 seek_speed = 125.0
+health_component = NodePath("HealthComponent")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_4lhe2")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dvpursjeaw74i"]
+[gd_scene load_steps=16 format=3 uid="uid://dvpursjeaw74i"]
 
 [ext_resource type="PackedScene" uid="uid://bo5tu8ywsry1c" path="res://Entities/Player/player.tscn" id="1_0f0hj"]
 [ext_resource type="Script" uid="uid://clmbc0or0dlqo" path="res://game.gd" id="1_7jktm"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dgqdov4kcwtwt" path="res://Entities/Germ/germ.tscn" id="3_0ia01"]
 [ext_resource type="Script" uid="uid://j4dd7yhlo1qm" path="res://Components/ForceRegion/force_region.gd" id="3_eow3j"]
 [ext_resource type="AudioStream" uid="uid://bpaiu2bwmep05" path="res://Assets/bubbletrubl.wav" id="4_fc0e3"]
+[ext_resource type="PackedScene" uid="uid://ch44dxs3vx8wj" path="res://Entities/Dirt/dirt.tscn" id="6_j5wjh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eow3j"]
 size = Vector2(800, 140)
@@ -119,14 +120,11 @@ position = Vector2(150, 234)
 [node name="Enemies" type="Node" parent="."]
 unique_name_in_owner = true
 
-[node name="germ" parent="Enemies" instance=ExtResource("3_0ia01")]
-position = Vector2(563, 194)
-
-[node name="germ2" parent="Enemies" instance=ExtResource("3_0ia01")]
-position = Vector2(627, 262)
-
 [node name="germ3" parent="Enemies" instance=ExtResource("3_0ia01")]
 position = Vector2(654, 185)
+
+[node name="Dirt" parent="Enemies" instance=ExtResource("6_j5wjh")]
+position = Vector2(612, 409)
 
 [node name="Pickups" type="Node" parent="."]
 unique_name_in_owner = true
