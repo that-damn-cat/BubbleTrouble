@@ -1,10 +1,9 @@
 class_name Player
 extends CharacterBody2D
 
-signal died
-
 @export_category("Components")
 @export var grow_component: GrowComponent
+@export var health_component: HealthComponent
 
 @export_category("Visuals")
 @export var animation: AnimationPlayer
@@ -22,30 +21,27 @@ signal died
 @export var max_speed: float = 550.0
 @export_range(0.0, 1.0, 0.01) var friction = .09
 
-@export_category("Collider Settings")
-@export var collider: CollisionShape2D
-@export var merge_collder: CollisionShape2D
-
 var direction := Vector2.ZERO
 
 func _ready() -> void:
-	collider.shape = CircleShape2D.new()
-	merge_collder.shape = CircleShape2D.new()
-	set_mass(mass)
+	for collider in grow_component.collision_offsets.keys():
+		collider.shape = CircleShape2D.new()
 
-func set_mass(amount: float) -> void:
-	mass = clamp(amount, 0, max_mass)
+	health_component.max_health = max_mass
+	health_component.current_health = mass
+	update_mass()
+
+func update_mass() -> void:
+	mass = health_component.current_health
 	grow_component.size = mass
 	grow_component.update_size()
 
 	%MassLabel.position.y = -(mass + 32.0)
 	%MassLabel.text = "Mass: %0.1f" % mass
 
-	if mass < min_mass:
-		died.emit()
-
 func merge(consumed: Player) -> void:
-	set_mass(mass + consumed.mass)
+	health_component.heal(consumed.mass)
+	update_mass()
 	consumed.queue_free()
 
 func _physics_process(_delta):
@@ -73,3 +69,9 @@ func _on_merge_area_body_entered(body: Node2D) -> void:
 		return
 
 	merge(body)
+
+func _on_healed(_amount: float) -> void:
+	update_mass()
+
+func _on_damaged(_amount: float) -> void:
+	update_mass()

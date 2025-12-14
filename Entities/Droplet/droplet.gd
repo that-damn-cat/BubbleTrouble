@@ -9,5 +9,5 @@ func _ready() -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
-		body.set_mass(body.mass + size_bonus)
+		body.health_component.heal(size_bonus)
 		queue_free()
