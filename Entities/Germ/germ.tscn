@@ -2,9 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://bqvfed6o0nkvr" path="res://Entities/Germ/Assets/germ.png" id="1_4lhe2"]
 [ext_resource type="Script" uid="uid://ckrld8h53xeb6" path="res://Entities/Germ/germ.gd" id="1_wjhn7"]
-[ext_resource type="Script" uid="uid://b1w078d4c35ow" path="res://Entities/Germ/state_machine.gd" id="3_gq1pa"]
-[ext_resource type="Script" uid="uid://dsj5h86w1cjad" path="res://Entities/Germ/idle.gd" id="4_iixjj"]
-[ext_resource type="Script" uid="uid://dfxvsxrit718f" path="res://Entities/Germ/seek.gd" id="5_gq1pa"]
+[ext_resource type="Script" uid="uid://b1w078d4c35ow" path="res://Entities/Germ/States/state_machine.gd" id="3_gq1pa"]
+[ext_resource type="Script" uid="uid://dsj5h86w1cjad" path="res://Entities/Germ/States/idle.gd" id="4_iixjj"]
+[ext_resource type="Script" uid="uid://dfxvsxrit718f" path="res://Entities/Germ/States/seek.gd" id="5_gq1pa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wjhn7"]
 size = Vector2(18, 18)
