@@ -10,6 +10,7 @@ size = Vector2(100, 75)
 [node name="Sponge" type="StaticBody2D" node_paths=PackedStringArray("droplet_spawn_point", "collision_shape", "droplet_sprite")]
 collision_mask = 14
 script = ExtResource("1_vgr8m")
+droplet_growth_rate = 2.5
 droplet_spawn_point = NodePath("DropletSpawnPoint")
 collision_shape = NodePath("CollisionShape2D")
 droplet_sprite = NodePath("DropletSpawnPoint/DropletSprite")
