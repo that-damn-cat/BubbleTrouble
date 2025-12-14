@@ -1,6 +1,6 @@
-[gd_scene load_steps=17 format=3 uid="uid://cufu8nnge30cb"]
+[gd_scene load_steps=17 format=3 uid="uid://ch44dxs3vx8wj"]
 
-[ext_resource type="Texture2D" uid="uid://cmkk33hii0s2p" path="res://Entities/Dirt/Assets/dirt blob .png" id="1_fqn6u"]
+[ext_resource type="Texture2D" uid="uid://b6hv3e08f3oep" path="res://Entities/Dirt/Assets/dirt blob .png" id="1_fqn6u"]
 [ext_resource type="Texture2D" uid="uid://5kgv3bqwdfw5" path="res://Entities/Dirt/Assets/dirt blob -Sheet.png" id="2_6vu5l"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cixa3"]
@@ -102,16 +102,16 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2wehe")
 }],
-"loop": true,
+"loop": false,
 "name": &"died",
-"speed": 5.0
+"speed": 8.0
 }]
 
-[node name="Node2D" type="Node2D"]
+[node name="Dirt" type="Node2D"]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ju0j5")
-frame_progress = 0.4861156
+animation = &"died"
 
 [node name="Area2D" type="Area2D" parent="."]
 
