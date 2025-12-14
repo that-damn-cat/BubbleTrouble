@@ -107,13 +107,11 @@ animations = [{
 "speed": 8.0
 }]
 
-[node name="Dirt" type="Node2D"]
+[node name="Dirt" type="Area2D"]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ju0j5")
 animation = &"died"
 
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
-polygon = PackedVector2Array(-12, -12, -2, -22, 27, -2, 19, 21, -6, 26, -10, 15, -15, 12, -26, 11)
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-12, -10, -2, -22, 27, -2, 19, 21, -6, 26, -10, 15, -15, 12, -26, 11)
