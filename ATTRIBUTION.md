@@ -19,6 +19,11 @@ Author: SlowDevelopment
 Source: [itch.io: bubble](https://slowdevelopment.itch.io/bubble)
 License: [No Resale, Open License](https://slowdevelopment.itch.io/bubble)
 
+#### Germ Death Shader
+Author: blivi0
+Source: [godotshaders.com: Pixelated Dissolve](https://godotshaders.com/shader/pixelated-dissolve-with-block-size/)
+License: [GNU GPL v3](https://www.gnu.org/licenses/gpl-3.0.en.html)
+
 ### Engine
 
 #### Godot

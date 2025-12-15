@@ -4,7 +4,6 @@ extends State
 @export var disable_nodes: Array[Node]
 
 func enter() -> void:
-	print("dying")
 	death_anim.connect("animation_finished", _on_animation_complete)
 
 	for node in disable_nodes:

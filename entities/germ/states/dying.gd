@@ -27,7 +27,6 @@ func enter() -> void:
 			node.process_mode = Node.PROCESS_MODE_DISABLED
 
 	anim_tween = create_tween()
-	anim_tween.set_parallel()
 	anim_tween.tween_method(set_dissolve_progress, 0.0, 1.0, dissolve_secs)
 	anim_tween.finished.connect(_on_dissolve_finished)
 
