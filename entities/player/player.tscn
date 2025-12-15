@@ -256,7 +256,7 @@ metadata/_custom_type_script = "uid://xmr3p4wrraye"
 
 [node name="Splitting" type="Node" parent="StateMachine" node_paths=PackedStringArray("merge_collider")]
 script = ExtResource("7_lub02")
-player_scene_path = "res://Entities/Player/player.tscn"
+player_scene_path = "res://entities/player/player.tscn"
 merge_collider = NodePath("../../MergeArea/MergeCollider")
 state_name = "splitting"
 metadata/_custom_type_script = "uid://xmr3p4wrraye"
