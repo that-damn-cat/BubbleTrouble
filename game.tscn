@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bo5tu8ywsry1c" path="res://entities/player/player.tscn" id="1_0f0hj"]
 [ext_resource type="Script" uid="uid://clmbc0or0dlqo" path="res://game.gd" id="1_7jktm"]
 [ext_resource type="PackedScene" uid="uid://x3otvmpq532f" path="res://entities/droplet/droplet.tscn" id="2_hg6cf"]
-[ext_resource type="Texture2D" uid="uid://cyvaekodjn2ji" path="res://assets/sink.png" id="2_ryrav"]
+[ext_resource type="Texture2D" uid="uid://cyvaekodjn2ji" path="res://entities/sink/assets/sink.png" id="2_ryrav"]
 [ext_resource type="PackedScene" uid="uid://dgqdov4kcwtwt" path="res://entities/germ/germ.tscn" id="3_0ia01"]
 [ext_resource type="Script" uid="uid://j4dd7yhlo1qm" path="res://components/ForceRegion/force_region.gd" id="3_eow3j"]
 [ext_resource type="AudioStream" uid="uid://bd820bgacjhjr" path="res://assets/bubble_trubl.wav" id="4_fc0e3"]
