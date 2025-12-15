@@ -12,7 +12,12 @@
 #### Godot Engine Logo
 Author: Andrea Calabró
 Source: [godotengine.org : press](https://godotengine.org/press/)
-License: [CC BY 4.0 International](https://github.com/godotengine/godot/blob/master/LOGO_LICENSE.txt) 
+License: [CC BY 4.0 International](https://github.com/godotengine/godot/blob/master/LOGO_LICENSE.txt)
+
+#### Bubble Pop Animation
+Author: SlowDevelopment
+Source: [itch.io: bubble](https://slowdevelopment.itch.io/bubble)
+License: [No Resale, Open License](https://slowdevelopment.itch.io/bubble)
 
 ### Engine
 

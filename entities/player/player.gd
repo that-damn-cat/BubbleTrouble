@@ -17,7 +17,7 @@ extends CharacterBody2D
 @export_category("Motion")
 @export var max_acceleration: float = 25.0
 @export var min_acceleration: float = 5.0
-@export var min_speed: float = 175.0
+@export var min_speed: float = 350.0
 @export var max_speed: float = 550.0
 @export_range(0.0, 1.0, 0.01) var friction = .09
 @export var bounce_damping: float = 0.6
@@ -32,6 +32,25 @@ func _ready() -> void:
 	health_component.current_health = mass
 	update_mass()
 
+
+func _process(_delta: float) -> void:
+	if mass < min_mass:
+		health_component.current_health = 0.0
+
+
+func _physics_process(_delta) -> void:
+	var acceleration = remap(mass, min_mass, max_mass, max_acceleration, min_acceleration)
+	var speed_cap = remap(mass, min_mass, max_mass, max_speed, min_speed)
+
+	if direction.length() > 0.0:
+		velocity += direction * acceleration
+		velocity = velocity.limit_length(speed_cap)
+	else:
+		velocity = lerp(velocity, Vector2.ZERO, friction)
+
+	move_and_slide()
+
+
 func update_mass() -> void:
 	mass = health_component.current_health
 	grow_component.size = mass
@@ -39,6 +58,7 @@ func update_mass() -> void:
 
 	%MassLabel.position.y = -(mass + 32.0)
 	%MassLabel.text = "Mass: %0.1f" % mass
+
 
 func merge(consumed: Player) -> void:
 	var initial_health: float = health_component.current_health
@@ -54,19 +74,6 @@ func merge(consumed: Player) -> void:
 
 	consumed.mass = consumed.mass - healed_amount
 	consumed.update_mass()
-
-
-func _physics_process(delta):
-	var acceleration = remap(mass, min_mass, max_mass, max_acceleration, min_acceleration)
-	var speed_cap = remap(mass, min_mass, max_mass, max_speed, min_speed)
-
-	if direction.length() > 0.0:
-		velocity += direction * acceleration
-		velocity = velocity.limit_length(speed_cap)
-	else:
-		velocity = lerp(velocity, Vector2.ZERO, friction)
-
-	move_and_slide()
 
 
 func _on_merge_area_body_entered(body: Node2D) -> void:
