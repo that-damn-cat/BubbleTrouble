@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://c6k5nnpbypshi" path="res://addons/maaacks_game_template/base/nodes/menus/main_menu/main_menu.tscn" id="1_sr523"]
 [ext_resource type="Script" uid="uid://diipikx1e3wth" path="res://scenes/menus/main_menu/main_menu_with_animations.gd" id="2_ixa71"]
 [ext_resource type="PackedScene" uid="uid://p3vrnlnbtksy" path="res://scenes/windows/main_menu_options_window.tscn" id="3_2k5l7"]
-[ext_resource type="PackedScene" uid="uid://dvystvd5h1wvg" path="res://scenes/windows/main_menu_credits_window.tscn" id="4_vsp5b"]
+[ext_resource type="PackedScene" uid="uid://dohao87gkkl0x" path="res://scenes/credits/scrollable_credits.tscn" id="4_ixa71"]
 [ext_resource type="PackedScene" uid="uid://cwt4p3bufkke5" path="res://addons/maaacks_game_template/base/nodes/windows/confirmation_overlaid_window.tscn" id="5_6xh1d"]
 [ext_resource type="AudioStream" uid="uid://bd820bgacjhjr" path="res://assets/bubble_trubl.wav" id="5_ixa71"]
 
@@ -321,7 +321,7 @@ level_select_packed_scene = null
 confirm_new_game = true
 game_scene_path = "uid://dvpursjeaw74i"
 options_packed_scene = ExtResource("3_2k5l7")
-credits_packed_scene = ExtResource("4_vsp5b")
+credits_packed_scene = ExtResource("4_ixa71")
 
 [node name="MenuAnimationPlayer" type="AnimationPlayer" parent="." index="1"]
 libraries = {
@@ -347,6 +347,9 @@ text = "Bubble Trouble"
 
 [node name="SubTitleContainer" parent="MenuContainer/SubTitleMargin" index="0"]
 modulate = Color(1, 1, 1, 0)
+
+[node name="SubTitleLabel" parent="MenuContainer/SubTitleMargin/SubTitleContainer" index="0"]
+text = "Subtitle! :D"
 
 [node name="MenuButtonsContainer" parent="MenuContainer/MenuButtonsMargin" index="0"]
 modulate = Color(1, 1, 1, 0)

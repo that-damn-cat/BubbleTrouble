@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://hi4okyj4x3ot"]
 
-[ext_resource type="Script" path="res://addons/maaacks_game_template/base/nodes/labels/credits_label.gd" id="1_yhcaj"]
+[ext_resource type="Script" uid="uid://cc2wtqasev7le" path="res://addons/maaacks_game_template/base/nodes/labels/credits_label.gd" id="1_yhcaj"]
 
 [node name="CreditsLabel" type="RichTextLabel"]
 custom_minimum_size = Vector2(1280, 0)
@@ -12,43 +12,50 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 5
 bbcode_enabled = true
-text = "[font_size=48]Collaborators[/font_size]
+text = "[img=80]res:///assets/credits/dev_logos/riley.png[/img] [img=80]res:///assets/credits/dev_logos/sunny.png[/img]
+[url=https://bsky.app/profile/this-is-a-cat.bsky.social]Riley[/url] and [url=https://bsky.app/profile/puppygirls.online]Sunny[/url]
 
-[font_size=32]Role[/font_size]
-Person 1  
-Person 2  
-[url=]Person w/ Link[/url]  
-
-[font_size=48]Sourced[/font_size]
 [font_size=32]Asset Type[/font_size]
 [font_size=24]Use Case[/font_size]
-Author: [url=]Name[/url]  
-Source: [url=]Domain : webpage.html[/url]  
+Author: [url=]Name[/url]
+Source: [url=]Domain : webpage.html[/url]
 License: [url=]License[/url]
 
 [font_size=24]Godot Engine Logo[/font_size]
-Author: Andrea Calabró  
-Source: [url=https://godotengine.org/press/]godotengine.org : press[/url]  
+Author: Andrea Calabró
+Source: [url=https://godotengine.org/press/]godotengine.org : press[/url]
 License: [url=https://github.com/godotengine/godot/blob/master/LOGO_LICENSE.txt]CC BY 4.0 International[/url] 
 
-[font_size=48]Tools[/font_size]
+[font_size=32]Tools[/font_size]
+[font_size=24]Aseprite[/font_size]
+[img=80]res:///assets/credits/aseprite_logo.svg[/img]
+Author: [url=https://github.com/aseprite/aseprite/blob/main/AUTHORS.md]Dave Capello and contributors[/url]
+Source: [url=https://www.aseprite.org/]Aseprite.org[/url]
+License: [url=https://github.com/aseprite/aseprite/blob/main/EULA.txt]Commercial, Aseprite EULA[/url]
+
+[font_size=24]Git[/font_size]
+[img=80]res:///assets/git_logo/Git-Logo-2Color.png[/img]
+Author: [url=https://github.com/torvalds]Linus Torvalds[/url]
+Source: [url=https://git-scm.com/downloads]git-scm.com[/url]
+License: [url=https://opensource.org/licenses/GPL-2.0]GNU General Public License version 2[/url]
+
 [font_size=24]Godot[/font_size]
-[img=80]res:///assets/godot_engine_logo/logo_vertical_color_dark.png[/img]  
-Author: [url=https://godotengine.org/contact]Juan Linietsky, Ariel Manzur, and contributors[/url]  
-Source: [url=https://godotengine.org/]godotengine.org[/url]  
+[img=80]res:///assets/godot_engine_logo/logo_vertical_color_dark.png[/img]
+Author: [url=https://godotengine.org/contact]Juan Linietsky, Ariel Manzur, and contributors[/url]
+Source: [url=https://godotengine.org/]godotengine.org[/url]
 License: [url=https://github.com/godotengine/godot/blob/master/LICENSE.txt]MIT License[/url] 
 
 [font_size=24]Godot Game Template[/font_size]
-[img=80]res:///assets/plugin_logo/logo.png[/img]  
-Author: [url=https://github.com/Maaack/Godot-Game-Template/graphs/contributors]Marek Belski and contributors[/url]  
-Source: [url=https://github.com/Maaack/Godot-Game-Template]github: Godot-Game-Template[/url]  
-License: [url=LICENSE.txt]MIT License[/url]  
+[img=80]res:///assets/plugin_logo/logo.png[/img]
+Author: [url=https://github.com/Maaack/Godot-Game-Template/graphs/contributors]Marek Belski and contributors[/url]
+Source: [url=https://github.com/Maaack/Godot-Game-Template]github: Godot-Game-Template[/url]
+License: [url=LICENSE.txt]MIT License[/url]
 
-[font_size=24]Git[/font_size]
-[img=80]res:///assets/git_logo/Git-Logo-2Color.png[/img]  
-Author: [url=https://github.com/torvalds]Linus Torvalds[/url]  
-Source: [url=https://git-scm.com/downloads]git-scm.com[/url]  
-License: [url=https://opensource.org/licenses/GPL-2.0]GNU General Public License version 2[/url]
+[font_size=24]GWJ Accessibility Scripts[/font_size]
+[img=80]res:///addons/gwj_accessibility_scripts/docs/gwj_mascot_80x80.png[/img]
+Author: [url=https://github.com/GodotWildJam/gwj-accessibility-scripts/graphs/contributors]Marek Belski and contributors[/url]
+Source: [url=https://github.com/GodotWildJam/gwj-accessibility-scripts]github: gwj-accessibility-scripts[/url]
+Licence: [url=https://github.com/GodotWildJam/gwj-accessibility-scripts/blob/main/LICENSE.txt]MIT License[/url]
 "
 fit_content = true
 scroll_active = false
