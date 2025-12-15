@@ -1,13 +1,13 @@
 [gd_scene load_steps=12 format=3 uid="uid://dgqdov4kcwtwt"]
 
-[ext_resource type="Texture2D" uid="uid://bpigo1svk7wuy" path="res://Entities/Germ/Assets/germ.png" id="1_4lhe2"]
-[ext_resource type="Script" uid="uid://ckrld8h53xeb6" path="res://Entities/Germ/germ.gd" id="1_wjhn7"]
-[ext_resource type="Script" uid="uid://c648tla2l1a3r" path="res://Components/HealthComponent/HealthComponent.gd" id="3_1i5w4"]
-[ext_resource type="Script" uid="uid://b1w078d4c35ow" path="res://Entities/Germ/States/state_machine.gd" id="3_gq1pa"]
-[ext_resource type="Script" uid="uid://b0t6j7npbw78g" path="res://Components/Hitbox2D/Hitbox2D.gd" id="4_0djn2"]
-[ext_resource type="Script" uid="uid://dsj5h86w1cjad" path="res://Entities/Germ/States/idle.gd" id="4_iixjj"]
-[ext_resource type="Script" uid="uid://deho6lgc8wgao" path="res://Components/Hurtbox2D/Hurtbox2D.gd" id="5_7wqt5"]
-[ext_resource type="Script" uid="uid://dfxvsxrit718f" path="res://Entities/Germ/States/seek.gd" id="5_gq1pa"]
+[ext_resource type="Texture2D" uid="uid://bpigo1svk7wuy" path="res://entities/germ/assets/germ.png" id="1_4lhe2"]
+[ext_resource type="Script" uid="uid://ckrld8h53xeb6" path="res://entities/germ/germ.gd" id="1_wjhn7"]
+[ext_resource type="Script" uid="uid://c648tla2l1a3r" path="res://components/HealthComponent/HealthComponent.gd" id="3_1i5w4"]
+[ext_resource type="Script" uid="uid://b1w078d4c35ow" path="res://entities/germ/states/state_machine.gd" id="3_gq1pa"]
+[ext_resource type="Script" uid="uid://b0t6j7npbw78g" path="res://components/Hitbox2D/Hitbox2D.gd" id="4_0djn2"]
+[ext_resource type="Script" uid="uid://dsj5h86w1cjad" path="res://entities/germ/states/idle.gd" id="4_iixjj"]
+[ext_resource type="Script" uid="uid://deho6lgc8wgao" path="res://components/Hurtbox2D/Hurtbox2D.gd" id="5_7wqt5"]
+[ext_resource type="Script" uid="uid://dfxvsxrit718f" path="res://entities/germ/states/seek.gd" id="5_gq1pa"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5bxlw"]
 radius = 8.0

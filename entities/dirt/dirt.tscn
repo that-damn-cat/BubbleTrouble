@@ -1,13 +1,13 @@
 [gd_scene load_steps=26 format=3 uid="uid://ch44dxs3vx8wj"]
 
-[ext_resource type="Script" uid="uid://bynjqmy85uylf" path="res://Entities/Dirt/dirt.gd" id="1_0h0vm"]
-[ext_resource type="Texture2D" uid="uid://cyo7vydtmu0k7" path="res://Entities/Dirt/Assets/dirt_blob.png" id="1_fqn6u"]
-[ext_resource type="PackedScene" uid="uid://dgqdov4kcwtwt" path="res://Entities/Germ/germ.tscn" id="2_5kl0w"]
-[ext_resource type="Texture2D" uid="uid://beuax3yn6lnln" path="res://Entities/Dirt/Assets/dirt_animation.png" id="2_6vu5l"]
-[ext_resource type="Script" uid="uid://b0t6j7npbw78g" path="res://Components/Hitbox2D/Hitbox2D.gd" id="3_ccoba"]
-[ext_resource type="Script" uid="uid://deho6lgc8wgao" path="res://Components/Hurtbox2D/Hurtbox2D.gd" id="4_0h0vm"]
-[ext_resource type="Script" uid="uid://c648tla2l1a3r" path="res://Components/HealthComponent/HealthComponent.gd" id="5_xk4a8"]
-[ext_resource type="Texture2D" uid="uid://u3y3ne7xuveh" path="res://Entities/Germ/Assets/germ-Sheet.png" id="7_xk4a8"]
+[ext_resource type="Script" uid="uid://bynjqmy85uylf" path="res://entities/dirt/dirt.gd" id="1_0h0vm"]
+[ext_resource type="Texture2D" uid="uid://cyo7vydtmu0k7" path="res://entities/dirt/assets/dirt_blob.png" id="1_fqn6u"]
+[ext_resource type="PackedScene" uid="uid://dgqdov4kcwtwt" path="res://entities/germ/germ.tscn" id="2_5kl0w"]
+[ext_resource type="Texture2D" uid="uid://beuax3yn6lnln" path="res://entities/dirt/assets/dirt_animation.png" id="2_6vu5l"]
+[ext_resource type="Script" uid="uid://b0t6j7npbw78g" path="res://components/Hitbox2D/Hitbox2D.gd" id="3_ccoba"]
+[ext_resource type="Script" uid="uid://deho6lgc8wgao" path="res://components/Hurtbox2D/Hurtbox2D.gd" id="4_0h0vm"]
+[ext_resource type="Script" uid="uid://c648tla2l1a3r" path="res://components/HealthComponent/HealthComponent.gd" id="5_xk4a8"]
+[ext_resource type="Texture2D" uid="uid://u3y3ne7xuveh" path="res://entities/germ/assets/germ_animations.png" id="7_xk4a8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cixa3"]
 atlas = ExtResource("1_fqn6u")

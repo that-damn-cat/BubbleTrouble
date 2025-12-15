@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bvsa47mq8yph7"]
 
-[ext_resource type="Script" uid="uid://c3yvho5a666l7" path="res://Entities/Drain/kill_zone.gd" id="1_d4d82"]
-[ext_resource type="Script" uid="uid://vj5wmvkm5ggp" path="res://Entities/Drain/drain.gd" id="1_l2val"]
+[ext_resource type="Script" uid="uid://c3yvho5a666l7" path="res://entities/drain/kill_zone.gd" id="1_d4d82"]
+[ext_resource type="Script" uid="uid://vj5wmvkm5ggp" path="res://entities/drain/drain.gd" id="1_l2val"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d4d82"]
 radius = 41.0
