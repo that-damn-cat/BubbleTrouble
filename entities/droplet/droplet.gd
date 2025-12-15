@@ -4,6 +4,8 @@ extends CharacterBody2D
 @export var size_bonus: float = 5.0
 @export var grow_component: GrowComponent
 @export var sprite: Sprite2D
+@export var growth_rate: float = 0.5
+@export var max_size_bonus: float = 15.0
 
 @export_category("Physics")
 @export var mass: float = 8.0
@@ -15,8 +17,19 @@ extends CharacterBody2D
 @export var attraction_strength: float = 20.0
 @export var max_attract_force: float = 40.0
 
+var growth_ratio: float = 0.0
+
 func _ready() -> void:
-	grow_component.size = sprite.texture.get_size().x / 2.0
+	growth_ratio = (sprite.texture.get_size().x / 2.0) / size_bonus
+	update_size()
+
+func _process(delta) -> void:
+	size_bonus += growth_rate * delta
+	size_bonus = clamp(size_bonus, 1.0, max_size_bonus)
+	update_size()
+
+func update_size() -> void:
+	grow_component.size = growth_ratio * size_bonus
 	grow_component.update_size()
 
 func _physics_process(delta: float) -> void:

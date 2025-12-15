@@ -10,7 +10,7 @@ extends Area2D
 @export var health: HealthComponent
 
 ## Number of seconds to remain invincible after being hit
-@export_range(0.0, INF, 0.01, "hide_slider") var iframes_seconds: float = 0.0
+@export_range(0.0, 9999.0, 0.01, "hide_slider") var iframes_seconds: float = 0.0
 
 ## Whether or not the hurtbox is currently in iframes
 var in_iframes: bool = false

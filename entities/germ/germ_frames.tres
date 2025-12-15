@@ -1,0 +1,34 @@
+[gd_resource type="SpriteFrames" load_steps=4 format=3 uid="uid://dv0sjpaa2g84p"]
+
+[ext_resource type="Texture2D" uid="uid://u3y3ne7xuveh" path="res://entities/germ/assets/germ_animations.png" id="1_eicfq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5kl0w"]
+atlas = ExtResource("1_eicfq")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y000p"]
+atlas = ExtResource("1_eicfq")
+region = Rect2(32, 0, 32, 32)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5kl0w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y000p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5kl0w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5kl0w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5kl0w")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]

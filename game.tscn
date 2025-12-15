@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dvpursjeaw74i"]
+[gd_scene load_steps=18 format=3 uid="uid://dvpursjeaw74i"]
 
 [ext_resource type="PackedScene" uid="uid://bo5tu8ywsry1c" path="res://entities/player/player.tscn" id="1_0f0hj"]
 [ext_resource type="Script" uid="uid://clmbc0or0dlqo" path="res://game.gd" id="1_7jktm"]
@@ -10,16 +10,15 @@
 [ext_resource type="PackedScene" uid="uid://bvsa47mq8yph7" path="res://entities/drain/drain.tscn" id="4_vef74"]
 [ext_resource type="PackedScene" uid="uid://mi5q8r0bjsc1" path="res://entities/sponge/sponge.tscn" id="5_hve3p"]
 [ext_resource type="PackedScene" uid="uid://ch44dxs3vx8wj" path="res://entities/dirt/dirt.tscn" id="6_j5wjh"]
-[ext_resource type="Texture2D" uid="uid://b8x66feq0n03p" path="res://assets/bubble_sheet.png" id="11_mfdv2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eow3j"]
-size = Vector2(800, 140)
+size = Vector2(800, 135)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j5wjh"]
-size = Vector2(800, 140)
+size = Vector2(800, 135)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vef74"]
-size = Vector2(140, 600)
+size = Vector2(110, 600)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_feb5d"]
 normal = Vector2(0, 1)
@@ -32,63 +31,6 @@ normal = Vector2(1, 0)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ryrav"]
 normal = Vector2(-1, 0)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vaj68"]
-atlas = ExtResource("11_mfdv2")
-region = Rect2(312, 0, 24, 28)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_i2p71"]
-atlas = ExtResource("11_mfdv2")
-region = Rect2(336, 0, 24, 28)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xa8c5"]
-atlas = ExtResource("11_mfdv2")
-region = Rect2(360, 0, 24, 28)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5b14r"]
-atlas = ExtResource("11_mfdv2")
-region = Rect2(384, 0, 24, 28)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bnpwn"]
-atlas = ExtResource("11_mfdv2")
-region = Rect2(408, 0, 24, 28)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_36jdj"]
-atlas = ExtResource("11_mfdv2")
-region = Rect2(432, 0, 24, 28)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xfvwf"]
-atlas = ExtResource("11_mfdv2")
-region = Rect2(456, 0, 24, 28)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_dhpj7"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vaj68")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_i2p71")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xa8c5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5b14r")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bnpwn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_36jdj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xfvwf")
-}],
-"loop": true,
-"name": &"default",
-"speed": 15.0
-}]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_7jktm")
@@ -113,7 +55,7 @@ max_push_force = 80.0
 metadata/_custom_type_script = "uid://j4dd7yhlo1qm"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SinkForces/Top"]
-position = Vector2(0, 70)
+position = Vector2(0, 61)
 shape = SubResource("RectangleShape2D_eow3j")
 
 [node name="Bottom" type="Area2D" parent="SinkForces"]
@@ -126,7 +68,7 @@ max_push_force = 80.0
 metadata/_custom_type_script = "uid://j4dd7yhlo1qm"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SinkForces/Bottom"]
-position = Vector2(0, -70)
+position = Vector2(0, -68.5)
 shape = SubResource("RectangleShape2D_j5wjh")
 
 [node name="Left" type="Area2D" parent="SinkForces"]
@@ -139,7 +81,7 @@ max_push_force = 80.0
 metadata/_custom_type_script = "uid://j4dd7yhlo1qm"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SinkForces/Left"]
-position = Vector2(70, 0)
+position = Vector2(56.5, 0)
 shape = SubResource("RectangleShape2D_vef74")
 
 [node name="Right" type="Area2D" parent="SinkForces"]
@@ -152,7 +94,7 @@ max_push_force = 80.0
 metadata/_custom_type_script = "uid://j4dd7yhlo1qm"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SinkForces/Right"]
-position = Vector2(-70, 0)
+position = Vector2(-55, 0)
 shape = SubResource("RectangleShape2D_vef74")
 
 [node name="Drain" parent="." instance=ExtResource("4_vef74")]
@@ -209,9 +151,3 @@ position = Vector2(178, 408)
 stream = ExtResource("4_fc0e3")
 autoplay = true
 bus = &"Music"
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(277, 189)
-scale = Vector2(2, 2)
-sprite_frames = SubResource("SpriteFrames_dhpj7")
-frame_progress = 0.8307304

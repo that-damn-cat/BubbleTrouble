@@ -1,11 +1,14 @@
 extends State
 
-@export var death_anim: AnimatedSprite2D
 @export var disable_nodes: Array[Node]
+@export var sprite: AnimatedSprite2D
+@export var dissolve_secs: float = 1.5
+
+var shader: ShaderMaterial
+var anim_tween: Tween
 
 func enter() -> void:
-	print("dying")
-	death_anim.connect("animation_finished", _on_animation_complete)
+	shader = sprite.material
 
 	for node in disable_nodes:
 		if node.has_method("hide"):
@@ -23,8 +26,13 @@ func enter() -> void:
 		if node.get("process_mode"):
 			node.process_mode = Node.PROCESS_MODE_DISABLED
 
-	death_anim.show()
-	death_anim.play("default")
+	anim_tween = create_tween()
+	anim_tween.set_parallel()
+	anim_tween.tween_method(set_dissolve_progress, 0.0, 1.0, dissolve_secs)
+	anim_tween.finished.connect(_on_dissolve_finished)
 
-func _on_animation_complete() -> void:
+func _on_dissolve_finished() -> void:
 	state_machine.controlled_node.queue_free()
+
+func set_dissolve_progress(amount: float) -> void:
+	shader.set_shader_parameter("progress", amount)
