@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://dm5weuw1lhecy"]
+
+[ext_resource type="Texture2D" uid="uid://ckvj2qjotj68e" path="res://entities/woe_cube/assets/woe_cube.png" id="1_6esmo"]
+[ext_resource type="Script" uid="uid://c4es2n4vhote6" path="res://entities/woe_cube/woe_cube.gd" id="1_463rn"]
+[ext_resource type="Script" uid="uid://c648tla2l1a3r" path="res://components/HealthComponent/HealthComponent.gd" id="2_vqkvy"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vqkvy"]
+radius = 120.0
+
+[node name="WoeCube" type="CharacterBody2D" node_paths=PackedStringArray("health_component", "sprite")]
+collision_layer = 4
+collision_mask = 57
+script = ExtResource("1_463rn")
+health_component = NodePath("HealthComponent")
+sprite = NodePath("Sprite2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("1_6esmo")
+hframes = 5
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("2_vqkvy")
+max_health = 5.0
+metadata/_custom_type_script = "uid://c648tla2l1a3r"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-28, 24, 14, 24, 26, 10, -8, 10)
+
+[node name="FreezeArea" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FreezeArea"]
+shape = SubResource("CircleShape2D_vqkvy")
