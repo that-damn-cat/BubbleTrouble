@@ -14,8 +14,6 @@ void fragment() {
 
 	if ((progress <= 0.05) && (progress > 0.0)) {
 		color = vec4(1, 1, 1, color.a);
-	} else {
-		color = vec4((color.r * progress), (color.g * (1.0 - progress)), (color.b * (1.0 - progress)), color.a);
 	}
 
 	COLOR = color;
