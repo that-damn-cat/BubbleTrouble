@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bo5tu8ywsry1c" path="res://entities/player/player.tscn" id="1_0f0hj"]
 [ext_resource type="Script" uid="uid://clmbc0or0dlqo" path="res://game.gd" id="1_7jktm"]
 [ext_resource type="PackedScene" uid="uid://x3otvmpq532f" path="res://entities/droplet/droplet.tscn" id="2_hg6cf"]
-[ext_resource type="Texture2D" uid="uid://cyvaekodjn2ji" path="res://entities/sink/assets/sink.png" id="2_ryrav"]
+[ext_resource type="Texture2D" uid="uid://dqv0sayjveggb" path="res://entities/sink/assets/sink_dithered.png" id="2_mfdv2"]
 [ext_resource type="PackedScene" uid="uid://dgqdov4kcwtwt" path="res://entities/germ/germ.tscn" id="3_0ia01"]
 [ext_resource type="Script" uid="uid://j4dd7yhlo1qm" path="res://components/ForceRegion/force_region.gd" id="3_eow3j"]
 [ext_resource type="AudioStream" uid="uid://bd820bgacjhjr" path="res://assets/bubble_trubl.wav" id="4_fc0e3"]
@@ -13,13 +13,13 @@
 [ext_resource type="PackedScene" uid="uid://dm5weuw1lhecy" path="res://entities/woe_cube/woe_cube.tscn" id="11_mfdv2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eow3j"]
-size = Vector2(800, 135)
+size = Vector2(800, 100.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j5wjh"]
-size = Vector2(800, 135)
+size = Vector2(800, 125)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vef74"]
-size = Vector2(110, 600)
+size = Vector2(105, 600)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_feb5d"]
 normal = Vector2(0, 1)
@@ -36,13 +36,21 @@ normal = Vector2(-1, 0)
 [node name="Game" type="Node"]
 script = ExtResource("1_7jktm")
 
+[node name="ColorBG" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.18039216, 0.13333334, 0.18431373, 1)
+
 [node name="SinkBG" type="TextureRect" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_ryrav")
+texture = ExtResource("2_mfdv2")
 expand_mode = 2
 
 [node name="SinkForces" type="Node" parent="."]
@@ -56,7 +64,7 @@ max_push_force = 80.0
 metadata/_custom_type_script = "uid://j4dd7yhlo1qm"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SinkForces/Top"]
-position = Vector2(0, 61)
+position = Vector2(0, 43.75)
 shape = SubResource("RectangleShape2D_eow3j")
 
 [node name="Bottom" type="Area2D" parent="SinkForces"]
@@ -69,7 +77,7 @@ max_push_force = 80.0
 metadata/_custom_type_script = "uid://j4dd7yhlo1qm"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SinkForces/Bottom"]
-position = Vector2(0, -68.5)
+position = Vector2(0, -63.5)
 shape = SubResource("RectangleShape2D_j5wjh")
 
 [node name="Left" type="Area2D" parent="SinkForces"]
@@ -95,7 +103,7 @@ max_push_force = 80.0
 metadata/_custom_type_script = "uid://j4dd7yhlo1qm"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SinkForces/Right"]
-position = Vector2(-55, 0)
+position = Vector2(-52.5, 0)
 shape = SubResource("RectangleShape2D_vef74")
 
 [node name="Drain" parent="." instance=ExtResource("4_vef74")]

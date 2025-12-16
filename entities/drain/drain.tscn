@@ -1,14 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://bvsa47mq8yph7"]
+[gd_scene load_steps=5 format=3 uid="uid://bvsa47mq8yph7"]
 
 [ext_resource type="Script" uid="uid://c3yvho5a666l7" path="res://entities/drain/kill_zone.gd" id="1_d4d82"]
 [ext_resource type="Script" uid="uid://vj5wmvkm5ggp" path="res://entities/drain/drain.gd" id="1_l2val"]
+[ext_resource type="Texture2D" uid="uid://b5pekhivl0qf8" path="res://entities/drain/drain_dithered.png" id="2_avw1w"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d4d82"]
-radius = 41.0
-height = 90.0
+radius = 39.0
+height = 88.0
 
 [node name="Drain" type="Marker2D"]
 script = ExtResource("1_l2val")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_avw1w")
 
 [node name="KillZone" type="Area2D" parent="."]
 collision_layer = 16
@@ -16,7 +20,6 @@ collision_mask = 14
 script = ExtResource("1_d4d82")
 
 [node name="DrainCollider" type="CollisionShape2D" parent="KillZone"]
-rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_d4d82")
 
 [connection signal="area_entered" from="KillZone" to="KillZone" method="_on_area_entered"]

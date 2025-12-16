@@ -27,8 +27,7 @@ ProjectUISoundController="*res://addons/maaacks_game_template/base/nodes/autoloa
 
 window/size/viewport_width=800
 window/size/viewport_height=600
-window/stretch/mode="viewport"
-window/stretch/scale_mode="integer"
+window/stretch/mode="canvas_items"
 
 [editor_plugins]
 

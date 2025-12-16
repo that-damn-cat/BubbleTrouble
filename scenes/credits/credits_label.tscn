@@ -12,41 +12,63 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 5
 bbcode_enabled = true
-text = "[img=80]res:///assets/credits/dev_logos/riley.png[/img] [img=80]res:///assets/credits/dev_logos/sunny.png[/img]
+text = "[font_size=48]A Game By[/font_size]
+
+[img=80]res:///assets/credits/dev_logos/riley.png[/img] & [img=80]res:///assets/credits/dev_logos/sunny.png[/img]
 [url=https://bsky.app/profile/this-is-a-cat.bsky.social]Riley[/url] and [url=https://bsky.app/profile/puppygirls.online]Sunny[/url]
 
-[font_size=32]Asset Type[/font_size]
-[font_size=24]Use Case[/font_size]
-Author: [url=]Name[/url]
-Source: [url=]Domain : webpage.html[/url]
-License: [url=]License[/url]
+
+[font_size=48]Assets[/font_size]
+
+[font_size=32]Graphics[/font_size]
 
 [font_size=24]Godot Engine Logo[/font_size]
 Author: Andrea Calabró
 Source: [url=https://godotengine.org/press/]godotengine.org : press[/url]
-License: [url=https://github.com/godotengine/godot/blob/master/LOGO_LICENSE.txt]CC BY 4.0 International[/url] 
+License: [url=https://github.com/godotengine/godot/blob/master/LOGO_LICENSE.txt]CC BY 4.0 International[/url]
 
-[font_size=32]Tools[/font_size]
+[font_size=24]Bubble Pop Animation[/font_size]
+Author: SlowDevelopment
+Source: [url=https://slowdevelopment.itch.io/bubble]itch.io: bubble[/url]
+License: [url=https://slowdevelopment.itch.io/bubble]No Resale, Open License[/url]
+
+[font_size=24]Germ Death Shader[/font_size]
+Author: blivi0
+Source: [url=https://godotshaders.com/shader/pixelated-dissolve-with-block-size/]godotshaders.com: Pixelated Dissolve[/url]
+License: [url=https://www.gnu.org/licenses/gpl-3.0.en.html]GNU GPL v3[/url]
+
+[font_size=32]Engine[/font_size]
+
+[font_size=24]Godot[/font_size]
+[img=80]res:///assets/credits/godot_engine_logo/logo_vertical_color_dark.png[/img]
+Author: [url=https://godotengine.org/contact]Juan Linietsky, Ariel Manzur, and contributors[/url]
+Source: [url=https://godotengine.org/]godotengine.org[/url]
+License: [url=https://github.com/godotengine/godot/blob/master/LICENSE.txt]MIT License[/url]
+
+[font_size=32]External Software[/font_size]
+
 [font_size=24]Aseprite[/font_size]
 [img=80]res:///assets/credits/aseprite_logo.svg[/img]
 Author: [url=https://github.com/aseprite/aseprite/blob/main/AUTHORS.md]Dave Capello and contributors[/url]
 Source: [url=https://www.aseprite.org/]Aseprite.org[/url]
 License: [url=https://github.com/aseprite/aseprite/blob/main/EULA.txt]Commercial, Aseprite EULA[/url]
 
-[font_size=24]Git[/font_size]
-[img=80]res:///assets/git_logo/Git-Logo-2Color.png[/img]
+[font_size=32]Git[/font_size]
+[img=80]res:///assets/credits/git_logo/Git-Logo-2Color.png[/img]
 Author: [url=https://github.com/torvalds]Linus Torvalds[/url]
 Source: [url=https://git-scm.com/downloads]git-scm.com[/url]
 License: [url=https://opensource.org/licenses/GPL-2.0]GNU General Public License version 2[/url]
 
-[font_size=24]Godot[/font_size]
-[img=80]res:///assets/godot_engine_logo/logo_vertical_color_dark.png[/img]
-Author: [url=https://godotengine.org/contact]Juan Linietsky, Ariel Manzur, and contributors[/url]
-Source: [url=https://godotengine.org/]godotengine.org[/url]
-License: [url=https://github.com/godotengine/godot/blob/master/LICENSE.txt]MIT License[/url] 
+[font_size=32]JSFXR[/font_size]
+[img=80]res:///assets/credits/jsfxr_logo.png[/img]
+Author: [url=https://github.com/chr15m/jsfxr/graphs/contributors]chr15m, Eric Fredricksen, and contributors[/url]
+Source: [url=https://github.com/chr15m/jsfxr]github: jsfxr[/url]
+License: [url=https://github.com/chr15m/jsfxr/blob/master/UNLICENSE]Unlicense[/url]
+
+[font_size=32]Plugins and Addons[/font_size]
 
 [font_size=24]Godot Game Template[/font_size]
-[img=80]res:///assets/plugin_logo/logo.png[/img]
+[img=80]res:///assets/credits/plugin_logo/logo.png[/img]
 Author: [url=https://github.com/Maaack/Godot-Game-Template/graphs/contributors]Marek Belski and contributors[/url]
 Source: [url=https://github.com/Maaack/Godot-Game-Template]github: Godot-Game-Template[/url]
 License: [url=LICENSE.txt]MIT License[/url]
