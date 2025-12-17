@@ -1,13 +1,13 @@
 [gd_scene load_steps=16 format=3 uid="uid://dnd53rn47y310"]
 
 [ext_resource type="Script" uid="uid://clmbc0or0dlqo" path="res://scenes/game_scene/levels/base_level/game.gd" id="1_8qwud"]
-[ext_resource type="Texture2D" uid="uid://2lgrmcsvj7b5" path="res://Entities/sink/assets/sink_dithered.png" id="2_aaniv"]
+[ext_resource type="Texture2D" uid="uid://bjf57tc0pggkf" path="res://Entities/sink/assets/sink_dithered.png" id="2_aaniv"]
 [ext_resource type="Script" uid="uid://j4dd7yhlo1qm" path="res://components/ForceRegion/force_region.gd" id="3_tgtvs"]
-[ext_resource type="PackedScene" uid="uid://bo5tu8ywsry1c" path="res://Entities/Player/player.tscn" id="4_yxr7f"]
-[ext_resource type="PackedScene" uid="uid://dgqdov4kcwtwt" path="res://Entities/Germ/germ.tscn" id="5_v4kuc"]
-[ext_resource type="PackedScene" uid="uid://ch44dxs3vx8wj" path="res://Entities/Dirt/dirt.tscn" id="6_rea64"]
-[ext_resource type="PackedScene" uid="uid://bvsa47mq8yph7" path="res://Entities/Drain/drain.tscn" id="7_b0ext"]
-[ext_resource type="PackedScene" uid="uid://mi5q8r0bjsc1" path="res://Entities/sponge/sponge.tscn" id="8_487bo"]
+[ext_resource type="PackedScene" uid="uid://bo5tu8ywsry1c" path="res://entities/player/player.tscn" id="4_yxr7f"]
+[ext_resource type="PackedScene" uid="uid://dgqdov4kcwtwt" path="res://entities/germ/germ.tscn" id="5_v4kuc"]
+[ext_resource type="PackedScene" uid="uid://ch44dxs3vx8wj" path="res://entities/dirt/dirt.tscn" id="6_rea64"]
+[ext_resource type="PackedScene" uid="uid://bvsa47mq8yph7" path="res://entities/drain/drain.tscn" id="7_b0ext"]
+[ext_resource type="PackedScene" uid="uid://mi5q8r0bjsc1" path="res://entities/sponge/sponge.tscn" id="8_487bo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eow3j"]
 size = Vector2(800, 100.5)

@@ -42,6 +42,8 @@ func _process(delta: float) -> void:
 		spawn_germ()
 
 func spawn_germ() -> void:
+	if not globals.data_filled:
+		return
 	var new_germ = germ_scene.instantiate()
 	new_germ.global_position = germ_spawn_point.global_position
 	globals.enemy_container.add_child(new_germ)
