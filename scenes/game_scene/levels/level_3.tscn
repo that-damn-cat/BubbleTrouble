@@ -1,10 +1,12 @@
-[gd_scene load_steps=13 format=3 uid="uid://1a7ckjoefxup"]
+[gd_scene load_steps=15 format=3 uid="uid://caewpj6frod5k"]
 
-[ext_resource type="Script" uid="uid://clmbc0or0dlqo" path="res://scenes/game_scene/levels/base_level/game.gd" id="1_623lg"]
-[ext_resource type="PackedScene" uid="uid://bo5tu8ywsry1c" path="res://Entities/Player/player.tscn" id="2_5o1mp"]
-[ext_resource type="Texture2D" uid="uid://2lgrmcsvj7b5" path="res://entities/sink/assets/sink_dithered.png" id="2_sycfm"]
-[ext_resource type="Script" uid="uid://j4dd7yhlo1qm" path="res://components/ForceRegion/force_region.gd" id="3_pmyid"]
-[ext_resource type="PackedScene" uid="uid://dgqdov4kcwtwt" path="res://Entities/Germ/germ.tscn" id="3_spwf2"]
+[ext_resource type="Script" uid="uid://clmbc0or0dlqo" path="res://scenes/game_scene/levels/base_level/game.gd" id="1_4popk"]
+[ext_resource type="Texture2D" uid="uid://2lgrmcsvj7b5" path="res://Entities/sink/assets/sink_dithered.png" id="2_mdq82"]
+[ext_resource type="Script" uid="uid://j4dd7yhlo1qm" path="res://components/ForceRegion/force_region.gd" id="3_32y40"]
+[ext_resource type="PackedScene" uid="uid://bo5tu8ywsry1c" path="res://Entities/Player/player.tscn" id="4_y7sfu"]
+[ext_resource type="PackedScene" uid="uid://ch44dxs3vx8wj" path="res://Entities/Dirt/dirt.tscn" id="5_so5mi"]
+[ext_resource type="PackedScene" uid="uid://dgqdov4kcwtwt" path="res://Entities/Germ/germ.tscn" id="6_x342e"]
+[ext_resource type="PackedScene" uid="uid://mi5q8r0bjsc1" path="res://Entities/sponge/sponge.tscn" id="7_s8hpv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eow3j"]
 size = Vector2(800, 100.5)
@@ -28,8 +30,7 @@ normal = Vector2(1, 0)
 normal = Vector2(-1, 0)
 
 [node name="Game" type="Node"]
-script = ExtResource("1_623lg")
-next_level_path = "uid://dmsiwinc5o3i3"
+script = ExtResource("1_4popk")
 metadata/_custom_type_script = "uid://clmbc0or0dlqo"
 
 [node name="ColorBG" type="ColorRect" parent="."]
@@ -46,7 +47,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_sycfm")
+texture = ExtResource("2_mdq82")
 expand_mode = 2
 
 [node name="SinkForces" type="Node" parent="."]
@@ -56,7 +57,7 @@ visible = false
 position = Vector2(400, 0)
 collision_layer = 32
 collision_mask = 14
-script = ExtResource("3_pmyid")
+script = ExtResource("3_32y40")
 max_push_force = 80.0
 metadata/_custom_type_script = "uid://j4dd7yhlo1qm"
 
@@ -69,7 +70,7 @@ visible = false
 position = Vector2(400, 600)
 collision_layer = 32
 collision_mask = 14
-script = ExtResource("3_pmyid")
+script = ExtResource("3_32y40")
 push_direction = 0
 max_push_force = 80.0
 metadata/_custom_type_script = "uid://j4dd7yhlo1qm"
@@ -83,7 +84,7 @@ visible = false
 position = Vector2(0, 300)
 collision_layer = 32
 collision_mask = 14
-script = ExtResource("3_pmyid")
+script = ExtResource("3_32y40")
 push_direction = 3
 max_push_force = 80.0
 metadata/_custom_type_script = "uid://j4dd7yhlo1qm"
@@ -97,7 +98,7 @@ visible = false
 position = Vector2(800, 300)
 collision_layer = 32
 collision_mask = 14
-script = ExtResource("3_pmyid")
+script = ExtResource("3_32y40")
 push_direction = 2
 max_push_force = 80.0
 metadata/_custom_type_script = "uid://j4dd7yhlo1qm"
@@ -125,14 +126,25 @@ shape = SubResource("WorldBoundaryShape2D_ryrav")
 [node name="Players" type="Node" parent="."]
 unique_name_in_owner = true
 
-[node name="Player" parent="Players" instance=ExtResource("2_5o1mp")]
-position = Vector2(171, 156)
+[node name="Player" parent="Players" instance=ExtResource("4_y7sfu")]
+position = Vector2(147, 139)
 
 [node name="Enemies" type="Node" parent="."]
 unique_name_in_owner = true
 
-[node name="Germ" parent="Enemies" instance=ExtResource("3_spwf2")]
-position = Vector2(619, 410)
+[node name="Dirt" parent="Enemies" instance=ExtResource("5_so5mi")]
+position = Vector2(644, 153)
+germ_growth_rate = 0.2
+
+[node name="Germ" parent="Enemies" instance=ExtResource("6_x342e")]
+position = Vector2(387, 176)
+
+[node name="Germ2" parent="Enemies" instance=ExtResource("6_x342e")]
+position = Vector2(445, 360)
 
 [node name="Pickups" type="Node" parent="."]
 unique_name_in_owner = true
+
+[node name="Sponge" parent="." instance=ExtResource("7_s8hpv")]
+position = Vector2(117, 480)
+rotation = 0.71254134
