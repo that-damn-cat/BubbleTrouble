@@ -8,7 +8,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hve3p"]
 size = Vector2(91, 56)
 
-[node name="Sponge" type="StaticBody2D" node_paths=PackedStringArray("droplet_spawn_point", "collision_shape", "droplet_sprite")]
+[node name="Sponge" type="CharacterBody2D" node_paths=PackedStringArray("droplet_spawn_point", "collision_shape", "droplet_sprite")]
 collision_mask = 14
 script = ExtResource("1_vgr8m")
 droplet_growth_rate = 2.5
