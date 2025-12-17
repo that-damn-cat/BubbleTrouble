@@ -52,7 +52,6 @@ func reset_game_data() -> void:
 	globals.player_container = null
 	globals.enemy_container = null
 	globals.pickup_container = null
-	globals.data_filled = false
 
 func setup_globals() -> void:
 	globals.game_node = self

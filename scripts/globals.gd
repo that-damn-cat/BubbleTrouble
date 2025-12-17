@@ -17,3 +17,5 @@ func _process(_delta: float) -> void:
 	if game_node and player_container and enemy_container and pickup_container:
 		data_filled = true
 		data_ready.emit()
+	else:
+		data_filled = false
