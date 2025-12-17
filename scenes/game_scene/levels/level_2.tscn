@@ -30,6 +30,7 @@ normal = Vector2(-1, 0)
 
 [node name="Game" type="Node"]
 script = ExtResource("1_3p566")
+next_level_path = "uid://caewpj6frod5k"
 metadata/_custom_type_script = "uid://clmbc0or0dlqo"
 
 [node name="ColorBG" type="ColorRect" parent="."]

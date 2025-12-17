@@ -1,13 +1,13 @@
 [gd_scene load_steps=16 format=3 uid="uid://bu5upwsuw3qew"]
 
-[ext_resource type="Script" uid="uid://clmbc0or0dlqo" path="res://scenes/game_scene/levels/base_level/game.gd" id="1_tvjdi"]
-[ext_resource type="Texture2D" uid="uid://2lgrmcsvj7b5" path="res://Entities/sink/assets/sink_dithered.png" id="2_egu0v"]
-[ext_resource type="Script" uid="uid://j4dd7yhlo1qm" path="res://components/ForceRegion/force_region.gd" id="3_b3wlk"]
-[ext_resource type="PackedScene" uid="uid://bo5tu8ywsry1c" path="res://Entities/Player/player.tscn" id="4_vu8si"]
-[ext_resource type="PackedScene" uid="uid://dgqdov4kcwtwt" path="res://Entities/Germ/germ.tscn" id="5_q85d6"]
-[ext_resource type="PackedScene" uid="uid://ch44dxs3vx8wj" path="res://Entities/Dirt/dirt.tscn" id="6_ihjjd"]
-[ext_resource type="PackedScene" uid="uid://bvsa47mq8yph7" path="res://Entities/Drain/drain.tscn" id="7_il4xy"]
-[ext_resource type="PackedScene" uid="uid://mi5q8r0bjsc1" path="res://Entities/sponge/sponge.tscn" id="8_skigc"]
+[ext_resource type="Script" uid="uid://clmbc0or0dlqo" path="res://scenes/game_scene/levels/base_level/game.gd" id="1_5guvc"]
+[ext_resource type="Texture2D" uid="uid://bjf57tc0pggkf" path="res://Entities/sink/assets/sink_dithered.png" id="2_1qkh5"]
+[ext_resource type="Script" uid="uid://j4dd7yhlo1qm" path="res://components/ForceRegion/force_region.gd" id="3_vjket"]
+[ext_resource type="PackedScene" uid="uid://bo5tu8ywsry1c" path="res://entities/player/player.tscn" id="4_dkt84"]
+[ext_resource type="PackedScene" uid="uid://dgqdov4kcwtwt" path="res://entities/germ/germ.tscn" id="5_dvlmk"]
+[ext_resource type="PackedScene" uid="uid://ch44dxs3vx8wj" path="res://entities/dirt/dirt.tscn" id="6_ljv8g"]
+[ext_resource type="PackedScene" uid="uid://bvsa47mq8yph7" path="res://entities/drain/drain.tscn" id="7_vi62g"]
+[ext_resource type="PackedScene" uid="uid://mi5q8r0bjsc1" path="res://entities/sponge/sponge.tscn" id="8_w0gsb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eow3j"]
 size = Vector2(800, 100.5)
@@ -31,7 +31,8 @@ normal = Vector2(1, 0)
 normal = Vector2(-1, 0)
 
 [node name="Game" type="Node"]
-script = ExtResource("1_tvjdi")
+script = ExtResource("1_5guvc")
+next_level_path = "uid://dnd53rn47y310"
 metadata/_custom_type_script = "uid://clmbc0or0dlqo"
 
 [node name="ColorBG" type="ColorRect" parent="."]
@@ -48,7 +49,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_egu0v")
+texture = ExtResource("2_1qkh5")
 expand_mode = 2
 
 [node name="SinkForces" type="Node" parent="."]
@@ -58,7 +59,7 @@ visible = false
 position = Vector2(400, 0)
 collision_layer = 32
 collision_mask = 14
-script = ExtResource("3_b3wlk")
+script = ExtResource("3_vjket")
 max_push_force = 80.0
 metadata/_custom_type_script = "uid://j4dd7yhlo1qm"
 
@@ -71,7 +72,7 @@ visible = false
 position = Vector2(400, 600)
 collision_layer = 32
 collision_mask = 14
-script = ExtResource("3_b3wlk")
+script = ExtResource("3_vjket")
 push_direction = 0
 max_push_force = 80.0
 metadata/_custom_type_script = "uid://j4dd7yhlo1qm"
@@ -85,7 +86,7 @@ visible = false
 position = Vector2(0, 300)
 collision_layer = 32
 collision_mask = 14
-script = ExtResource("3_b3wlk")
+script = ExtResource("3_vjket")
 push_direction = 3
 max_push_force = 80.0
 metadata/_custom_type_script = "uid://j4dd7yhlo1qm"
@@ -99,7 +100,7 @@ visible = false
 position = Vector2(800, 300)
 collision_layer = 32
 collision_mask = 14
-script = ExtResource("3_b3wlk")
+script = ExtResource("3_vjket")
 push_direction = 2
 max_push_force = 80.0
 metadata/_custom_type_script = "uid://j4dd7yhlo1qm"
@@ -127,31 +128,31 @@ shape = SubResource("WorldBoundaryShape2D_ryrav")
 [node name="Players" type="Node" parent="."]
 unique_name_in_owner = true
 
-[node name="Player" parent="Players" instance=ExtResource("4_vu8si")]
+[node name="Player" parent="Players" instance=ExtResource("4_dkt84")]
 position = Vector2(147, 139)
 
 [node name="Enemies" type="Node" parent="."]
 unique_name_in_owner = true
 
-[node name="Germ" parent="Enemies" instance=ExtResource("5_q85d6")]
+[node name="Germ" parent="Enemies" instance=ExtResource("5_dvlmk")]
 position = Vector2(370, 285)
 rotation = 5.3631124
 
-[node name="Dirt" parent="Enemies" instance=ExtResource("6_ihjjd")]
+[node name="Dirt" parent="Enemies" instance=ExtResource("6_ljv8g")]
 position = Vector2(171, 286)
 
-[node name="Drain" parent="Enemies" instance=ExtResource("7_il4xy")]
+[node name="Drain" parent="Enemies" instance=ExtResource("7_vi62g")]
 position = Vector2(532, 300)
 
-[node name="Germ2" parent="Enemies" instance=ExtResource("5_q85d6")]
+[node name="Germ2" parent="Enemies" instance=ExtResource("5_dvlmk")]
 position = Vector2(373, 201)
 
-[node name="Drain2" parent="Enemies" instance=ExtResource("7_il4xy")]
+[node name="Drain2" parent="Enemies" instance=ExtResource("7_vi62g")]
 position = Vector2(281, 302)
 
 [node name="Pickups" type="Node" parent="."]
 unique_name_in_owner = true
 
-[node name="Sponge" parent="Pickups" instance=ExtResource("8_skigc")]
+[node name="Sponge" parent="Pickups" instance=ExtResource("8_w0gsb")]
 position = Vector2(672, 126)
 rotation = 0.71109563
