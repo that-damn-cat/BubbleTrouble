@@ -1,5 +1,5 @@
 class_name Sponge
-extends StaticBody2D
+extends CharacterBody2D
 
 @export_category("Droplet Spawning")
 @export var droplet_growth_rate: float = 1.0
@@ -29,6 +29,9 @@ func _process(delta: float) -> void:
 		droplet_sprite.scale.y = 0.1
 		droplet_sprite.visible = false
 		spawn_droplet()
+
+func _physics_process(_delta: float) -> void:
+	var collision := move_and_collide(velocity * delta)
 
 func spawn_droplet() -> void:
 	var new_droplet = droplet_scene.instantiate()
