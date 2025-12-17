@@ -1,7 +1,11 @@
+class_name Drain
 extends Marker2D
 
-@export var drain_gravity = 2500.0
+@export var drain_gravity = 3200.0
+@export var drain_dps: float = 10.0
+
 var velocity_bodies: Array[CharacterBody2D]
+var draining_players: Array[Player]
 
 func _ready() -> void:
 	await globals.data_ready
@@ -22,6 +26,15 @@ func _ready() -> void:
 
 	for child in globals.pickup_container.get_children():
 		add_affected_child(child)
+
+func _process(delta):
+	clean_array(draining_players)
+
+	for player in draining_players:
+		if not is_instance_valid(player):
+			continue
+
+		player.health_component.damage(drain_dps * delta)
 
 func _physics_process(_delta: float) -> void:
 	for body in velocity_bodies:

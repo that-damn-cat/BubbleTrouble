@@ -14,13 +14,15 @@ script = ExtResource("1_l2val")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_avw1w")
 
-[node name="KillZone" type="Area2D" parent="."]
+[node name="KillZone" type="Area2D" parent="." node_paths=PackedStringArray("drain")]
 collision_layer = 16
 collision_mask = 14
 script = ExtResource("1_d4d82")
+drain = NodePath("..")
 
 [node name="DrainCollider" type="CollisionShape2D" parent="KillZone"]
 shape = SubResource("CapsuleShape2D_d4d82")
 
 [connection signal="area_entered" from="KillZone" to="KillZone" method="_on_area_entered"]
 [connection signal="body_entered" from="KillZone" to="KillZone" method="_on_body_entered"]
+[connection signal="body_exited" from="KillZone" to="KillZone" method="_on_body_exited"]
