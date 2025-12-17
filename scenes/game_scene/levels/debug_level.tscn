@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://dmsiwinc5o3i3"]
+
+[ext_resource type="PackedScene" uid="uid://dvpursjeaw74i" path="res://scenes/game_scene/levels/base_level/game.tscn" id="1_ephxx"]
+[ext_resource type="PackedScene" uid="uid://bo5tu8ywsry1c" path="res://entities/player/player.tscn" id="2_qdd3i"]
+[ext_resource type="PackedScene" uid="uid://dgqdov4kcwtwt" path="res://entities/germ/germ.tscn" id="3_7lym8"]
+[ext_resource type="PackedScene" uid="uid://x3otvmpq532f" path="res://entities/droplet/droplet.tscn" id="6_ta7h5"]
+[ext_resource type="PackedScene" uid="uid://bvsa47mq8yph7" path="res://entities/drain/drain.tscn" id="7_hvkoh"]
+[ext_resource type="PackedScene" uid="uid://mi5q8r0bjsc1" path="res://entities/sponge/sponge.tscn" id="8_6qd5v"]
+
+[node name="DebugLevel" instance=ExtResource("1_ephxx")]
+next_level_path = "uid://1a7ckjoefxup"
+
+[node name="Drain" parent="." index="4" instance=ExtResource("7_hvkoh")]
+position = Vector2(400, 300)
+
+[node name="Player" parent="Players" index="0" instance=ExtResource("2_qdd3i")]
+position = Vector2(185, 224)
+
+[node name="Germ" parent="Enemies" index="0" instance=ExtResource("3_7lym8")]
+position = Vector2(540, 345)
+
+[node name="Germ2" parent="Enemies" index="1" instance=ExtResource("3_7lym8")]
+position = Vector2(495, 433)
+
+[node name="Germ3" parent="Enemies" index="2" instance=ExtResource("3_7lym8")]
+position = Vector2(633, 382)
+
+[node name="Droplet" parent="Pickups" index="0" instance=ExtResource("6_ta7h5")]
+position = Vector2(187, 302)
+
+[node name="Sponge" parent="." index="8" instance=ExtResource("8_6qd5v")]
+position = Vector2(71, 59.999996)
+rotation = -0.61086524

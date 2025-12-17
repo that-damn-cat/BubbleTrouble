@@ -1,14 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://dvpursjeaw74i"]
+[gd_scene load_steps=11 format=3 uid="uid://dvpursjeaw74i"]
 
-[ext_resource type="PackedScene" uid="uid://bo5tu8ywsry1c" path="res://Entities/Player/player.tscn" id="1_0f0hj"]
-[ext_resource type="Script" uid="uid://clmbc0or0dlqo" path="res://game.gd" id="1_7jktm"]
-[ext_resource type="PackedScene" uid="uid://x3otvmpq532f" path="res://Entities/Droplet/droplet.tscn" id="2_hg6cf"]
-[ext_resource type="Texture2D" uid="uid://2lgrmcsvj7b5" path="res://entities/sink/assets/sink_dithered.png" id="2_mfdv2"]
-[ext_resource type="PackedScene" uid="uid://dgqdov4kcwtwt" path="res://Entities/Germ/germ.tscn" id="3_0ia01"]
+[ext_resource type="Script" uid="uid://clmbc0or0dlqo" path="res://scenes/game_scene/levels/base_level/game.gd" id="1_7jktm"]
+[ext_resource type="Texture2D" uid="uid://dqv0sayjveggb" path="res://entities/sink/assets/sink_dithered.png" id="2_mfdv2"]
 [ext_resource type="Script" uid="uid://j4dd7yhlo1qm" path="res://components/ForceRegion/force_region.gd" id="3_eow3j"]
-[ext_resource type="AudioStream" uid="uid://bms8r00ok6kqv" path="res://assets/bubble_trubl.wav" id="4_fc0e3"]
-[ext_resource type="PackedScene" uid="uid://mi5q8r0bjsc1" path="res://Entities/sponge/sponge.tscn" id="5_hve3p"]
-[ext_resource type="Script" uid="uid://cdo2fqa6rhkdp" path="res://spongePath.gd" id="9_hve3p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eow3j"]
 size = Vector2(800, 100.5)
@@ -31,14 +25,9 @@ normal = Vector2(1, 0)
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ryrav"]
 normal = Vector2(-1, 0)
 
-[sub_resource type="Curve2D" id="Curve2D_mfdv2"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 303, 117, 0, 0, 0, 0, 587, 19, 0, 0, 0, 0, 801, 130, 0, 0, 0, 0, 0, 0)
-}
-point_count = 5
-
 [node name="Game" type="Node"]
 script = ExtResource("1_7jktm")
+metadata/_custom_type_script = "uid://clmbc0or0dlqo"
 
 [node name="ColorBG" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -60,6 +49,7 @@ expand_mode = 2
 [node name="SinkForces" type="Node" parent="."]
 
 [node name="Top" type="Area2D" parent="SinkForces"]
+visible = false
 position = Vector2(400, 0)
 collision_layer = 32
 collision_mask = 14
@@ -72,6 +62,7 @@ position = Vector2(0, 43.75)
 shape = SubResource("RectangleShape2D_eow3j")
 
 [node name="Bottom" type="Area2D" parent="SinkForces"]
+visible = false
 position = Vector2(400, 600)
 collision_layer = 32
 collision_mask = 14
@@ -85,6 +76,7 @@ position = Vector2(0, -63.5)
 shape = SubResource("RectangleShape2D_j5wjh")
 
 [node name="Left" type="Area2D" parent="SinkForces"]
+visible = false
 position = Vector2(0, 300)
 collision_layer = 32
 collision_mask = 14
@@ -98,6 +90,7 @@ position = Vector2(56.5, 0)
 shape = SubResource("RectangleShape2D_vef74")
 
 [node name="Right" type="Area2D" parent="SinkForces"]
+visible = false
 position = Vector2(800, 300)
 collision_layer = 32
 collision_mask = 14
@@ -129,43 +122,8 @@ shape = SubResource("WorldBoundaryShape2D_ryrav")
 [node name="Players" type="Node" parent="."]
 unique_name_in_owner = true
 
-[node name="Player" parent="Players" instance=ExtResource("1_0f0hj")]
-position = Vector2(150, 234)
-
 [node name="Enemies" type="Node" parent="."]
 unique_name_in_owner = true
 
-[node name="Germ" parent="Enemies" instance=ExtResource("3_0ia01")]
-position = Vector2(622, 177)
-
 [node name="Pickups" type="Node" parent="."]
 unique_name_in_owner = true
-
-[node name="Droplet" parent="Pickups" instance=ExtResource("2_hg6cf")]
-position = Vector2(188, 152)
-
-[node name="Droplet2" parent="Pickups" instance=ExtResource("2_hg6cf")]
-position = Vector2(600, 142)
-
-[node name="Droplet3" parent="Pickups" instance=ExtResource("2_hg6cf")]
-position = Vector2(563, 402)
-
-[node name="BGM" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_fc0e3")
-autoplay = true
-bus = &"Music"
-
-[node name="SpongePath" type="Path2D" parent="."]
-curve = SubResource("Curve2D_mfdv2")
-script = ExtResource("9_hve3p")
-spongeratio = 0.05
-
-[node name="FollowerNode" type="PathFollow2D" parent="SpongePath"]
-unique_name_in_owner = true
-rotation = 0.3685001
-
-[node name="Sponge" parent="SpongePath/FollowerNode" instance=ExtResource("5_hve3p")]
-position = Vector2(1.6532974, 1.505516)
-rotation = -0.8920989
-scale = Vector2(1.0000001, 1.0000001)
-droplet_growth_rate = 0.5

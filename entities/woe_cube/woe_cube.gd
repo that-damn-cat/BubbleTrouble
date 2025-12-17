@@ -1,3 +1,4 @@
+class_name WoeCube
 extends CharacterBody2D
 
 @export var melt_rate: float = 0.6
