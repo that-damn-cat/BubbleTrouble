@@ -27,6 +27,12 @@ func split() -> void:
 	if not controlled_node:
 		return
 
+	if not globals.data_filled:
+		return
+
+	if not globals.player_container:
+		return
+
 	var player_resource := load(player_scene_path) as PackedScene
 	var new_player = player_resource.instantiate()
 	new_player.global_position = controlled_node.global_position

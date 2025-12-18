@@ -8,6 +8,7 @@ var shader: ShaderMaterial
 var anim_tween: Tween
 
 func enter() -> void:
+	state_machine.controlled_node.set_death_shader()
 	shader = sprite.material
 
 	for node in disable_nodes:

@@ -1,5 +1,8 @@
 extends State
 
+func enter() -> void:
+	state_machine.controlled_node.animation.play("idle")
+
 func update(_delta: float) -> void:
 	if state_machine.controlled_node.warmth_component.is_frozen:
 		state_machine.controlled_node.direction = Vector2.ZERO

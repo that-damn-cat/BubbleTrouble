@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dgqdov4kcwtwt"]
+[gd_scene load_steps=17 format=3 uid="uid://dgqdov4kcwtwt"]
 
 [ext_resource type="Script" uid="uid://ckrld8h53xeb6" path="res://entities/germ/germ.gd" id="1_wjhn7"]
 [ext_resource type="SpriteFrames" uid="uid://dv0sjpaa2g84p" path="res://entities/germ/germ_frames.tres" id="2_eaxn1"]
@@ -7,9 +7,11 @@
 [ext_resource type="Script" uid="uid://b1w078d4c35ow" path="res://entities/germ/states/state_machine.gd" id="3_gq1pa"]
 [ext_resource type="Script" uid="uid://b0t6j7npbw78g" path="res://components/Hitbox2D/Hitbox2D.gd" id="4_0djn2"]
 [ext_resource type="Script" uid="uid://dsj5h86w1cjad" path="res://entities/germ/states/idle.gd" id="4_iixjj"]
+[ext_resource type="Script" uid="uid://iytq8aph286" path="res://components/WarmthComponent/WarmthComponent.gd" id="5_0xoox"]
 [ext_resource type="Script" uid="uid://deho6lgc8wgao" path="res://components/Hurtbox2D/Hurtbox2D.gd" id="5_7wqt5"]
 [ext_resource type="Script" uid="uid://dfxvsxrit718f" path="res://entities/germ/states/seek.gd" id="5_gq1pa"]
 [ext_resource type="Script" uid="uid://cwhhnhhtnilm2" path="res://entities/germ/states/dying.gd" id="10_q82f1"]
+[ext_resource type="Script" uid="uid://bdvmn5jb1xp1k" path="res://entities/germ/frozen.gd" id="11_5khn2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0xoox"]
 resource_local_to_scene = true
@@ -26,22 +28,33 @@ radius = 125.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_1i5w4"]
 radius = 13.0
 
-[node name="Germ" type="CharacterBody2D" node_paths=PackedStringArray("health_component") groups=["Enemies"]]
+[node name="Germ" type="CharacterBody2D" node_paths=PackedStringArray("health_component", "warmth_component", "sprite") groups=["Enemies"]]
 collision_layer = 4
 collision_mask = 61
 script = ExtResource("1_wjhn7")
 seek_speed = 125.0
 health_component = NodePath("HealthComponent")
+warmth_component = NodePath("WarmthComponent")
+sprite = NodePath("Sprite2D")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_0xoox")
 sprite_frames = ExtResource("2_eaxn1")
 autoplay = "default"
+frame_progress = 0.7651024
 
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("3_1i5w4")
 max_health = 1.0
 metadata/_custom_type_script = "uid://c648tla2l1a3r"
+
+[node name="WarmthComponent" type="Node" parent="."]
+script = ExtResource("5_0xoox")
+thaw_rate = 3.0
+max_value = 6.0
+use_initial_value = true
+initial_value = 6.0
+metadata/_custom_type_script = "uid://iytq8aph286"
 
 [node name="PhysicsHitbox" type="CollisionShape2D" parent="."]
 visible = false
@@ -93,6 +106,11 @@ script = ExtResource("5_gq1pa")
 state_name = "seek"
 metadata/_custom_type_script = "uid://xmr3p4wrraye"
 
+[node name="Frozen" type="Node" parent="StateMachine"]
+script = ExtResource("11_5khn2")
+state_name = "frozen"
+metadata/_custom_type_script = "uid://xmr3p4wrraye"
+
 [node name="Dying" type="Node" parent="StateMachine" node_paths=PackedStringArray("disable_nodes", "sprite")]
 script = ExtResource("10_q82f1")
 disable_nodes = [NodePath("../../HealthComponent"), NodePath("../../PhysicsHitbox"), NodePath("../../Hitbox2D"), NodePath("../../Hurtbox2D")]
@@ -101,6 +119,8 @@ state_name = "dying"
 metadata/_custom_type_script = "uid://xmr3p4wrraye"
 
 [connection signal="died" from="HealthComponent" to="StateMachine" method="_on_germ_died"]
+[connection signal="froze" from="WarmthComponent" to="StateMachine" method="_on_warmth_component_froze"]
+[connection signal="thawed" from="WarmthComponent" to="StateMachine" method="_on_warmth_component_thawed"]
 [connection signal="body_entered" from="SeekZone" to="StateMachine/Idle" method="_on_seek_body_entered"]
 [connection signal="body_exited" from="SeekZone" to="StateMachine/Seek" method="_on_seek_body_exited"]
 [connection signal="body_entered" from="Hitbox2D" to="." method="_on_hitbox_body_entered"]

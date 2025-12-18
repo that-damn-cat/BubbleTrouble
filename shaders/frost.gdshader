@@ -2,14 +2,14 @@ shader_type canvas_item;
 
 uniform bool enabled = false;
 
-uniform float ice_strength : hint_range(0.0, 1.0) = 0.7;
-uniform vec3 ice_tint : source_color = vec3(0.75, 0.9, 1.0);
-uniform float sparkle_strength : hint_range(0.0, 1.0) = 0.35;
+uniform float ice_strength : hint_range(0.0, 1.0) = 0.75;
+uniform vec3 ice_tint : source_color = vec3(0.2196, 0.8, 1.0);
+uniform float sparkle_strength : hint_range(0.0, 1.0) = 0.766;
 uniform float sparkle_sine_factor: hint_range(1.0, 20.0) = 6.2831;
 uniform float pixelation: hint_range(1.0, 64.0) = 24.0;
 uniform float black_threshold : hint_range(0.0, 0.2) = 0.05;
-uniform vec3 black_replace_color : source_color = vec3(0.9, 0.95, 1.0);
-uniform float time_speed = 1.0;
+uniform vec3 black_replace_color : source_color = vec3(0.0, 0.247, 0.4431);
+uniform float time_speed = 10.0;
 
 float hash(vec2 p) {
 	p = fract(p * vec2(127.1, 311.7));
