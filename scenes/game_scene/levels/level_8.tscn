@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bi3cpmink3y2s"]
+[gd_scene load_steps=20 format=3 uid="uid://bi3cpmink3y2s"]
 
 [ext_resource type="Script" uid="uid://clmbc0or0dlqo" path="res://scenes/game_scene/levels/base_level/game.gd" id="1_egu0v"]
 [ext_resource type="Texture2D" uid="uid://dqv0sayjveggb" path="res://entities/sink/assets/sink_dithered.png" id="2_b3wlk"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dgqdov4kcwtwt" path="res://entities/germ/germ.tscn" id="8_wksvr"]
 [ext_resource type="PackedScene" uid="uid://ch44dxs3vx8wj" path="res://entities/dirt/dirt.tscn" id="9_vu8si"]
 [ext_resource type="PackedScene" uid="uid://dm5weuw1lhecy" path="res://entities/woe_cube/woe_cube.tscn" id="10_b3wlk"]
+[ext_resource type="Script" uid="uid://usiplb2dhno" path="res://scenes/game_scene/levels/woe_cube_spawn_point.gd" id="11_vu8si"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eow3j"]
 size = Vector2(800, 100.5)
@@ -132,6 +133,7 @@ progress = 482.24036
 
 [node name="Sponge" parent="SinkForces/Path2D/SpongeAttach" instance=ExtResource("6_b3wlk")]
 scale = Vector2(0.99999994, 0.99999994)
+droplet_growth_rate = 3.5
 
 [node name="Bounds" type="StaticBody2D" parent="."]
 
@@ -148,6 +150,15 @@ shape = SubResource("WorldBoundaryShape2D_7jktm")
 [node name="Right" type="CollisionShape2D" parent="Bounds"]
 position = Vector2(800, 600)
 shape = SubResource("WorldBoundaryShape2D_ryrav")
+
+[node name="CubeSpawnPoint" type="Marker2D" parent="."]
+position = Vector2(53, 276)
+script = ExtResource("11_vu8si")
+cubescene = ExtResource("10_b3wlk")
+
+[node name="Timer" type="Timer" parent="CubeSpawnPoint"]
+wait_time = 12.0
+autostart = true
 
 [node name="Players" type="Node" parent="."]
 unique_name_in_owner = true
@@ -172,3 +183,5 @@ position = Vector2(271, 434)
 
 [node name="Pickups" type="Node" parent="."]
 unique_name_in_owner = true
+
+[connection signal="timeout" from="CubeSpawnPoint/Timer" to="CubeSpawnPoint" method="_on_woe_cube_spawn_timer_timeout"]
