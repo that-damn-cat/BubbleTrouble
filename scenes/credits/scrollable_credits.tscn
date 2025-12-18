@@ -46,10 +46,15 @@ Author: SlowDevelopment
 Source: [url=https://slowdevelopment.itch.io/bubble]itch.io: bubble[/url]
 License: [url=https://slowdevelopment.itch.io/bubble]No Resale, Open License[/url]
 
-[b][font_size=24]Germ Death Shader[/font_size][/b]
+[b][font_size=24]Dissolve Death Shader[/font_size][/b]
 Author: blivi0
 Source: [url=https://godotshaders.com/shader/pixelated-dissolve-with-block-size/]godotshaders.com: Pixelated Dissolve[/url]
 License: [url=https://www.gnu.org/licenses/gpl-3.0.en.html]GNU GPL v3[/url]
+
+[b][font_size=24]AOE Shader[/font_size][/b]
+Author: Erich_L
+Source: [url=https://godotshaders.com/shader/unit-selected-oscillating-circle/]godotshaders.com: Unit Selected Oscillating Circle[/url]
+License: [url=https://opensource.org/license/MIT]MIT License[/url]
 
 [b][font_size=32]Engine[/font_size][/b]
 

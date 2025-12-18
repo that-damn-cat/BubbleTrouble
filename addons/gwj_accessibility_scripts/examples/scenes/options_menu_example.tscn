@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://ce2r6mevl3dp2" path="res://addons/gwj_accessibility_scripts/options/rebindable_action.tscn" id="1_ee5m2"]
 [ext_resource type="PackedScene" uid="uid://cxch7x2j3wv3p" path="res://addons/gwj_accessibility_scripts/options/volume_slider.tscn" id="2_vxtyn"]
-[ext_resource type="AudioStream" uid="uid://nb5bufmvmchf" path="res://addons/gwj_accessibility_scripts/examples/assets/feedback_sound.wav" id="3_vlk37"]
+[ext_resource type="AudioStream" uid="uid://di0x4s5uvqt3f" path="res://addons/gwj_accessibility_scripts/examples/assets/feedback_sound.wav" id="3_vlk37"]
 [ext_resource type="PackedScene" uid="uid://cf00wkvfngqp2" path="res://addons/gwj_accessibility_scripts/options/mute_button.tscn" id="4_sokce"]
 [ext_resource type="PackedScene" uid="uid://dh5kn8bfiy1wn" path="res://addons/gwj_accessibility_scripts/options/setting_slider.tscn" id="5_jc3wj"]
 

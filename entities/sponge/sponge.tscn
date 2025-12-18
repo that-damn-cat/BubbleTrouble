@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://d3cpjoakuil4x" path="res://entities/sponge/sponge.gd" id="1_vgr8m"]
 [ext_resource type="PackedScene" uid="uid://x3otvmpq532f" path="res://entities/droplet/droplet.tscn" id="2_jnoo6"]
-[ext_resource type="Texture2D" uid="uid://brx7d2c2f3w3y" path="res://entities/sponge/assets/sponge.png" id="3_pni6c"]
-[ext_resource type="Texture2D" uid="uid://xqbll10uj7gv" path="res://entities/droplet/assets/droplet.png" id="3_vfflg"]
+[ext_resource type="Texture2D" uid="uid://cpydboibfd7lg" path="res://entities/sponge/assets/sponge.png" id="3_pni6c"]
+[ext_resource type="Texture2D" uid="uid://18ltl8rbrf7v" path="res://entities/droplet/assets/droplet.png" id="3_vfflg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hve3p"]
 size = Vector2(91, 56)
