@@ -1,9 +1,9 @@
 [gd_scene load_steps=23 format=3 uid="uid://ch44dxs3vx8wj"]
 
 [ext_resource type="Script" uid="uid://bynjqmy85uylf" path="res://entities/dirt/dirt.gd" id="1_0h0vm"]
-[ext_resource type="Texture2D" uid="uid://dvrinsdqr43ae" path="res://entities/dirt/assets/dirt_blob.png" id="1_fqn6u"]
+[ext_resource type="Texture2D" uid="uid://cyo7vydtmu0k7" path="res://entities/dirt/assets/dirt_blob.png" id="1_fqn6u"]
 [ext_resource type="PackedScene" uid="uid://dgqdov4kcwtwt" path="res://entities/germ/germ.tscn" id="2_5kl0w"]
-[ext_resource type="Texture2D" uid="uid://kpwif8bjx0bc" path="res://entities/dirt/assets/dirt_animation.png" id="2_6vu5l"]
+[ext_resource type="Texture2D" uid="uid://beuax3yn6lnln" path="res://entities/dirt/assets/dirt_animation.png" id="2_6vu5l"]
 [ext_resource type="Script" uid="uid://b0t6j7npbw78g" path="res://components/Hitbox2D/Hitbox2D.gd" id="3_ccoba"]
 [ext_resource type="Script" uid="uid://deho6lgc8wgao" path="res://components/Hurtbox2D/Hurtbox2D.gd" id="4_0h0vm"]
 [ext_resource type="Script" uid="uid://c648tla2l1a3r" path="res://components/HealthComponent/HealthComponent.gd" id="5_xk4a8"]
