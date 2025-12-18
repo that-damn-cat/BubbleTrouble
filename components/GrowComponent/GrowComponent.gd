@@ -3,6 +3,7 @@ extends Node
 
 @export_category("Collections")
 @export var sprites: Array[Sprite2D]
+@export var nodes: Array[Node2D]
 @export var collision_offsets: Dictionary[CollisionShape2D, float]
 
 @export_category("Size Factors")
@@ -10,17 +11,29 @@ extends Node
 @export var scaling: float = 1.0
 @export var sprite_size_modifier: float = 1.0
 
+var initial_size: float
+
 func update_size() -> void:
+	if initial_size <= 0.0:
+		initial_size = size
+
 	for sprite in sprites:
+		if not is_instance_valid(sprite) or sprite.texture == null:
+			continue
+
 		var sprite_width = sprite.texture.get_size().x / sprite.hframes
 		sprite.scale.x = (size / sprite_width) * globals.scaling_factor * scaling * sprite_size_modifier
+		sprite.scale.y = sprite.scale.x
+		#var sprite_height = sprite.texture.get_size().y / sprite.vframes
+		#sprite.scale.y = (size / sprite_height) * globals.scaling_factor * scaling * sprite_size_modifier
 
-		var sprite_height = sprite.texture.get_size().y / sprite.vframes
-		sprite.scale.y = (size / sprite_height) * globals.scaling_factor * scaling
+	for node in nodes:
+		node.scale = Vector2((size / initial_size), (size / initial_size))
 
 	for collider in collision_offsets.keys():
 		if not is_instance_valid(collider):
-			print("Bad!")
+			continue
+
 		var shape: Shape2D = collider.shape
 
 		if shape is CircleShape2D:

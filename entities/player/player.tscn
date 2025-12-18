@@ -1,13 +1,15 @@
-[gd_scene load_steps=39 format=3 uid="uid://bo5tu8ywsry1c"]
+[gd_scene load_steps=41 format=3 uid="uid://bo5tu8ywsry1c"]
 
 [ext_resource type="Script" uid="uid://28w3tm2vv6c7" path="res://entities/player/player.gd" id="1_y2db8"]
 [ext_resource type="Shader" uid="uid://ow7mbbps2otj" path="res://shaders/frost.gdshader" id="1_yqrof"]
-[ext_resource type="Texture2D" uid="uid://b8x66feq0n03p" path="res://assets/bubble_sheet.png" id="3_a1qjk"]
+[ext_resource type="Texture2D" uid="uid://b8x66feq0n03p" path="res://entities/player/assets/bubble_sheet.png" id="3_a1qjk"]
 [ext_resource type="Texture2D" uid="uid://dbggxq3nlxtxk" path="res://entities/player/assets/player_animations.png" id="3_lu8i8"]
 [ext_resource type="Script" uid="uid://clk0dpb5pe8ty" path="res://components/GrowComponent/GrowComponent.gd" id="3_tekja"]
+[ext_resource type="Texture2D" uid="uid://chy4wduqrvhs0" path="res://entities/player/assets/player_eyes.png" id="4_3wlsy"]
 [ext_resource type="Script" uid="uid://bgpd4vkv8bjbk" path="res://entities/player/states/state_machine.gd" id="4_5c2io"]
 [ext_resource type="Script" uid="uid://c648tla2l1a3r" path="res://components/HealthComponent/HealthComponent.gd" id="4_ap3xn"]
 [ext_resource type="Script" uid="uid://dns8j3tufk62e" path="res://entities/player/states/spawning.gd" id="5_01a4e"]
+[ext_resource type="Script" uid="uid://o0j4mv06hpxy" path="res://entities/player/eyes.gd" id="5_b2kln"]
 [ext_resource type="Script" uid="uid://b0t6j7npbw78g" path="res://components/Hitbox2D/Hitbox2D.gd" id="5_iplt1"]
 [ext_resource type="Script" uid="uid://iytq8aph286" path="res://components/WarmthComponent/WarmthComponent.gd" id="5_j3ovn"]
 [ext_resource type="Script" uid="uid://dq1wg41ifg4p3" path="res://entities/player/states/active.gd" id="6_7a1se"]
@@ -302,6 +304,42 @@ libraries = {
 }
 autoplay = "idle"
 
+[node name="EyePositions" type="Node2D" parent="."]
+
+[node name="Center" type="Marker2D" parent="EyePositions"]
+position = Vector2(0, -4.5)
+gizmo_extents = 2.0
+
+[node name="Right" type="Marker2D" parent="EyePositions"]
+position = Vector2(9, 0)
+gizmo_extents = 2.0
+
+[node name="Left" type="Marker2D" parent="EyePositions"]
+position = Vector2(-9, 0)
+gizmo_extents = 2.0
+
+[node name="Up" type="Marker2D" parent="EyePositions"]
+position = Vector2(0, -9)
+gizmo_extents = 2.0
+
+[node name="Down" type="Marker2D" parent="EyePositions"]
+gizmo_extents = 2.0
+
+[node name="Eyes" type="Sprite2D" parent="." node_paths=PackedStringArray("player", "warmth_component", "player_state_machine", "center_position", "left_position", "up_position", "right_position", "down_position")]
+position = Vector2(0, -4.5)
+texture = ExtResource("4_3wlsy")
+hframes = 2
+script = ExtResource("5_b2kln")
+player = NodePath("..")
+warmth_component = NodePath("../WarmthComponent")
+player_state_machine = NodePath("../StateMachine")
+eye_move_time = 0.3
+center_position = NodePath("../EyePositions/Center")
+left_position = NodePath("../EyePositions/Left")
+up_position = NodePath("../EyePositions/Up")
+right_position = NodePath("../EyePositions/Right")
+down_position = NodePath("../EyePositions/Down")
+
 [node name="DeathAnim" type="AnimatedSprite2D" parent="."]
 visible = false
 modulate = Color(0.43529412, 0.6392157, 1, 1)
@@ -310,9 +348,10 @@ position = Vector2(0, 4)
 scale = Vector2(1.4, 1.4)
 sprite_frames = SubResource("SpriteFrames_j3ovn")
 
-[node name="GrowComponent" type="Node" parent="." node_paths=PackedStringArray("sprites", "collision_offsets")]
+[node name="GrowComponent" type="Node" parent="." node_paths=PackedStringArray("sprites", "nodes", "collision_offsets")]
 script = ExtResource("3_tekja")
-sprites = [NodePath("../Bubs")]
+sprites = [NodePath("../Bubs"), NodePath("../Eyes")]
+nodes = [NodePath("../EyePositions")]
 collision_offsets = {
 NodePath("../PhysicsCollider"): -5.0,
 NodePath("../MergeArea/MergeCollider"): 3.0,
