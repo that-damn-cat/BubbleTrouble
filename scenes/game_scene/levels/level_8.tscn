@@ -158,17 +158,17 @@ position = Vector2(171, 156)
 [node name="Enemies" type="Node" parent="."]
 unique_name_in_owner = true
 
+[node name="Dirt2" parent="Enemies" instance=ExtResource("9_vu8si")]
+position = Vector2(559, 442)
+
 [node name="Germ" parent="Enemies" instance=ExtResource("8_wksvr")]
 position = Vector2(619, 410)
 
-[node name="Pickups" type="Node" parent="."]
-unique_name_in_owner = true
+[node name="WoeCube" parent="Enemies" instance=ExtResource("10_b3wlk")]
+position = Vector2(53, 276)
 
-[node name="Dirt" parent="." instance=ExtResource("9_vu8si")]
+[node name="Dirt" parent="Enemies" instance=ExtResource("9_vu8si")]
 position = Vector2(271, 434)
 
-[node name="Dirt2" parent="." instance=ExtResource("9_vu8si")]
-position = Vector2(559, 442)
-
-[node name="WoeCube" parent="." instance=ExtResource("10_b3wlk")]
-position = Vector2(53, 276)
+[node name="Pickups" type="Node" parent="."]
+unique_name_in_owner = true
