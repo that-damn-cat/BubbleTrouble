@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bo5tu8ywsry1c"]
+[gd_scene load_steps=37 format=3 uid="uid://bo5tu8ywsry1c"]
 
 [ext_resource type="Script" uid="uid://28w3tm2vv6c7" path="res://entities/player/player.gd" id="1_y2db8"]
 [ext_resource type="Texture2D" uid="uid://b8x66feq0n03p" path="res://assets/bubble_sheet.png" id="3_a1qjk"]
@@ -8,10 +8,13 @@
 [ext_resource type="Script" uid="uid://c648tla2l1a3r" path="res://components/HealthComponent/HealthComponent.gd" id="4_ap3xn"]
 [ext_resource type="Script" uid="uid://dns8j3tufk62e" path="res://entities/player/states/spawning.gd" id="5_01a4e"]
 [ext_resource type="Script" uid="uid://b0t6j7npbw78g" path="res://components/Hitbox2D/Hitbox2D.gd" id="5_iplt1"]
+[ext_resource type="Script" uid="uid://iytq8aph286" path="res://components/WarmthComponent/WarmthComponent.gd" id="5_j3ovn"]
 [ext_resource type="Script" uid="uid://dq1wg41ifg4p3" path="res://entities/player/states/active.gd" id="6_7a1se"]
 [ext_resource type="Script" uid="uid://deho6lgc8wgao" path="res://components/Hurtbox2D/Hurtbox2D.gd" id="6_owvpp"]
 [ext_resource type="Script" uid="uid://7jdsurafbrdf" path="res://entities/player/states/splitting.gd" id="7_lub02"]
 [ext_resource type="Script" uid="uid://doymo03ie2gh5" path="res://entities/player/states/dying.gd" id="8_7a1se"]
+[ext_resource type="Script" uid="uid://coj7j0xtiqbvg" path="res://entities/player/health_bar.gd" id="14_afbqv"]
+[ext_resource type="Script" uid="uid://drq3fcelqxchj" path="res://entities/player/warmth_bar.gd" id="15_gx6sm"]
 
 [sub_resource type="Animation" id="Animation_tekja"]
 length = 0.001
@@ -228,14 +231,51 @@ animations = [{
 "speed": 15.0
 }]
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("grow_component", "health_component", "animation") groups=["Player"]]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gx6sm"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.101960786, 0.101960786, 0.101960786, 0.43137255)
+border_color = Color(0, 0, 0, 1)
+corner_detail = 6
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_afbqv"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(1, 0, 0, 0.7058824)
+corner_detail = 2
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yqrof"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.101960786, 0.101960786, 0.101960786, 0.43137255)
+corner_detail = 6
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j3ovn"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0, 1, 0, 0.7058824)
+corner_detail = 3
+anti_aliasing = false
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("grow_component", "health_component", "warmth_component", "animation") groups=["Player"]]
 collision_layer = 2
 collision_mask = 51
 script = ExtResource("1_y2db8")
 grow_component = NodePath("GrowComponent")
 health_component = NodePath("HealthComponent")
+warmth_component = NodePath("WarmthComponent")
 animation = NodePath("Bubs/AnimationPlayer")
-friction = 0.06
 
 [node name="Bubs" type="Sprite2D" parent="."]
 unique_name_in_owner = true
@@ -267,6 +307,14 @@ NodePath("../Hitbox2D/HitboxCollider"): 0.0,
 NodePath("../Hurtbox2D/HurtboxCollider"): 0.0
 }
 metadata/_custom_type_script = "uid://clk0dpb5pe8ty"
+
+[node name="WarmthComponent" type="Node" parent="."]
+script = ExtResource("5_j3ovn")
+thaw_rate = 5.0
+max_value = 10.0
+use_initial_value = true
+initial_value = 10.0
+metadata/_custom_type_script = "uid://iytq8aph286"
 
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("4_ap3xn")
@@ -331,25 +379,56 @@ metadata/_custom_type_script = "uid://xmr3p4wrraye"
 [node name="Dying" type="Node" parent="StateMachine" node_paths=PackedStringArray("death_anim", "disable_nodes")]
 script = ExtResource("8_7a1se")
 death_anim = NodePath("../../DeathAnim")
-disable_nodes = [NodePath("../../Bubs"), NodePath("../../PhysicsCollider"), NodePath("../../GrowComponent"), NodePath("../../HealthComponent"), NodePath("../../Hitbox2D"), NodePath("../../Hurtbox2D"), NodePath("../../MassLabel")]
+disable_nodes = [NodePath("../../Bubs"), NodePath("../../PhysicsCollider"), NodePath("../../GrowComponent"), NodePath("../../HealthComponent"), NodePath("../../Hitbox2D"), NodePath("../../Hurtbox2D"), NodePath("../../MergeArea/MergeCollider")]
 state_name = "dying"
 metadata/_custom_type_script = "uid://xmr3p4wrraye"
 
-[node name="MassLabel" type="Label" parent="."]
+[node name="StatbarPosition" type="Marker2D" parent="."]
 unique_name_in_owner = true
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -24.5
-offset_top = -60.0
-offset_right = 24.5
-offset_bottom = -37.0
-grow_horizontal = 2
-theme_override_constants/outline_size = 5
-text = "Mass: "
-metadata/_edit_use_anchors_ = true
+position = Vector2(0, -20)
 
+[node name="Stats" type="VBoxContainer" parent="StatbarPosition"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -15.0
+offset_top = -12.0
+offset_right = 15.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 2
+
+[node name="WarmthBar" type="ProgressBar" parent="StatbarPosition/Stats" node_paths=PackedStringArray("warmth")]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_gx6sm")
+theme_override_styles/fill = SubResource("StyleBoxFlat_afbqv")
+value = 50.0
+show_percentage = false
+script = ExtResource("15_gx6sm")
+warmth = NodePath("../../../WarmthComponent")
+warm_color = Color(1, 0, 0, 1)
+frozen_color = Color(0, 0.5058824, 1, 1)
+
+[node name="HealthBar" type="ProgressBar" parent="StatbarPosition/Stats" node_paths=PackedStringArray("player")]
+custom_minimum_size = Vector2(20, 5)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/background = SubResource("StyleBoxFlat_yqrof")
+theme_override_styles/fill = SubResource("StyleBoxFlat_j3ovn")
+value = 100.0
+show_percentage = false
+script = ExtResource("14_afbqv")
+player = NodePath("../../..")
+min_width = 10.0
+max_width = 50.0
+
+[connection signal="mass_changed" from="." to="StatbarPosition/Stats/HealthBar" method="_on_mass_changed"]
 [connection signal="animation_finished" from="Bubs/AnimationPlayer" to="StateMachine/Splitting" method="_on_animation_player_animation_finished"]
+[connection signal="changed" from="WarmthComponent" to="StatbarPosition/Stats/WarmthBar" method="_on_warmth_changed"]
 [connection signal="damaged" from="HealthComponent" to="." method="_on_damaged"]
 [connection signal="died" from="HealthComponent" to="StateMachine" method="_on_player_died"]
 [connection signal="healed" from="HealthComponent" to="." method="_on_healed"]

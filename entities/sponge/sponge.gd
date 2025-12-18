@@ -36,6 +36,10 @@ func spawn_droplet() -> void:
 
 	var new_droplet = droplet_scene.instantiate()
 	new_droplet.global_position = droplet_spawn_point.global_position
+
+	if not globals.pickup_container:
+		return
+
 	globals.pickup_container.add_child(new_droplet)
 
 func get_random_point(shape: RectangleShape2D) -> Vector2:

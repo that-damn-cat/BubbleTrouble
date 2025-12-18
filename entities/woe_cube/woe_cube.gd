@@ -2,9 +2,10 @@ class_name WoeCube
 extends CharacterBody2D
 
 @export var chase_target: Node2D
-@export var melt_rate: float = 0.6
-@export var chase_speed: float = 400.0
-@export var chase_acceleration: float = 15.0
+@export var melt_rate: float = 0.5
+@export var freeze_rate: float = 1.0
+@export var chase_speed: float = 300.0
+@export var chase_acceleration: float = 2.0
 @export var health_component: HealthComponent
 @export var sprite: Sprite2D
 
@@ -40,7 +41,6 @@ func _process(delta):
 	else:
 		sprite.frame = target_frame
 
-	print(direction.length())
 	if direction.length() > 0.0:
 		velocity += direction * chase_acceleration
 		velocity = velocity.limit_length(chase_speed)
@@ -72,3 +72,17 @@ func get_new_target() -> void:
 func _on_droplet_deleter_body_entered(body: Node2D) -> void:
 	if body is Droplet:
 		body.queue_free()
+
+
+func _on_freeze_area_body_entered(body: Node2D) -> void:
+	if body.get("freeze_sources") == null:
+		return
+
+	body.freeze_sources.append(self)
+
+
+func _on_freeze_area_body_exited(body: Node2D) -> void:
+	if body.get("freeze_sources") == null:
+		return
+
+	body.freeze_sources.erase(self)
