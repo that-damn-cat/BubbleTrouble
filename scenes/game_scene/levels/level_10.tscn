@@ -1,15 +1,14 @@
-[gd_scene load_steps=18 format=3 uid="uid://dykpyyh8brmg4"]
+[gd_scene load_steps=17 format=3 uid="uid://ddvlxj8pvoaia"]
 
-[ext_resource type="Script" uid="uid://clmbc0or0dlqo" path="res://scenes/game_scene/levels/base_level/game.gd" id="1_8qwud"]
-[ext_resource type="Texture2D" uid="uid://bjf57tc0pggkf" path="res://entities/sink/assets/sink_dithered.png" id="2_aaniv"]
-[ext_resource type="PackedScene" uid="uid://bvsa47mq8yph7" path="res://entities/drain/drain.tscn" id="3_tgtvs"]
-[ext_resource type="Script" uid="uid://bnbycvp7u77ey" path="res://scenes/game_scene/levels/woe_cube_chase_center.gd" id="4_yxr7f"]
-[ext_resource type="Script" uid="uid://j4dd7yhlo1qm" path="res://components/ForceRegion/force_region.gd" id="5_v4kuc"]
-[ext_resource type="Script" uid="uid://usiplb2dhno" path="res://scenes/game_scene/levels/woe_cube_spawn_point.gd" id="6_rea64"]
-[ext_resource type="PackedScene" uid="uid://bo5tu8ywsry1c" path="res://entities/player/player.tscn" id="7_b0ext"]
-[ext_resource type="PackedScene" uid="uid://dgqdov4kcwtwt" path="res://entities/germ/germ.tscn" id="8_487bo"]
-[ext_resource type="PackedScene" uid="uid://dm5weuw1lhecy" path="res://entities/woe_cube/woe_cube.tscn" id="8_aaniv"]
-[ext_resource type="PackedScene" uid="uid://ch44dxs3vx8wj" path="res://entities/dirt/dirt.tscn" id="10_tgtvs"]
+[ext_resource type="Script" uid="uid://clmbc0or0dlqo" path="res://scenes/game_scene/levels/base_level/game.gd" id="1_45esr"]
+[ext_resource type="Texture2D" uid="uid://bjf57tc0pggkf" path="res://entities/sink/assets/sink_dithered.png" id="2_arree"]
+[ext_resource type="PackedScene" uid="uid://bvsa47mq8yph7" path="res://entities/drain/drain.tscn" id="3_5jbla"]
+[ext_resource type="Script" uid="uid://j4dd7yhlo1qm" path="res://components/ForceRegion/force_region.gd" id="4_88eoy"]
+[ext_resource type="PackedScene" uid="uid://bo5tu8ywsry1c" path="res://entities/player/player.tscn" id="5_aiic4"]
+[ext_resource type="PackedScene" uid="uid://dm5weuw1lhecy" path="res://entities/woe_cube/woe_cube.tscn" id="5_arree"]
+[ext_resource type="PackedScene" uid="uid://dgqdov4kcwtwt" path="res://entities/germ/germ.tscn" id="6_j2hno"]
+[ext_resource type="PackedScene" uid="uid://ch44dxs3vx8wj" path="res://entities/dirt/dirt.tscn" id="7_pp07l"]
+[ext_resource type="PackedScene" uid="uid://mi5q8r0bjsc1" path="res://entities/sponge/sponge.tscn" id="8_bv26o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eow3j"]
 size = Vector2(800, 100.5)
@@ -33,8 +32,8 @@ normal = Vector2(1, 0)
 normal = Vector2(-1, 0)
 
 [node name="Game" type="Node"]
-script = ExtResource("1_8qwud")
-next_level_path = "uid://dmsiwinc5o3i3"
+script = ExtResource("1_45esr")
+next_level_path = "uid://dnd53rn47y310"
 metadata/_custom_type_script = "uid://clmbc0or0dlqo"
 
 [node name="ColorBG" type="ColorRect" parent="."]
@@ -51,28 +50,23 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_aaniv")
+texture = ExtResource("2_arree")
 expand_mode = 2
 
 [node name="SinkForces" type="Node" parent="."]
 
-[node name="Drain" parent="SinkForces" instance=ExtResource("3_tgtvs")]
-position = Vector2(252, 336)
+[node name="Drain" parent="SinkForces" instance=ExtResource("3_5jbla")]
+position = Vector2(532, 300)
 
-[node name="WoeCubeChaseCenter" type="Marker2D" parent="SinkForces/Drain"]
-rotation = 11038.865
-script = ExtResource("4_yxr7f")
-rotation_rate = 2.0
-
-[node name="WoeCubeChaseTarget" type="Marker2D" parent="SinkForces/Drain/WoeCubeChaseCenter"]
-position = Vector2(-125, 0)
+[node name="Drain2" parent="SinkForces" instance=ExtResource("3_5jbla")]
+position = Vector2(281, 302)
 
 [node name="Top" type="Area2D" parent="SinkForces"]
 visible = false
 position = Vector2(400, 0)
 collision_layer = 32
 collision_mask = 14
-script = ExtResource("5_v4kuc")
+script = ExtResource("4_88eoy")
 max_push_force = 80.0
 metadata/_custom_type_script = "uid://j4dd7yhlo1qm"
 
@@ -85,7 +79,7 @@ visible = false
 position = Vector2(400, 600)
 collision_layer = 32
 collision_mask = 14
-script = ExtResource("5_v4kuc")
+script = ExtResource("4_88eoy")
 push_direction = 0
 max_push_force = 80.0
 metadata/_custom_type_script = "uid://j4dd7yhlo1qm"
@@ -99,7 +93,7 @@ visible = false
 position = Vector2(0, 300)
 collision_layer = 32
 collision_mask = 14
-script = ExtResource("5_v4kuc")
+script = ExtResource("4_88eoy")
 push_direction = 3
 max_push_force = 80.0
 metadata/_custom_type_script = "uid://j4dd7yhlo1qm"
@@ -113,7 +107,7 @@ visible = false
 position = Vector2(800, 300)
 collision_layer = 32
 collision_mask = 14
-script = ExtResource("5_v4kuc")
+script = ExtResource("4_88eoy")
 push_direction = 2
 max_push_force = 80.0
 metadata/_custom_type_script = "uid://j4dd7yhlo1qm"
@@ -122,14 +116,9 @@ metadata/_custom_type_script = "uid://j4dd7yhlo1qm"
 position = Vector2(-52.5, 0)
 shape = SubResource("RectangleShape2D_vef74")
 
-[node name="WoeCubeSpawnPoint" type="Marker2D" parent="SinkForces"]
-position = Vector2(647, 131)
-script = ExtResource("6_rea64")
-cubescene = ExtResource("8_aaniv")
-
-[node name="woe cube spawn timer" type="Timer" parent="SinkForces/WoeCubeSpawnPoint"]
-wait_time = 11.0
-autostart = true
+[node name="WoeCube" parent="SinkForces" node_paths=PackedStringArray("chase_target") instance=ExtResource("5_arree")]
+position = Vector2(478, 107)
+chase_target = NodePath("../../Players/Player")
 
 [node name="Bounds" type="StaticBody2D" parent="."]
 
@@ -150,25 +139,31 @@ shape = SubResource("WorldBoundaryShape2D_ryrav")
 [node name="Players" type="Node" parent="."]
 unique_name_in_owner = true
 
-[node name="Player" parent="Players" instance=ExtResource("7_b0ext")]
-position = Vector2(171, 156)
+[node name="Player" parent="Players" instance=ExtResource("5_aiic4")]
+position = Vector2(147, 139)
 
 [node name="Enemies" type="Node" parent="."]
 unique_name_in_owner = true
 
-[node name="WoeCube" parent="Enemies" instance=ExtResource("8_aaniv")]
-position = Vector2(647, 126)
+[node name="Dirt3" parent="Enemies" instance=ExtResource("7_pp07l")]
+position = Vector2(632, 299)
 
-[node name="Germ" parent="Enemies" instance=ExtResource("8_487bo")]
-position = Vector2(619, 410)
+[node name="Dirt2" parent="Enemies" instance=ExtResource("7_pp07l")]
+position = Vector2(410, 283)
+
+[node name="Germ" parent="Enemies" instance=ExtResource("6_j2hno")]
+position = Vector2(370, 285)
+rotation = 5.3631124
+
+[node name="Dirt" parent="Enemies" instance=ExtResource("7_pp07l")]
+position = Vector2(171, 286)
+
+[node name="Germ2" parent="Enemies" instance=ExtResource("6_j2hno")]
+position = Vector2(373, 201)
 
 [node name="Pickups" type="Node" parent="."]
 unique_name_in_owner = true
 
-[node name="Dirt" parent="." instance=ExtResource("10_tgtvs")]
-position = Vector2(129, 461)
-
-[node name="Dirt2" parent="." instance=ExtResource("10_tgtvs")]
-position = Vector2(399, 126)
-
-[connection signal="timeout" from="SinkForces/WoeCubeSpawnPoint/woe cube spawn timer" to="SinkForces/WoeCubeSpawnPoint" method="_on_woe_cube_spawn_timer_timeout"]
+[node name="Sponge" parent="Pickups" instance=ExtResource("8_bv26o")]
+position = Vector2(672, 126)
+rotation = 0.71109563

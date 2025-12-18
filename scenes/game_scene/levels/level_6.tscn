@@ -55,10 +55,7 @@ expand_mode = 2
 [node name="SinkForces" type="Node" parent="."]
 
 [node name="Drain" parent="SinkForces" instance=ExtResource("7_vi62g")]
-position = Vector2(532, 300)
-
-[node name="Drain2" parent="SinkForces" instance=ExtResource("7_vi62g")]
-position = Vector2(281, 302)
+position = Vector2(383, 309)
 
 [node name="Top" type="Area2D" parent="SinkForces"]
 visible = false
@@ -141,14 +138,14 @@ position = Vector2(147, 139)
 unique_name_in_owner = true
 
 [node name="Germ" parent="Enemies" instance=ExtResource("5_dvlmk")]
-position = Vector2(370, 285)
+position = Vector2(202.00003, 344.00003)
 rotation = 5.3631124
 
 [node name="Dirt" parent="Enemies" instance=ExtResource("6_ljv8g")]
-position = Vector2(171, 286)
+position = Vector2(375, 458)
 
 [node name="Germ2" parent="Enemies" instance=ExtResource("5_dvlmk")]
-position = Vector2(373, 201)
+position = Vector2(566, 221)
 
 [node name="Pickups" type="Node" parent="."]
 unique_name_in_owner = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dnd53rn47y310"]
+[gd_scene load_steps=17 format=3 uid="uid://dnd53rn47y310"]
 
 [ext_resource type="Script" uid="uid://clmbc0or0dlqo" path="res://scenes/game_scene/levels/base_level/game.gd" id="1_1w5u0"]
 [ext_resource type="Texture2D" uid="uid://bjf57tc0pggkf" path="res://entities/sink/assets/sink_dithered.png" id="2_nr1ta"]
@@ -6,7 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://bo5tu8ywsry1c" path="res://entities/player/player.tscn" id="4_i0o67"]
 [ext_resource type="PackedScene" uid="uid://dgqdov4kcwtwt" path="res://entities/germ/germ.tscn" id="5_q8v0w"]
 [ext_resource type="PackedScene" uid="uid://ch44dxs3vx8wj" path="res://entities/dirt/dirt.tscn" id="6_xbubr"]
-[ext_resource type="PackedScene" uid="uid://bvsa47mq8yph7" path="res://entities/drain/drain.tscn" id="7_reeb3"]
+[ext_resource type="PackedScene" uid="uid://dm5weuw1lhecy" path="res://entities/woe_cube/woe_cube.tscn" id="7_nr1ta"]
+[ext_resource type="PackedScene" uid="uid://x3otvmpq532f" path="res://entities/droplet/droplet.tscn" id="8_e3xw0"]
 [ext_resource type="PackedScene" uid="uid://mi5q8r0bjsc1" path="res://entities/sponge/sponge.tscn" id="8_fm1xj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eow3j"]
@@ -51,9 +52,6 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_nr1ta")
 expand_mode = 2
-
-[node name="Drain" parent="." instance=ExtResource("7_reeb3")]
-position = Vector2(532, 300)
 
 [node name="SinkForces" type="Node" parent="."]
 
@@ -142,10 +140,18 @@ position = Vector2(370, 285)
 rotation = 5.3631124
 
 [node name="Dirt" parent="Enemies" instance=ExtResource("6_xbubr")]
-position = Vector2(171, 286)
+position = Vector2(235, 370)
+germ_growth_rate = 0.35
 
-[node name="Dirt2" parent="Enemies" instance=ExtResource("6_xbubr")]
-position = Vector2(319, 163)
+[node name="WoeCube" parent="Enemies" node_paths=PackedStringArray("chase_target") instance=ExtResource("7_nr1ta")]
+position = Vector2(717, 487)
+chase_target = NodePath("../Germ")
+
+[node name="Player" parent="Enemies" instance=ExtResource("4_i0o67")]
+position = Vector2(404, 463)
+
+[node name="Droplet" parent="Enemies" instance=ExtResource("8_e3xw0")]
+position = Vector2(436, 174)
 
 [node name="Pickups" type="Node" parent="."]
 unique_name_in_owner = true

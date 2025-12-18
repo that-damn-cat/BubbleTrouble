@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bi3cpmink3y2s"]
+[gd_scene load_steps=19 format=3 uid="uid://bi3cpmink3y2s"]
 
 [ext_resource type="Script" uid="uid://clmbc0or0dlqo" path="res://scenes/game_scene/levels/base_level/game.gd" id="1_egu0v"]
 [ext_resource type="Texture2D" uid="uid://bjf57tc0pggkf" path="res://entities/sink/assets/sink_dithered.png" id="2_b3wlk"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bo5tu8ywsry1c" path="res://entities/player/player.tscn" id="7_skigc"]
 [ext_resource type="PackedScene" uid="uid://dgqdov4kcwtwt" path="res://entities/germ/germ.tscn" id="8_wksvr"]
 [ext_resource type="PackedScene" uid="uid://ch44dxs3vx8wj" path="res://entities/dirt/dirt.tscn" id="9_vu8si"]
+[ext_resource type="PackedScene" uid="uid://dm5weuw1lhecy" path="res://entities/woe_cube/woe_cube.tscn" id="10_b3wlk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eow3j"]
 size = Vector2(800, 100.5)
@@ -168,3 +169,6 @@ position = Vector2(271, 434)
 
 [node name="Dirt2" parent="." instance=ExtResource("9_vu8si")]
 position = Vector2(559, 442)
+
+[node name="WoeCube" parent="." instance=ExtResource("10_b3wlk")]
+position = Vector2(53, 276)

@@ -146,9 +146,6 @@ unique_name_in_owner = true
 [node name="Dirt" parent="Enemies" instance=ExtResource("5_foud0")]
 position = Vector2(124, 440)
 
-[node name="Dirt2" parent="Enemies" instance=ExtResource("5_foud0")]
-position = Vector2(337, 130)
-
 [node name="Pickups" type="Node" parent="."]
 unique_name_in_owner = true
 

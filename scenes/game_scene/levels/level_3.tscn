@@ -1,11 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://caewpj6frod5k"]
+[gd_scene load_steps=14 format=3 uid="uid://caewpj6frod5k"]
 
 [ext_resource type="Script" uid="uid://clmbc0or0dlqo" path="res://scenes/game_scene/levels/base_level/game.gd" id="1_4popk"]
 [ext_resource type="Texture2D" uid="uid://bjf57tc0pggkf" path="res://entities/sink/assets/sink_dithered.png" id="2_mdq82"]
 [ext_resource type="Script" uid="uid://j4dd7yhlo1qm" path="res://components/ForceRegion/force_region.gd" id="3_32y40"]
 [ext_resource type="PackedScene" uid="uid://bo5tu8ywsry1c" path="res://entities/player/player.tscn" id="4_y7sfu"]
 [ext_resource type="PackedScene" uid="uid://ch44dxs3vx8wj" path="res://entities/dirt/dirt.tscn" id="5_so5mi"]
-[ext_resource type="PackedScene" uid="uid://dgqdov4kcwtwt" path="res://entities/germ/germ.tscn" id="6_x342e"]
 [ext_resource type="PackedScene" uid="uid://mi5q8r0bjsc1" path="res://entities/sponge/sponge.tscn" id="7_s8hpv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eow3j"]
@@ -136,12 +135,6 @@ unique_name_in_owner = true
 [node name="Dirt" parent="Enemies" instance=ExtResource("5_so5mi")]
 position = Vector2(644, 153)
 germ_growth_rate = 0.2
-
-[node name="Germ" parent="Enemies" instance=ExtResource("6_x342e")]
-position = Vector2(387, 176)
-
-[node name="Germ2" parent="Enemies" instance=ExtResource("6_x342e")]
-position = Vector2(445, 360)
 
 [node name="Pickups" type="Node" parent="."]
 unique_name_in_owner = true
