@@ -1,6 +1,10 @@
 extends State
 
 func update(_delta: float) -> void:
+	if state_machine.controlled_node.warmth_component.is_frozen:
+		state_machine.controlled_node.direction = Vector2.ZERO
+		return
+
 	state_machine.controlled_node.direction = Input.get_vector("left", "right", "up", "down")
 
 	if Input.is_action_just_pressed("shoot"):

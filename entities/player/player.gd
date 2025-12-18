@@ -50,6 +50,8 @@ func _process(delta: float) -> void:
 
 	warmth_component.value -= total_freeze_rate * delta
 
+	%Bubs.material.set_shader_parameter("enabled", warmth_component.is_frozen)
+
 
 func _physics_process(_delta) -> void:
 	var acceleration = remap(mass, min_mass, max_mass, max_acceleration, min_acceleration)

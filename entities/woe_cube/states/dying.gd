@@ -2,13 +2,16 @@ extends State
 
 @export var disable_nodes: Array[Node]
 @export var sprite: Sprite2D
+@export var aoe: Sprite2D
 @export var dissolve_secs: float = 1.5
 
 var shader: ShaderMaterial
+var aoe_shader: ShaderMaterial
 var anim_tween: Tween
 
 func enter() -> void:
 	shader = sprite.material
+	aoe_shader = aoe.material
 
 	state_machine.controlled_node.direction = Vector2.ZERO
 
@@ -29,7 +32,9 @@ func enter() -> void:
 			node.process_mode = Node.PROCESS_MODE_DISABLED
 
 	anim_tween = create_tween()
+	anim_tween.set_parallel(true)
 	anim_tween.tween_method(set_dissolve_progress, 0.0, 1.0, dissolve_secs)
+	anim_tween.tween_method(set_aoe_alpha, 0.4, 0.0, dissolve_secs)
 	anim_tween.finished.connect(_on_dissolve_finished)
 
 func _on_dissolve_finished() -> void:
@@ -37,3 +42,6 @@ func _on_dissolve_finished() -> void:
 
 func set_dissolve_progress(amount: float) -> void:
 	shader.set_shader_parameter("progress", amount)
+
+func set_aoe_alpha(amount: float) -> void:
+	aoe_shader.set_shader_parameter("alpha_scale", amount)

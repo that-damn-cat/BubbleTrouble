@@ -36,9 +36,10 @@ func _process(delta):
 	if chase_target and not is_instance_valid(chase_target):
 		get_new_target()
 
-	if target_frame > 4:
+	if target_frame > 3:
 		dying.emit()
-	else:
+
+	if target_frame < 5:
 		sprite.frame = target_frame
 
 	if direction.length() > 0.0:

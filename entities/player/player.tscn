@@ -1,6 +1,7 @@
-[gd_scene load_steps=37 format=3 uid="uid://bo5tu8ywsry1c"]
+[gd_scene load_steps=39 format=3 uid="uid://bo5tu8ywsry1c"]
 
 [ext_resource type="Script" uid="uid://28w3tm2vv6c7" path="res://entities/player/player.gd" id="1_y2db8"]
+[ext_resource type="Shader" uid="uid://ow7mbbps2otj" path="res://shaders/frost.gdshader" id="1_yqrof"]
 [ext_resource type="Texture2D" uid="uid://b8x66feq0n03p" path="res://assets/bubble_sheet.png" id="3_a1qjk"]
 [ext_resource type="Texture2D" uid="uid://dbggxq3nlxtxk" path="res://entities/player/assets/player_animations.png" id="3_lu8i8"]
 [ext_resource type="Script" uid="uid://clk0dpb5pe8ty" path="res://components/GrowComponent/GrowComponent.gd" id="3_tekja"]
@@ -15,6 +16,17 @@
 [ext_resource type="Script" uid="uid://doymo03ie2gh5" path="res://entities/player/states/dying.gd" id="8_7a1se"]
 [ext_resource type="Script" uid="uid://coj7j0xtiqbvg" path="res://entities/player/health_bar.gd" id="14_afbqv"]
 [ext_resource type="Script" uid="uid://drq3fcelqxchj" path="res://entities/player/warmth_bar.gd" id="15_gx6sm"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gx6sm"]
+resource_local_to_scene = true
+shader = ExtResource("1_yqrof")
+shader_parameter/enabled = true
+shader_parameter/ice_strength = 0.778000036955
+shader_parameter/sparkle_strength = 0.806000038285
+shader_parameter/ice_tint = Color(0.22152063, 0.80098647, 0.99999946, 1)
+shader_parameter/black_threshold = 0.050000002375
+shader_parameter/black_replace_color = Color(1.2032687e-07, 0.24678501, 0.44182912, 1)
+shader_parameter/time_speed = 10.0
 
 [sub_resource type="Animation" id="Animation_tekja"]
 length = 0.001
@@ -279,6 +291,7 @@ animation = NodePath("Bubs/AnimationPlayer")
 
 [node name="Bubs" type="Sprite2D" parent="."]
 unique_name_in_owner = true
+material = SubResource("ShaderMaterial_gx6sm")
 texture = ExtResource("3_lu8i8")
 hframes = 16
 

@@ -1,13 +1,25 @@
-[gd_scene load_steps=11 format=3 uid="uid://dm5weuw1lhecy"]
+[gd_scene load_steps=13 format=3 uid="uid://dm5weuw1lhecy"]
 
 [ext_resource type="Texture2D" uid="uid://ckvj2qjotj68e" path="res://entities/woe_cube/assets/woe_cube.png" id="1_6esmo"]
 [ext_resource type="Script" uid="uid://c4es2n4vhote6" path="res://entities/woe_cube/woe_cube.gd" id="1_463rn"]
-[ext_resource type="Texture2D" uid="uid://xqbll10uj7gv" path="res://entities/droplet/assets/droplet.png" id="2_438w2"]
+[ext_resource type="Shader" uid="uid://ddc2igopjrx6b" path="res://shaders/aoe_marker.gdshader" id="2_438w2"]
 [ext_resource type="Shader" uid="uid://c4kacbscbrfoc" path="res://shaders/pixel_dissolve.gdshader" id="2_pfetv"]
 [ext_resource type="Script" uid="uid://c648tla2l1a3r" path="res://components/HealthComponent/HealthComponent.gd" id="2_vqkvy"]
+[ext_resource type="Texture2D" uid="uid://c26hhjdj4ajgg" path="res://entities/player/assets/bubble.png" id="3_e2t6m"]
 [ext_resource type="Script" uid="uid://21bv855ltmqv" path="res://entities/woe_cube/states/state_machine.gd" id="4_awnhg"]
 [ext_resource type="Script" uid="uid://dcu8n5yj88521" path="res://entities/woe_cube/states/chasing.gd" id="5_pfetv"]
 [ext_resource type="Script" uid="uid://bgji8q8k0d3lt" path="res://entities/woe_cube/states/dying.gd" id="7_pfetv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_el6ej"]
+resource_local_to_scene = true
+shader = ExtResource("2_438w2")
+shader_parameter/ring_radius = 0.46999999321988
+shader_parameter/thickness_scalar = 0.20000000298024
+shader_parameter/oscillation_scalar = 0.02999999932944
+shader_parameter/speed = 3.5000000521542
+shader_parameter/main_color = Color(1, 1, 1, 0.39215687)
+shader_parameter/lerp_color = Color(0, 1, 1, 0.39215687)
+shader_parameter/alpha_scale = 0.3999999910592
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vqkvy"]
 radius = 120.0
@@ -26,17 +38,17 @@ freeze_rate = 15.0
 health_component = NodePath("HealthComponent")
 sprite = NodePath("Sprite2D")
 
+[node name="AOEVisual" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_el6ej")
+scale = Vector2(7.5, 7.5)
+texture = ExtResource("3_e2t6m")
+
 [node name="FreezeArea" type="Area2D" parent="."]
 collision_layer = 4
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FreezeArea"]
 shape = SubResource("CircleShape2D_vqkvy")
-
-[node name="Sprite2D" type="Sprite2D" parent="FreezeArea"]
-modulate = Color(1, 0.5075114, 0.80184776, 0.2901961)
-scale = Vector2(14.5, 14.5)
-texture = ExtResource("2_438w2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_438w2")
@@ -71,10 +83,11 @@ script = ExtResource("5_pfetv")
 state_name = "chasing"
 metadata/_custom_type_script = "uid://xmr3p4wrraye"
 
-[node name="Dying" type="Node" parent="StateMachine" node_paths=PackedStringArray("disable_nodes", "sprite")]
+[node name="Dying" type="Node" parent="StateMachine" node_paths=PackedStringArray("disable_nodes", "sprite", "aoe")]
 script = ExtResource("7_pfetv")
 disable_nodes = [NodePath("../../FreezeArea"), NodePath("../../FreezeArea/CollisionShape2D"), NodePath("../../CollisionPolygon2D"), NodePath("../../DropletDeleter/CollisionPolygon2D")]
 sprite = NodePath("../../Sprite2D")
+aoe = NodePath("../../AOEVisual")
 state_name = "dying"
 metadata/_custom_type_script = "uid://xmr3p4wrraye"
 

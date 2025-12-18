@@ -11,6 +11,10 @@ func enter() -> void:
 	controlled_node.animation.play("split")
 
 func update(_delta: float) -> void:
+	if state_machine.controlled_node.warmth_component.is_frozen:
+		state_machine.controlled_node.direction = Vector2.ZERO
+		return
+
 	state_machine.controlled_node.direction = Input.get_vector("left", "right", "up", "down")
 
 func exit() -> void:
@@ -28,6 +32,7 @@ func split() -> void:
 	new_player.global_position = controlled_node.global_position
 
 	new_player.mass = controlled_node.shot_mass
+	new_player.warmth_component.value = controlled_node.warmth_component.value
 	controlled_node.health_component.damage(controlled_node.shot_mass)
 
 	var min_effective_speed = 0.7 * controlled_node.min_speed
