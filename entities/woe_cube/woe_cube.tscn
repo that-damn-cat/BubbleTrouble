@@ -1,20 +1,34 @@
-[gd_scene load_steps=5 format=3 uid="uid://dm5weuw1lhecy"]
+[gd_scene load_steps=10 format=3 uid="uid://dm5weuw1lhecy"]
 
 [ext_resource type="Texture2D" uid="uid://ckvj2qjotj68e" path="res://entities/woe_cube/assets/woe_cube.png" id="1_6esmo"]
 [ext_resource type="Script" uid="uid://c4es2n4vhote6" path="res://entities/woe_cube/woe_cube.gd" id="1_463rn"]
+[ext_resource type="Shader" uid="uid://c4kacbscbrfoc" path="res://shaders/pixel_dissolve.gdshader" id="2_pfetv"]
 [ext_resource type="Script" uid="uid://c648tla2l1a3r" path="res://components/HealthComponent/HealthComponent.gd" id="2_vqkvy"]
+[ext_resource type="Script" uid="uid://21bv855ltmqv" path="res://entities/woe_cube/states/state_machine.gd" id="4_awnhg"]
+[ext_resource type="Script" uid="uid://dcu8n5yj88521" path="res://entities/woe_cube/states/chasing.gd" id="5_pfetv"]
+[ext_resource type="Script" uid="uid://bgji8q8k0d3lt" path="res://entities/woe_cube/states/dying.gd" id="7_pfetv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_438w2"]
+resource_local_to_scene = true
+shader = ExtResource("2_pfetv")
+shader_parameter/progress = 0.0
+shader_parameter/block_size = 1.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vqkvy"]
 radius = 120.0
 
 [node name="WoeCube" type="CharacterBody2D" node_paths=PackedStringArray("health_component", "sprite")]
 collision_layer = 4
-collision_mask = 57
+collision_mask = 33
 script = ExtResource("1_463rn")
+melt_rate = 0.5
+chase_speed = 300.0
+chase_acceleration = 2.0
 health_component = NodePath("HealthComponent")
 sprite = NodePath("Sprite2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_438w2")
 scale = Vector2(2, 2)
 texture = ExtResource("1_6esmo")
 hframes = 5
@@ -27,9 +41,38 @@ metadata/_custom_type_script = "uid://c648tla2l1a3r"
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-28, 24, 14, 24, 26, 10, -8, 10)
 
+[node name="DropletDeleter" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 8
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DropletDeleter"]
+visible = false
+polygon = PackedVector2Array(-28, 24, 14, 24, 26, 10, -8, 10)
+
 [node name="FreezeArea" type="Area2D" parent="."]
 collision_layer = 4
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FreezeArea"]
 shape = SubResource("CircleShape2D_vqkvy")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("controlled_node", "initial_state")]
+script = ExtResource("4_awnhg")
+controlled_node = NodePath("..")
+initial_state = NodePath("Chasing")
+metadata/_custom_type_script = "uid://bnuyec0xe7i0k"
+
+[node name="Chasing" type="Node" parent="StateMachine"]
+script = ExtResource("5_pfetv")
+state_name = "chasing"
+metadata/_custom_type_script = "uid://xmr3p4wrraye"
+
+[node name="Dying" type="Node" parent="StateMachine" node_paths=PackedStringArray("disable_nodes", "sprite")]
+script = ExtResource("7_pfetv")
+disable_nodes = [NodePath("../../FreezeArea"), NodePath("../../FreezeArea/CollisionShape2D"), NodePath("../../CollisionPolygon2D"), NodePath("../../DropletDeleter/CollisionPolygon2D")]
+sprite = NodePath("../../Sprite2D")
+state_name = "dying"
+metadata/_custom_type_script = "uid://xmr3p4wrraye"
+
+[connection signal="dying" from="." to="StateMachine" method="_on_woe_cube_dying"]
+[connection signal="body_entered" from="DropletDeleter" to="." method="_on_droplet_deleter_body_entered"]
