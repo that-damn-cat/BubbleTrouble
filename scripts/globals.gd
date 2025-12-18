@@ -10,6 +10,8 @@ var enemy_container: Node = null
 var pickup_container: Node = null
 var data_filled: bool = false
 
+var num_lives: int = 3
+
 func _process(_delta: float) -> void:
 	if data_filled:
 		return

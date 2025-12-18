@@ -8,10 +8,17 @@ signal level_won_and_changed(level_path : String)
 ## Optional path to the next level if using an open world level system.
 @export_file("*.tscn") var next_level_path : String
 
-var level_state : LevelState
+var level_state: LevelState
+var fallback_respawn_position: Vector2
+var player_scene: PackedScene
 
 func _ready() -> void:
 	setup_globals()
+
+	if not player_scene:
+		player_scene = preload("res://entities/player/player.tscn")
+
+	fallback_respawn_position = globals.player_container.get_children()[0].global_position
 
 func _process(_delta: float) -> void:
 	level_state = GameState.get_level_state(scene_file_path)
@@ -23,6 +30,12 @@ func _process(_delta: float) -> void:
 			setup_globals()
 
 	var num_enemies: int = 0
+
+	if globals.num_lives <= 0:
+		reset_game_data()
+		level_lost.emit()
+		globals.num_lives = 3
+		return
 
 	for child in globals.enemy_container.get_children():
 		if child is Germ or child is Dirt or child is WoeCube:
@@ -44,8 +57,15 @@ func _process(_delta: float) -> void:
 			num_players += 1
 
 	if num_players == 0:
-		reset_game_data()
-		level_lost.emit()
+		globals.num_lives -= 1
+		if globals.num_lives <= 0:
+			return
+
+		print(globals.num_lives)
+
+		var new_player: Player = player_scene.instantiate()
+		new_player.global_position = get_respawn_position()
+		globals.player_container.add_child(new_player)
 
 func reset_game_data() -> void:
 	globals.game_node = null
@@ -58,3 +78,22 @@ func setup_globals() -> void:
 	globals.player_container = %Players
 	globals.enemy_container = %Enemies
 	globals.pickup_container = %Pickups
+
+func get_respawn_position() -> Vector2:
+	var largest_droplet: Droplet = null
+
+	for droplet in globals.pickup_container.get_children():
+		if droplet is not Droplet:
+			continue
+
+		if not largest_droplet:
+			largest_droplet = droplet
+
+		if droplet.size_bonus > largest_droplet.size_bonus:
+			largest_droplet = droplet
+
+	if not largest_droplet:
+		return(fallback_respawn_position)
+
+	largest_droplet.queue_free()
+	return(largest_droplet.global_position)
