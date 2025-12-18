@@ -1,13 +1,14 @@
-[gd_scene load_steps=16 format=3 uid="uid://bi3cpmink3y2s"]
+[gd_scene load_steps=18 format=3 uid="uid://bi3cpmink3y2s"]
 
 [ext_resource type="Script" uid="uid://clmbc0or0dlqo" path="res://scenes/game_scene/levels/base_level/game.gd" id="1_egu0v"]
 [ext_resource type="Texture2D" uid="uid://bjf57tc0pggkf" path="res://entities/sink/assets/sink_dithered.png" id="2_b3wlk"]
 [ext_resource type="PackedScene" uid="uid://bvsa47mq8yph7" path="res://entities/drain/drain.tscn" id="3_vu8si"]
 [ext_resource type="Script" uid="uid://j4dd7yhlo1qm" path="res://components/ForceRegion/force_region.gd" id="4_q85d6"]
-[ext_resource type="Script" uid="uid://bnbycvp7u77ey" path="res://scenes/game_scene/levels/woe_cube_chase_center.gd" id="4_tvjdi"]
-[ext_resource type="Script" uid="uid://usiplb2dhno" path="res://scenes/game_scene/levels/woe_cube_spawn_point.gd" id="6_egu0v"]
+[ext_resource type="Script" uid="uid://bpivmactoala7" path="res://scenes/game_scene/levels/path_2d.gd" id="5_egu0v"]
+[ext_resource type="PackedScene" uid="uid://mi5q8r0bjsc1" path="res://entities/sponge/sponge.tscn" id="6_b3wlk"]
 [ext_resource type="PackedScene" uid="uid://bo5tu8ywsry1c" path="res://entities/player/player.tscn" id="7_skigc"]
 [ext_resource type="PackedScene" uid="uid://dgqdov4kcwtwt" path="res://entities/germ/germ.tscn" id="8_wksvr"]
+[ext_resource type="PackedScene" uid="uid://ch44dxs3vx8wj" path="res://entities/dirt/dirt.tscn" id="9_vu8si"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eow3j"]
 size = Vector2(800, 100.5)
@@ -17,6 +18,12 @@ size = Vector2(800, 125)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vef74"]
 size = Vector2(105, 600)
+
+[sub_resource type="Curve2D" id="Curve2D_hehv2"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 727, 27, 0, 0, 0, 0, 103, 25, 0, 0, 0, 0, 294, 83, 0, 0, 0, 0, 438, 47, 0, 0, 0, 0, 557, 50, 0, 0, 0, 0, 607, 62, 0, 0, 0, 0, 727, 25)
+}
+point_count = 7
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_feb5d"]
 normal = Vector2(0, 1)
@@ -32,7 +39,7 @@ normal = Vector2(-1, 0)
 
 [node name="Game" type="Node"]
 script = ExtResource("1_egu0v")
-next_level_path = "uid://02fmqgdsr8ee"
+next_level_path = "uid://dykpyyh8brmg4"
 metadata/_custom_type_script = "uid://clmbc0or0dlqo"
 
 [node name="ColorBG" type="ColorRect" parent="."]
@@ -55,15 +62,7 @@ expand_mode = 2
 [node name="SinkForces" type="Node" parent="."]
 
 [node name="Drain" parent="SinkForces" instance=ExtResource("3_vu8si")]
-position = Vector2(252, 336)
-
-[node name="WoeCubeChaseCenter" type="Marker2D" parent="SinkForces/Drain"]
-rotation = 7397.031
-script = ExtResource("4_tvjdi")
-rotation_rate = 2.0
-
-[node name="WoeCubeChaseTarget" type="Marker2D" parent="SinkForces/Drain/WoeCubeChaseCenter"]
-position = Vector2(-125, 0)
+position = Vector2(404, 393)
 
 [node name="Top" type="Area2D" parent="SinkForces"]
 visible = false
@@ -120,11 +119,18 @@ metadata/_custom_type_script = "uid://j4dd7yhlo1qm"
 position = Vector2(-52.5, 0)
 shape = SubResource("RectangleShape2D_vef74")
 
-[node name="WoeCubeSpawnPoint" type="Marker2D" parent="SinkForces"]
-position = Vector2(647, 131)
-script = ExtResource("6_egu0v")
+[node name="Path2D" type="Path2D" parent="SinkForces"]
+curve = SubResource("Curve2D_hehv2")
+script = ExtResource("5_egu0v")
+spongeSpeed = 0.1
 
-[node name="woe cube spawn timer" type="Timer" parent="SinkForces/WoeCubeSpawnPoint"]
+[node name="SpongeAttach" type="PathFollow2D" parent="SinkForces/Path2D"]
+position = Vector2(244.76231, 25.454365)
+rotation = -3.1383874
+progress = 482.24036
+
+[node name="Sponge" parent="SinkForces/Path2D/SpongeAttach" instance=ExtResource("6_b3wlk")]
+scale = Vector2(0.99999994, 0.99999994)
 
 [node name="Bounds" type="StaticBody2D" parent="."]
 
@@ -156,3 +162,9 @@ position = Vector2(619, 410)
 
 [node name="Pickups" type="Node" parent="."]
 unique_name_in_owner = true
+
+[node name="Dirt" parent="." instance=ExtResource("9_vu8si")]
+position = Vector2(271, 434)
+
+[node name="Dirt2" parent="." instance=ExtResource("9_vu8si")]
+position = Vector2(559, 442)
