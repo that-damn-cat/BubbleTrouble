@@ -35,7 +35,8 @@ normal = Vector2(-1, 0)
 
 [node name="Game" type="Node"]
 script = ExtResource("1_8qwud")
-next_level_path = "uid://dmsiwinc5o3i3"
+next_level_path = "uid://ddvlxj8pvoaia"
+level_title = "Skater Cube"
 metadata/_custom_type_script = "uid://clmbc0or0dlqo"
 
 [node name="ColorBG" type="ColorRect" parent="."]
@@ -61,7 +62,7 @@ expand_mode = 2
 position = Vector2(252, 336)
 
 [node name="WoeCubeChaseCenter" type="Marker2D" parent="SinkForces/Drain"]
-rotation = 10698.24
+rotation = 11027.238
 script = ExtResource("4_yxr7f")
 rotation_rate = 2.0
 
@@ -123,10 +124,11 @@ metadata/_custom_type_script = "uid://j4dd7yhlo1qm"
 position = Vector2(-52.5, 0)
 shape = SubResource("RectangleShape2D_vef74")
 
-[node name="WoeCubeSpawnPoint" type="Marker2D" parent="SinkForces"]
+[node name="WoeCubeSpawnPoint" type="Marker2D" parent="SinkForces" node_paths=PackedStringArray("chase_target")]
 position = Vector2(647, 131)
 script = ExtResource("6_rea64")
-cubescene = ExtResource("8_aaniv")
+cube_scene = ExtResource("8_aaniv")
+chase_target = NodePath("../Drain/WoeCubeChaseCenter/WoeCubeChaseTarget")
 
 [node name="woe cube spawn timer" type="Timer" parent="SinkForces/WoeCubeSpawnPoint"]
 wait_time = 11.0
@@ -157,8 +159,9 @@ position = Vector2(171, 156)
 [node name="Enemies" type="Node" parent="."]
 unique_name_in_owner = true
 
-[node name="WoeCube" parent="Enemies" instance=ExtResource("8_aaniv")]
+[node name="WoeCube" parent="Enemies" node_paths=PackedStringArray("chase_target") instance=ExtResource("8_aaniv")]
 position = Vector2(647, 126)
+chase_target = NodePath("../../SinkForces/Drain/WoeCubeChaseCenter/WoeCubeChaseTarget")
 
 [node name="Germ" parent="Enemies" instance=ExtResource("8_487bo")]
 position = Vector2(619, 410)

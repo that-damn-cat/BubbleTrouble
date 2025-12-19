@@ -33,6 +33,7 @@ normal = Vector2(-1, 0)
 [node name="Game" type="Node"]
 script = ExtResource("1_5guvc")
 next_level_path = "uid://dnd53rn47y310"
+level_title = "Scrub Parent"
 metadata/_custom_type_script = "uid://clmbc0or0dlqo"
 
 [node name="ColorBG" type="ColorRect" parent="."]

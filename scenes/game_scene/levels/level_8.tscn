@@ -42,6 +42,7 @@ normal = Vector2(-1, 0)
 [node name="Game" type="Node"]
 script = ExtResource("1_egu0v")
 next_level_path = "uid://dykpyyh8brmg4"
+level_title = "Powerful Scrubbing Action!"
 metadata/_custom_type_script = "uid://clmbc0or0dlqo"
 
 [node name="ColorBG" type="ColorRect" parent="."]
@@ -154,7 +155,7 @@ shape = SubResource("WorldBoundaryShape2D_ryrav")
 [node name="CubeSpawnPoint" type="Marker2D" parent="."]
 position = Vector2(53, 276)
 script = ExtResource("11_vu8si")
-cubescene = ExtResource("10_b3wlk")
+cube_scene = ExtResource("10_b3wlk")
 
 [node name="Timer" type="Timer" parent="CubeSpawnPoint"]
 wait_time = 12.0

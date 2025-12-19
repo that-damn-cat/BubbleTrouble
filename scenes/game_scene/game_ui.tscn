@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dev82ogkicj15"]
+[gd_scene load_steps=12 format=3 uid="uid://dev82ogkicj15"]
 
 [ext_resource type="Script" uid="uid://cyh0d64pfygbl" path="res://addons/maaacks_game_template/base/nodes/utilities/pause_menu_controller.gd" id="1_bmy5n"]
 [ext_resource type="PackedScene" uid="uid://dliy4rdwu1w8i" path="res://scenes/windows/pause_menu_layer.tscn" id="2_7aihr"]
@@ -8,7 +8,9 @@
 [ext_resource type="Script" uid="uid://dsbqeg8knucys" path="res://scripts/level_and_state_manager.gd" id="5_wr4n6"]
 [ext_resource type="Script" uid="uid://dekkhxs7cypgj" path="res://scenes/game_scene/configurable_sub_viewport.gd" id="8_vbgr5"]
 [ext_resource type="PackedScene" uid="uid://bqcj7b4y4qxu1" path="res://scenes/loading_screen/level_loading_screen.tscn" id="10_0v86b"]
+[ext_resource type="Texture2D" uid="uid://lp4pdei3p153" path="res://assets/ui/life_icon.png" id="10_8qp3c"]
 [ext_resource type="Script" uid="uid://c3psdfiphpess" path="res://scripts/lives_counter.gd" id="10_onvsj"]
+[ext_resource type="Script" uid="uid://bylw5tpnscrev" path="res://scripts/level_name.gd" id="11_8qp3c"]
 
 [node name="GameUI" type="Control"]
 layout_mode = 3
@@ -70,8 +72,26 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
-
-[node name="LivesCounter" type="Label" parent="VBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = "Lives: 0"
+theme_override_constants/separation = 7
 script = ExtResource("10_onvsj")
+life_texture = ExtResource("10_8qp3c")
+
+[node name="LivesLabel" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 18
+text = "   Lives:"
+vertical_alignment = 1
+
+[node name="LifeTexture" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("10_8qp3c")
+expand_mode = 2
+
+[node name="LevelName" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Level Text   "
+horizontal_alignment = 2
+vertical_alignment = 1
+script = ExtResource("11_8qp3c")

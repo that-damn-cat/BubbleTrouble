@@ -34,6 +34,7 @@ normal = Vector2(-1, 0)
 [node name="Game" type="Node"]
 script = ExtResource("1_1w5u0")
 next_level_path = "uid://bi3cpmink3y2s"
+level_title = "Chilling!"
 metadata/_custom_type_script = "uid://clmbc0or0dlqo"
 
 [node name="ColorBG" type="ColorRect" parent="."]
@@ -132,6 +133,9 @@ unique_name_in_owner = true
 [node name="Player" parent="Players" instance=ExtResource("4_i0o67")]
 position = Vector2(147, 139)
 
+[node name="Player2" parent="Players" instance=ExtResource("4_i0o67")]
+position = Vector2(404, 463)
+
 [node name="Enemies" type="Node" parent="."]
 unique_name_in_owner = true
 
@@ -147,15 +151,12 @@ germ_growth_rate = 0.35
 position = Vector2(717, 487)
 chase_target = NodePath("../Germ")
 
-[node name="Player" parent="Enemies" instance=ExtResource("4_i0o67")]
-position = Vector2(404, 463)
-
-[node name="Droplet" parent="Enemies" instance=ExtResource("8_e3xw0")]
-position = Vector2(436, 174)
-
 [node name="Pickups" type="Node" parent="."]
 unique_name_in_owner = true
 
 [node name="Sponge" parent="Pickups" instance=ExtResource("8_fm1xj")]
 position = Vector2(672, 126)
 rotation = 0.71109563
+
+[node name="Droplet" parent="Pickups" instance=ExtResource("8_e3xw0")]
+position = Vector2(436, 174)

@@ -13,6 +13,7 @@ config_version=5
 config/name="Bubble Trouble"
 run/main_scene="res://scenes/opening/opening.tscn"
 config/features=PackedStringArray("4.5", "Forward Plus")
+run/max_fps=60
 config/icon="res://icon.svg"
 
 [autoload]
@@ -28,6 +29,11 @@ ProjectUISoundController="*res://addons/maaacks_game_template/base/nodes/autoloa
 window/size/viewport_width=800
 window/size/viewport_height=600
 window/stretch/mode="canvas_items"
+
+[editor]
+
+movie_writer/movie_file="/home/riley/Videos/bubbletroublegameplay.avi"
+movie_writer/fps=120
 
 [editor_plugins]
 

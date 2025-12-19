@@ -8,11 +8,16 @@ signal level_won_and_changed(level_path : String)
 ## Optional path to the next level if using an open world level system.
 @export_file("*.tscn") var next_level_path : String
 
+@export var level_title: String
+
 var level_state: LevelState
 var fallback_respawn_position: Vector2
 var player_scene: PackedScene
 
 func _ready() -> void:
+	if level_title == "":
+		level_title = "MISSING LEVEL TITLE"
+
 	setup_globals()
 
 	if not player_scene:
@@ -72,12 +77,14 @@ func reset_game_data() -> void:
 	globals.player_container = null
 	globals.enemy_container = null
 	globals.pickup_container = null
+	globals.level_title = ""
 
 func setup_globals() -> void:
 	globals.game_node = self
 	globals.player_container = %Players
 	globals.enemy_container = %Enemies
 	globals.pickup_container = %Pickups
+	globals.level_title = level_title
 
 func get_respawn_position() -> Vector2:
 	var largest_droplet: Droplet = null

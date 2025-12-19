@@ -9,6 +9,7 @@ var player_container: Node = null
 var enemy_container: Node = null
 var pickup_container: Node = null
 var data_filled: bool = false
+var level_title: String = ""
 
 var num_lives: int = 3
 

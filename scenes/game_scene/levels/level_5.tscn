@@ -39,6 +39,7 @@ point_count = 14
 [node name="Game" type="Node"]
 script = ExtResource("1_ip87t")
 next_level_path = "uid://bu5upwsuw3qew"
+level_title = "Down the Drain!"
 metadata/_custom_type_script = "uid://clmbc0or0dlqo"
 
 [node name="ColorBG" type="ColorRect" parent="."]

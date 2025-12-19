@@ -5,7 +5,7 @@
 [ext_resource type="Shader" uid="uid://ddc2igopjrx6b" path="res://shaders/aoe_marker.gdshader" id="2_438w2"]
 [ext_resource type="Shader" uid="uid://c4kacbscbrfoc" path="res://shaders/pixel_dissolve.gdshader" id="2_pfetv"]
 [ext_resource type="Script" uid="uid://c648tla2l1a3r" path="res://components/HealthComponent/HealthComponent.gd" id="2_vqkvy"]
-[ext_resource type="Texture2D" uid="uid://c26hhjdj4ajgg" path="res://entities/player/assets/bubble.png" id="3_e2t6m"]
+[ext_resource type="Texture2D" uid="uid://c26do2ttykln7" path="res://entities/player/assets/bubble2.png" id="3_e2t6m"]
 [ext_resource type="Script" uid="uid://21bv855ltmqv" path="res://entities/woe_cube/states/state_machine.gd" id="4_awnhg"]
 [ext_resource type="Script" uid="uid://dcu8n5yj88521" path="res://entities/woe_cube/states/chasing.gd" id="5_pfetv"]
 [ext_resource type="Script" uid="uid://bgji8q8k0d3lt" path="res://entities/woe_cube/states/dying.gd" id="7_pfetv"]
@@ -62,7 +62,7 @@ max_health = 5.0
 metadata/_custom_type_script = "uid://c648tla2l1a3r"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(-28, 24, 14, 24, 26, 10, -8, 10)
+polygon = PackedVector2Array(-28, 24, 14, 24, 28, 9, 28, 0, -28, 0)
 
 [node name="DropletDeleter" type="Area2D" parent="."]
 collision_layer = 4
