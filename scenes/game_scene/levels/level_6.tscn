@@ -1,13 +1,14 @@
-[gd_scene load_steps=16 format=3 uid="uid://bu5upwsuw3qew"]
+[gd_scene load_steps=17 format=3 uid="uid://bu5upwsuw3qew"]
 
 [ext_resource type="Script" uid="uid://clmbc0or0dlqo" path="res://scenes/game_scene/levels/base_level/game.gd" id="1_5guvc"]
-[ext_resource type="Texture2D" uid="uid://bjf57tc0pggkf" path="res://entities/sink/assets/sink_dithered.png" id="2_1qkh5"]
+[ext_resource type="Texture2D" uid="uid://dqv0sayjveggb" path="res://entities/sink/assets/sink_dithered.png" id="2_1qkh5"]
 [ext_resource type="Script" uid="uid://j4dd7yhlo1qm" path="res://components/ForceRegion/force_region.gd" id="3_vjket"]
 [ext_resource type="PackedScene" uid="uid://bo5tu8ywsry1c" path="res://entities/player/player.tscn" id="4_dkt84"]
 [ext_resource type="PackedScene" uid="uid://dgqdov4kcwtwt" path="res://entities/germ/germ.tscn" id="5_dvlmk"]
 [ext_resource type="PackedScene" uid="uid://ch44dxs3vx8wj" path="res://entities/dirt/dirt.tscn" id="6_ljv8g"]
 [ext_resource type="PackedScene" uid="uid://bvsa47mq8yph7" path="res://entities/drain/drain.tscn" id="7_vi62g"]
 [ext_resource type="PackedScene" uid="uid://mi5q8r0bjsc1" path="res://entities/sponge/sponge.tscn" id="8_w0gsb"]
+[ext_resource type="Script" uid="uid://buwkg6miydim5" path="res://scenes/game_scene/tutorial_manager.gd" id="9_1qkh5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eow3j"]
 size = Vector2(800, 100.5)
@@ -154,3 +155,8 @@ unique_name_in_owner = true
 [node name="Sponge" parent="Pickups" instance=ExtResource("8_w0gsb")]
 position = Vector2(672, 126)
 rotation = 0.71109563
+
+[node name="TutorialManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("9_1qkh5")
+auto_open = true

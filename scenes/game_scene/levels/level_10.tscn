@@ -1,7 +1,7 @@
-[gd_scene load_steps=17 format=3 uid="uid://ddvlxj8pvoaia"]
+[gd_scene load_steps=18 format=3 uid="uid://ddvlxj8pvoaia"]
 
 [ext_resource type="Script" uid="uid://clmbc0or0dlqo" path="res://scenes/game_scene/levels/base_level/game.gd" id="1_45esr"]
-[ext_resource type="Texture2D" uid="uid://bjf57tc0pggkf" path="res://entities/sink/assets/sink_dithered.png" id="2_arree"]
+[ext_resource type="Texture2D" uid="uid://dqv0sayjveggb" path="res://entities/sink/assets/sink_dithered.png" id="2_arree"]
 [ext_resource type="PackedScene" uid="uid://bvsa47mq8yph7" path="res://entities/drain/drain.tscn" id="3_5jbla"]
 [ext_resource type="Script" uid="uid://j4dd7yhlo1qm" path="res://components/ForceRegion/force_region.gd" id="4_88eoy"]
 [ext_resource type="PackedScene" uid="uid://bo5tu8ywsry1c" path="res://entities/player/player.tscn" id="5_aiic4"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dgqdov4kcwtwt" path="res://entities/germ/germ.tscn" id="6_j2hno"]
 [ext_resource type="PackedScene" uid="uid://ch44dxs3vx8wj" path="res://entities/dirt/dirt.tscn" id="7_pp07l"]
 [ext_resource type="PackedScene" uid="uid://mi5q8r0bjsc1" path="res://entities/sponge/sponge.tscn" id="8_bv26o"]
+[ext_resource type="Script" uid="uid://buwkg6miydim5" path="res://scenes/game_scene/tutorial_manager.gd" id="10_5jbla"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eow3j"]
 size = Vector2(800, 100.5)
@@ -117,6 +118,11 @@ metadata/_custom_type_script = "uid://j4dd7yhlo1qm"
 position = Vector2(-52.5, 0)
 shape = SubResource("RectangleShape2D_vef74")
 
+[node name="WoeCube" parent="SinkForces" node_paths=PackedStringArray("chase_target") instance=ExtResource("5_arree")]
+position = Vector2(478, 107)
+chase_target = NodePath("../../Players/Player")
+melt_rate = 0.01
+
 [node name="Bounds" type="StaticBody2D" parent="."]
 
 [node name="Top" type="CollisionShape2D" parent="Bounds"]
@@ -164,11 +170,6 @@ position = Vector2(171, 286)
 [node name="Germ2" parent="Enemies" instance=ExtResource("6_j2hno")]
 position = Vector2(373, 201)
 
-[node name="WoeCube" parent="Enemies" node_paths=PackedStringArray("chase_target") instance=ExtResource("5_arree")]
-position = Vector2(478, 107)
-chase_target = NodePath("../../Players/Player")
-melt_rate = 0.01
-
 [node name="Pickups" type="Node" parent="."]
 unique_name_in_owner = true
 
@@ -176,3 +177,8 @@ unique_name_in_owner = true
 position = Vector2(717, 72.00003)
 rotation = 0.71109563
 droplet_growth_rate = 3.0
+
+[node name="TutorialManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("10_5jbla")
+auto_open = true

@@ -1,7 +1,7 @@
-[gd_scene load_steps=20 format=3 uid="uid://bi3cpmink3y2s"]
+[gd_scene load_steps=21 format=3 uid="uid://bi3cpmink3y2s"]
 
 [ext_resource type="Script" uid="uid://clmbc0or0dlqo" path="res://scenes/game_scene/levels/base_level/game.gd" id="1_egu0v"]
-[ext_resource type="Texture2D" uid="uid://bjf57tc0pggkf" path="res://entities/sink/assets/sink_dithered.png" id="2_b3wlk"]
+[ext_resource type="Texture2D" uid="uid://dqv0sayjveggb" path="res://entities/sink/assets/sink_dithered.png" id="2_b3wlk"]
 [ext_resource type="PackedScene" uid="uid://bvsa47mq8yph7" path="res://entities/drain/drain.tscn" id="3_vu8si"]
 [ext_resource type="Script" uid="uid://j4dd7yhlo1qm" path="res://components/ForceRegion/force_region.gd" id="4_q85d6"]
 [ext_resource type="Script" uid="uid://bpivmactoala7" path="res://scenes/game_scene/levels/path_2d.gd" id="5_egu0v"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://ch44dxs3vx8wj" path="res://entities/dirt/dirt.tscn" id="9_vu8si"]
 [ext_resource type="PackedScene" uid="uid://dm5weuw1lhecy" path="res://entities/woe_cube/woe_cube.tscn" id="10_b3wlk"]
 [ext_resource type="Script" uid="uid://usiplb2dhno" path="res://scenes/game_scene/levels/woe_cube_spawn_point.gd" id="11_vu8si"]
+[ext_resource type="Script" uid="uid://buwkg6miydim5" path="res://scenes/game_scene/tutorial_manager.gd" id="12_q85d6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eow3j"]
 size = Vector2(800, 100.5)
@@ -184,5 +185,10 @@ position = Vector2(271, 434)
 
 [node name="Pickups" type="Node" parent="."]
 unique_name_in_owner = true
+
+[node name="TutorialManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("12_q85d6")
+auto_open = true
 
 [connection signal="timeout" from="CubeSpawnPoint/Timer" to="CubeSpawnPoint" method="_on_woe_cube_spawn_timer_timeout"]

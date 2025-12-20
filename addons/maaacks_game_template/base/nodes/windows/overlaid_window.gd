@@ -1,4 +1,3 @@
-@tool
 class_name OverlaidWindow
 extends WindowContainer
 
@@ -17,7 +16,7 @@ var _initial_pause_state : bool = false
 var _initial_focus_mode : FocusMode = FOCUS_ALL
 var _initial_mouse_mode : Input.MouseMode
 var _initial_focus_control
-var _scene_tree : SceneTree 
+var _scene_tree : SceneTree
 var _exclusive_control_node : ColorRect
 
 func close() -> void:
@@ -57,6 +56,7 @@ func _on_visibility_changed() -> void:
 		_overlaid_window_setup()
 
 func _enter_tree() -> void:
+	if Engine.is_editor_hint(): return
 	_scene_tree = get_tree()
 	if not visibility_changed.is_connected(_on_visibility_changed):
 		visibility_changed.connect(_on_visibility_changed)

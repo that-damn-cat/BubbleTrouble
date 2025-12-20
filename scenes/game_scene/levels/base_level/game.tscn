@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://dvpursjeaw74i"]
+[gd_scene load_steps=12 format=3 uid="uid://dvpursjeaw74i"]
 
 [ext_resource type="Script" uid="uid://clmbc0or0dlqo" path="res://scenes/game_scene/levels/base_level/game.gd" id="1_7jktm"]
-[ext_resource type="Texture2D" uid="uid://bjf57tc0pggkf" path="res://entities/sink/assets/sink_dithered.png" id="2_mfdv2"]
+[ext_resource type="Texture2D" uid="uid://dqv0sayjveggb" path="res://entities/sink/assets/sink_dithered.png" id="2_mfdv2"]
 [ext_resource type="Script" uid="uid://j4dd7yhlo1qm" path="res://components/ForceRegion/force_region.gd" id="3_eow3j"]
+[ext_resource type="Script" uid="uid://buwkg6miydim5" path="res://scenes/game_scene/tutorial_manager.gd" id="4_bjx6r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eow3j"]
 size = Vector2(800, 100.5)
@@ -127,3 +128,8 @@ unique_name_in_owner = true
 
 [node name="Pickups" type="Node" parent="."]
 unique_name_in_owner = true
+
+[node name="TutorialManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("4_bjx6r")
+auto_open = true

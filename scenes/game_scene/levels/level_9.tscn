@@ -1,7 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://dykpyyh8brmg4"]
+[gd_scene load_steps=20 format=3 uid="uid://dykpyyh8brmg4"]
 
 [ext_resource type="Script" uid="uid://clmbc0or0dlqo" path="res://scenes/game_scene/levels/base_level/game.gd" id="1_8qwud"]
-[ext_resource type="Texture2D" uid="uid://bjf57tc0pggkf" path="res://entities/sink/assets/sink_dithered.png" id="2_aaniv"]
+[ext_resource type="Texture2D" uid="uid://dqv0sayjveggb" path="res://entities/sink/assets/sink_dithered.png" id="2_aaniv"]
 [ext_resource type="PackedScene" uid="uid://bvsa47mq8yph7" path="res://entities/drain/drain.tscn" id="3_tgtvs"]
 [ext_resource type="Script" uid="uid://bnbycvp7u77ey" path="res://scenes/game_scene/levels/woe_cube_chase_center.gd" id="4_yxr7f"]
 [ext_resource type="Script" uid="uid://j4dd7yhlo1qm" path="res://components/ForceRegion/force_region.gd" id="5_v4kuc"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dm5weuw1lhecy" path="res://entities/woe_cube/woe_cube.tscn" id="8_aaniv"]
 [ext_resource type="PackedScene" uid="uid://ch44dxs3vx8wj" path="res://entities/dirt/dirt.tscn" id="10_tgtvs"]
 [ext_resource type="PackedScene" uid="uid://mi5q8r0bjsc1" path="res://entities/sponge/sponge.tscn" id="11_yxr7f"]
+[ext_resource type="Script" uid="uid://buwkg6miydim5" path="res://scenes/game_scene/tutorial_manager.gd" id="12_v4kuc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eow3j"]
 size = Vector2(800, 100.5)
@@ -62,7 +63,7 @@ expand_mode = 2
 position = Vector2(252, 336)
 
 [node name="WoeCubeChaseCenter" type="Marker2D" parent="SinkForces/Drain"]
-rotation = 11027.238
+rotation = 11033.784
 script = ExtResource("4_yxr7f")
 rotation_rate = 2.0
 
@@ -177,5 +178,10 @@ position = Vector2(399, 126)
 
 [node name="Sponge" parent="." instance=ExtResource("11_yxr7f")]
 position = Vector2(418, 487)
+
+[node name="TutorialManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("12_v4kuc")
+auto_open = true
 
 [connection signal="timeout" from="SinkForces/WoeCubeSpawnPoint/woe cube spawn timer" to="SinkForces/WoeCubeSpawnPoint" method="_on_woe_cube_spawn_timer_timeout"]

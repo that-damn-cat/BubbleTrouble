@@ -25,6 +25,10 @@ func _ready() -> void:
 
 	fallback_respawn_position = globals.player_container.get_children()[0].global_position
 
+	level_state = GameState.get_level_state(scene_file_path)
+	if not level_state.tutorial_read:
+		open_tutorials()
+
 func _process(_delta: float) -> void:
 	level_state = GameState.get_level_state(scene_file_path)
 
@@ -104,3 +108,11 @@ func get_respawn_position() -> Vector2:
 
 	largest_droplet.queue_free()
 	return(largest_droplet.global_position)
+
+func open_tutorials() -> void:
+	%TutorialManager.open_tutorials()
+	level_state.tutorial_read = true
+	GlobalState.save()
+
+func _on_tutorial_button_pressed() -> void:
+	open_tutorials()

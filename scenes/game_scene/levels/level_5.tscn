@@ -1,13 +1,15 @@
-[gd_scene load_steps=17 format=3 uid="uid://dktu3sghhlb0k"]
+[gd_scene load_steps=19 format=3 uid="uid://dktu3sghhlb0k"]
 
 [ext_resource type="Script" uid="uid://clmbc0or0dlqo" path="res://scenes/game_scene/levels/base_level/game.gd" id="1_ip87t"]
-[ext_resource type="Texture2D" uid="uid://bjf57tc0pggkf" path="res://entities/sink/assets/sink_dithered.png" id="2_0agt3"]
+[ext_resource type="Texture2D" uid="uid://dqv0sayjveggb" path="res://entities/sink/assets/sink_dithered.png" id="2_0agt3"]
 [ext_resource type="Script" uid="uid://j4dd7yhlo1qm" path="res://components/ForceRegion/force_region.gd" id="3_aacfw"]
 [ext_resource type="PackedScene" uid="uid://bo5tu8ywsry1c" path="res://entities/player/player.tscn" id="4_ei1li"]
 [ext_resource type="PackedScene" uid="uid://ch44dxs3vx8wj" path="res://entities/dirt/dirt.tscn" id="5_foud0"]
 [ext_resource type="PackedScene" uid="uid://bvsa47mq8yph7" path="res://entities/drain/drain.tscn" id="6_sksrx"]
 [ext_resource type="Script" uid="uid://bpivmactoala7" path="res://scenes/game_scene/levels/path_2d.gd" id="7_0agt3"]
 [ext_resource type="PackedScene" uid="uid://mi5q8r0bjsc1" path="res://entities/sponge/sponge.tscn" id="7_nmdh2"]
+[ext_resource type="Script" uid="uid://buwkg6miydim5" path="res://scenes/game_scene/tutorial_manager.gd" id="9_aacfw"]
+[ext_resource type="PackedScene" uid="uid://ctryy16nu40jc" path="res://scenes/game_scene/tutorials/tutorial_5.tscn" id="10_ei1li"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eow3j"]
 size = Vector2(800, 100.5)
@@ -162,3 +164,9 @@ progress = 482.24036
 
 [node name="Sponge" parent="Path2D/SpongeAttach" instance=ExtResource("7_nmdh2")]
 scale = Vector2(0.99999994, 0.99999994)
+
+[node name="TutorialManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("9_aacfw")
+tutorial_scenes = Array[PackedScene]([ExtResource("10_ei1li")])
+auto_open = true
