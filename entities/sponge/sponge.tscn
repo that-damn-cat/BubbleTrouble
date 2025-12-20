@@ -8,12 +8,12 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hve3p"]
 size = Vector2(91, 56)
 
-[node name="Sponge" type="StaticBody2D" node_paths=PackedStringArray("droplet_spawn_point", "collision_shape", "droplet_sprite")]
+[node name="Sponge" type="StaticBody2D" node_paths=PackedStringArray("droplet_spawn_point", "spawn_shape", "droplet_sprite")]
 collision_mask = 14
 script = ExtResource("1_vgr8m")
 droplet_growth_rate = 2.5
 droplet_spawn_point = NodePath("DropletSpawnPoint")
-collision_shape = NodePath("CollisionShape2D")
+spawn_shape = NodePath("DropletSpawnArea")
 droplet_sprite = NodePath("DropletSpawnPoint/DropletSprite")
 droplet_scene = ExtResource("2_jnoo6")
 
@@ -23,6 +23,10 @@ texture = ExtResource("3_pni6c")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, -3)
 shape = SubResource("RectangleShape2D_hve3p")
+
+[node name="DropletSpawnArea" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-46, -21, -34, -31, -33, 10, 45, 10, 33, 26, -46, 25)
+disabled = true
 
 [node name="DropletSpawnPoint" type="Marker2D" parent="."]
 
