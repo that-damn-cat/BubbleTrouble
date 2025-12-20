@@ -1,7 +1,7 @@
 [gd_scene load_steps=21 format=3 uid="uid://bi3cpmink3y2s"]
 
 [ext_resource type="Script" uid="uid://clmbc0or0dlqo" path="res://scenes/game_scene/levels/base_level/game.gd" id="1_egu0v"]
-[ext_resource type="Texture2D" uid="uid://dqv0sayjveggb" path="res://entities/sink/assets/sink_dithered.png" id="2_b3wlk"]
+[ext_resource type="Texture2D" uid="uid://bjf57tc0pggkf" path="res://entities/sink/assets/sink_dithered.png" id="2_b3wlk"]
 [ext_resource type="PackedScene" uid="uid://bvsa47mq8yph7" path="res://entities/drain/drain.tscn" id="3_vu8si"]
 [ext_resource type="Script" uid="uid://j4dd7yhlo1qm" path="res://components/ForceRegion/force_region.gd" id="4_q85d6"]
 [ext_resource type="Script" uid="uid://bpivmactoala7" path="res://scenes/game_scene/levels/path_2d.gd" id="5_egu0v"]
@@ -129,9 +129,9 @@ script = ExtResource("5_egu0v")
 spongeSpeed = 0.1
 
 [node name="SpongeAttach" type="PathFollow2D" parent="SinkForces/Path2D"]
-position = Vector2(244.76231, 25.454365)
+position = Vector2(673.99774, 26.830124)
 rotation = -3.1383874
-progress = 482.24036
+progress = 53.00586
 
 [node name="Sponge" parent="SinkForces/Path2D/SpongeAttach" instance=ExtResource("6_b3wlk")]
 scale = Vector2(0.99999994, 0.99999994)
