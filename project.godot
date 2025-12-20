@@ -39,6 +39,12 @@ movie_writer/fps=120
 
 enabled=PackedStringArray("res://addons/gwj_accessibility_scripts/plugin.cfg", "res://addons/maaacks_game_template/plugin.cfg")
 
+[file_customization]
+
+folder_colors={
+"res://exports/": "gray"
+}
+
 [global_group]
 
 Player=""
@@ -102,3 +108,4 @@ copy_path="res://"
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true
