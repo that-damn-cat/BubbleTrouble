@@ -10,16 +10,16 @@ func enter() -> void:
 		if node.has_method("hide"):
 			node.call_deferred("hide")
 
-		if node.get("disabled"):
+		if node.get("disabled") != null:
 			node.set_deferred("disabled", true)
 
-		if node.get("monitoring"):
+		if node.get("monitoring") != null:
 			node.set_deferred("monitoring", false)
 
-		if node.get("monitorable"):
+		if node.get("monitorable") != null:
 			node.set_deferred("monitorable", false)
 
-		if node.get("process_mode"):
+		if node.get("process_mode") != null:
 			node.set_deferred("process_mode", Node.PROCESS_MODE_DISABLED)
 
 	death_anim.show()

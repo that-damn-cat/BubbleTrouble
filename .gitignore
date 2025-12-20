@@ -12,6 +12,7 @@ export_presets.cfg
 # Build / export outputs
 .export/
 build/
+exports/
 
 # Imported translations (automatically generated from CSV files)
 *.translation
