@@ -51,6 +51,10 @@ Player=""
 Enemies=""
 Droplets=""
 
+[gui]
+
+theme/custom="res://resources/themes/lab.tres"
+
 [input]
 
 up={
