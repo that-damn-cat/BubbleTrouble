@@ -9,6 +9,7 @@ func enter() -> void:
 	merge_collider.set_deferred("disabled", true)
 	controlled_node = state_machine.controlled_node
 	controlled_node.animation.play("split")
+	%Split.play()
 
 func update(_delta: float) -> void:
 	if state_machine.controlled_node.warmth_component.is_frozen:

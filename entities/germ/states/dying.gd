@@ -11,6 +11,8 @@ func enter() -> void:
 	state_machine.controlled_node.set_death_shader()
 	shader = sprite.material
 
+	%GermDie.play()
+
 	for node in disable_nodes:
 		if node.has_method("hide"):
 			node.call_deferred("hide")
