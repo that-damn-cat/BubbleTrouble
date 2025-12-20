@@ -181,4 +181,3 @@ droplet_growth_rate = 3.0
 [node name="TutorialManager" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("10_5jbla")
-auto_open = true

@@ -1,3 +1,4 @@
+@tool
 class_name OverlaidWindow
 extends WindowContainer
 
@@ -56,7 +57,6 @@ func _on_visibility_changed() -> void:
 		_overlaid_window_setup()
 
 func _enter_tree() -> void:
-	if Engine.is_editor_hint(): return
 	_scene_tree = get_tree()
 	if not visibility_changed.is_connected(_on_visibility_changed):
 		visibility_changed.connect(_on_visibility_changed)

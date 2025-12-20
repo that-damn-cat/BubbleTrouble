@@ -63,7 +63,7 @@ expand_mode = 2
 position = Vector2(252, 336)
 
 [node name="WoeCubeChaseCenter" type="Marker2D" parent="SinkForces/Drain"]
-rotation = 11033.784
+rotation = 11036.972
 script = ExtResource("4_yxr7f")
 rotation_rate = 2.0
 
@@ -182,6 +182,5 @@ position = Vector2(418, 487)
 [node name="TutorialManager" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("12_v4kuc")
-auto_open = true
 
 [connection signal="timeout" from="SinkForces/WoeCubeSpawnPoint/woe cube spawn timer" to="SinkForces/WoeCubeSpawnPoint" method="_on_woe_cube_spawn_timer_timeout"]

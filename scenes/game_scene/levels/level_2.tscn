@@ -151,4 +151,3 @@ position = Vector2(117, 480)
 unique_name_in_owner = true
 script = ExtResource("7_kjg0a")
 tutorial_scenes = Array[PackedScene]([ExtResource("8_w8c7f")])
-auto_open = true

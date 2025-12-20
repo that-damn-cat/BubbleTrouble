@@ -189,6 +189,5 @@ unique_name_in_owner = true
 [node name="TutorialManager" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("12_q85d6")
-auto_open = true
 
 [connection signal="timeout" from="CubeSpawnPoint/Timer" to="CubeSpawnPoint" method="_on_woe_cube_spawn_timer_timeout"]

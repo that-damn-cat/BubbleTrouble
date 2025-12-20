@@ -164,4 +164,3 @@ rotation = 0.71109563
 [node name="TutorialManager" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("7_uxkk5")
-auto_open = true

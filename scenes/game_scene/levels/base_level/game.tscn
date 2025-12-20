@@ -132,4 +132,3 @@ unique_name_in_owner = true
 [node name="TutorialManager" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("4_bjx6r")
-auto_open = true

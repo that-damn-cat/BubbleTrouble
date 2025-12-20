@@ -150,4 +150,3 @@ rotation = 0.71254134
 unique_name_in_owner = true
 script = ExtResource("7_4popk")
 tutorial_scenes = Array[PackedScene]([ExtResource("8_mdq82")])
-auto_open = true

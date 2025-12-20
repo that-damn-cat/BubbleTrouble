@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://1nf36h0gms3q" path="res://addons/maaacks_game_template/base/nodes/utilities/capture_focus.gd" id="2_vqts2"]
 
 [node name="OverlaidWindow" type="PanelContainer"]
+process_mode = 3
 custom_minimum_size = Vector2(420, 200)
 anchors_preset = 8
 anchor_left = 0.5
@@ -19,11 +20,13 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("1_7lmqp")
+pauses_game = true
 exclusive_background_color = Color(0, 0, 0, 0.5)
 update_content = true
-text = "Progress is saved.
-Pressing Continue from the main menu will load the last level played."
-title = "Tutorial"
+text = "Sponges create Soap Droplets. Merge with the Soap Droplets to make Bubs grow!
+
+You need to be big enough to shoot a piece of yourself."
+title = "Sponges and Soap Droplets"
 title_font_size = 20
 
 [node name="ContentContainer" type="MarginContainer" parent="."]
@@ -55,7 +58,7 @@ vertical = true
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
-text = "Soap Droplets"
+text = "Sponges and Soap Droplets"
 horizontal_alignment = 1
 
 [node name="HSeparator" type="HSeparator" parent="ContentContainer/BoxContainer/TitleMargin/BoxContainer"]
