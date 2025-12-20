@@ -177,6 +177,7 @@ LeftStaminaBar/styles/background = SubResource("StyleBoxFlat_ywrjj")
 LeftStaminaBar/styles/fill = SubResource("StyleBoxFlat_tyerd")
 Panel/styles/panel = SubResource("StyleBoxFlat_ulcur")
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_ulcur")
+RichTextLabel/constants/outline_size = 6
 RightStaminaBar/base_type = &"ProgressBar"
 RightStaminaBar/colors/font_outline_color = Color(0, 0, 0, 1)
 RightStaminaBar/constants/outline_size = 6
