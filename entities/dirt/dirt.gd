@@ -84,7 +84,7 @@ func random_triangle_point(a: Vector2, b: Vector2, c: Vector2) -> Vector2:
 	return a + sqrt(randf()) * (-a + b + randf() * (c - b))
 
 func _on_damaged(_amount: float) -> void:
-	%dirtDie.play()
+	%HurtSFX.play_jitter()
 	update_sprite()
 
 func _on_healed(_amount: float) -> void:

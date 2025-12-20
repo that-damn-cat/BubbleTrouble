@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dgqdov4kcwtwt"]
+[gd_scene load_steps=19 format=3 uid="uid://dgqdov4kcwtwt"]
 
 [ext_resource type="Script" uid="uid://ckrld8h53xeb6" path="res://entities/germ/germ.gd" id="1_wjhn7"]
 [ext_resource type="SpriteFrames" uid="uid://dv0sjpaa2g84p" path="res://entities/germ/germ_frames.tres" id="2_eaxn1"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://cwhhnhhtnilm2" path="res://entities/germ/states/dying.gd" id="10_q82f1"]
 [ext_resource type="Script" uid="uid://bdvmn5jb1xp1k" path="res://entities/germ/frozen.gd" id="11_5khn2"]
 [ext_resource type="AudioStream" uid="uid://dyw7fu6ojyucx" path="res://assets/sfx/GermDie.wav" id="13_oy7lc"]
+[ext_resource type="Script" uid="uid://cgj3mt04h6em8" path="res://components/AudioJitterPlayer/AudioJitterPlayer.gd" id="14_17lqe"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0xoox"]
 resource_local_to_scene = true
@@ -119,11 +120,14 @@ sprite = NodePath("../../Sprite2D")
 state_name = "dying"
 metadata/_custom_type_script = "uid://xmr3p4wrraye"
 
-[node name="GermDie" type="AudioStreamPlayer" parent="."]
+[node name="DeathSFX" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("13_oy7lc")
 volume_db = 1.0
 bus = &"SFX"
+script = ExtResource("14_17lqe")
+jitter = 0.1
+metadata/_custom_type_script = "uid://cgj3mt04h6em8"
 
 [connection signal="died" from="HealthComponent" to="StateMachine" method="_on_germ_died"]
 [connection signal="froze" from="WarmthComponent" to="StateMachine" method="_on_warmth_component_froze"]

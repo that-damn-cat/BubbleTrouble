@@ -11,7 +11,7 @@ func enter() -> void:
 	state_machine.controlled_node.set_death_shader()
 	shader = sprite.material
 
-	%GermDie.play()
+	%DeathSFX.play_jitter()
 
 	for node in disable_nodes:
 		if node.has_method("hide"):

@@ -115,7 +115,7 @@ func _on_merge_area_body_entered(body: Node2D) -> void:
 func _on_healed(_amount: float) -> void:
 	#if health_component.current_health == health_component.max_health:
 	#	%MergeCollider.set_deferred("disabled", true)
-
+	%GrowSFX.play_jitter()
 	update_mass()
 
 func _on_damaged(_amount: float) -> void:

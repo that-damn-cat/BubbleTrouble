@@ -4,14 +4,26 @@ extends State
 @export var merge_collider: CollisionShape2D
 
 var controlled_node: Player
+var audio_start_jitter := Vector2(0.05, 0.15)
+
+var sfx_delay_elapsed: float = 0.0
+var sfx_delay_time: float = 0.0
+var sfx_waiting: bool = false
 
 func enter() -> void:
 	merge_collider.set_deferred("disabled", true)
 	controlled_node = state_machine.controlled_node
 	controlled_node.animation.play("split")
-	%Split.play()
+	%SFX_Start.wait_time = randf_range(audio_start_jitter.x, audio_start_jitter.y)
+	%SFX_Start.start()
 
-func update(_delta: float) -> void:
+func update(delta: float) -> void:
+	if sfx_delay_elapsed >= sfx_delay_time and sfx_waiting:
+		%Split.play()
+		sfx_waiting = false
+
+	sfx_delay_time += delta
+
 	if state_machine.controlled_node.warmth_component.is_frozen:
 		state_machine.controlled_node.direction = Vector2.ZERO
 		return
