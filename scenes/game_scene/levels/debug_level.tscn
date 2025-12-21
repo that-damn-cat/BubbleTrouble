@@ -16,7 +16,7 @@ next_level_path = "uid://1a7ckjoefxup"
 position = Vector2(400, 300)
 
 [node name="WoeCubeChaseCenter" type="Marker2D" parent="Drain" index="2"]
-rotation = 5705.3755
+rotation = 5705.4824
 script = ExtResource("3_srx0q")
 rotation_rate = 2.0
 

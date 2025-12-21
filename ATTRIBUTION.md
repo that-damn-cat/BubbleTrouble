@@ -19,6 +19,8 @@ Author: SlowDevelopment
 Source: [itch.io: bubble](https://slowdevelopment.itch.io/bubble)
 License: [No Resale, Open License](https://slowdevelopment.itch.io/bubble)
 
+### Shaders
+
 #### Dissolve Death Shader
 Author: blivi0
 Source: [godotshaders.com: Pixelated Dissolve](https://godotshaders.com/shader/pixelated-dissolve-with-block-size/)
@@ -28,6 +30,13 @@ License: [GNU GPL v3](https://www.gnu.org/licenses/gpl-3.0.en.html)
 Author: Erich_L
 Source: [godotshaders.com: Unit Selected Oscillating Circle](https://godotshaders.com/shader/unit-selected-oscillating-circle/)
 License: [MIT License](https://opensource.org/license/MIT)
+
+### Fonts
+
+#### Rubik Bubbles
+Author: NaN and Luke Prowse
+Source: [Google Fonts: Rubik Bubbles](https://fonts.google.com/specimen/Rubik+Bubbles)
+License: [SIL Open Font License 1.1](https://fonts.google.com/specimen/Rubik+Bubbles/license)
 
 ### Engine
 
@@ -44,6 +53,12 @@ License: [MIT License](https://github.com/godotengine/godot/blob/master/LICENSE.
 Author: [Dave Capello and contributors](https://github.com/aseprite/aseprite/blob/main/AUTHORS.md)
 Source: [Aseprite.org](https://www.aseprite.org/)
 License: [Commercial, Aseprite EULA](https://github.com/aseprite/aseprite/blob/main/EULA.txt)
+
+#### Lovely Composer
+![Lovely Composer Logo](/assets/credits/lovely_composer_logo.png)
+Author: [100 Games](https://1oogames.itch.io/)
+Source: [Steam: Lovely Composer](https://store.steampowered.com/app/1667250/Lovely_Composer/)
+License: [Commercial, Purchase Link](https://1oogames.itch.io/lovely-composer)
 
 ### Git
 ![Git Logo](/assets/credits/git_logo/Git-Logo-2Color.png)

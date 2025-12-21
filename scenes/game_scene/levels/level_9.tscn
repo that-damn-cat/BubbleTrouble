@@ -1,7 +1,7 @@
 [gd_scene load_steps=20 format=3 uid="uid://dykpyyh8brmg4"]
 
 [ext_resource type="Script" uid="uid://clmbc0or0dlqo" path="res://scenes/game_scene/levels/base_level/game.gd" id="1_8qwud"]
-[ext_resource type="Texture2D" uid="uid://bjf57tc0pggkf" path="res://entities/sink/assets/sink_dithered.png" id="2_aaniv"]
+[ext_resource type="Texture2D" uid="uid://dqv0sayjveggb" path="res://entities/sink/assets/sink_dithered.png" id="2_aaniv"]
 [ext_resource type="PackedScene" uid="uid://bvsa47mq8yph7" path="res://entities/drain/drain.tscn" id="3_tgtvs"]
 [ext_resource type="Script" uid="uid://bnbycvp7u77ey" path="res://scenes/game_scene/levels/woe_cube_chase_center.gd" id="4_yxr7f"]
 [ext_resource type="Script" uid="uid://j4dd7yhlo1qm" path="res://components/ForceRegion/force_region.gd" id="5_v4kuc"]
