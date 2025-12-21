@@ -11,11 +11,12 @@ config_version=5
 [application]
 
 config/name="Bubble Trouble"
-config/version="1.0.2"
+config/version="1.0.3"
 run/main_scene="res://scenes/opening/opening.tscn"
 config/features=PackedStringArray("4.5", "Forward Plus")
 run/max_fps=60
-config/icon="res://icon.svg"
+boot_splash/bg_color=Color(0.18039216, 0.13333334, 0.18431373, 1)
+config/icon="uid://lp4pdei3p153"
 
 [autoload]
 

@@ -1,7 +1,7 @@
 class_name Drain
 extends Marker2D
 
-@export var drain_gravity = 3200.0
+@export var drain_gravity = 10000.0
 @export var drain_dps: float = 10.0
 
 var velocity_bodies: Array[CharacterBody2D]

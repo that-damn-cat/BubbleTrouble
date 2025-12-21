@@ -10,6 +10,7 @@ height = 88.0
 
 [node name="Drain" type="Marker2D"]
 script = ExtResource("1_l2val")
+drain_gravity = 15000.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_avw1w")

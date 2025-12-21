@@ -57,7 +57,7 @@ expand_mode = 2
 [node name="SinkForces" type="Node" parent="."]
 
 [node name="Drain" parent="SinkForces" instance=ExtResource("7_vi62g")]
-position = Vector2(383, 309)
+position = Vector2(398, 306)
 
 [node name="Top" type="Area2D" parent="SinkForces"]
 visible = false
@@ -144,7 +144,7 @@ position = Vector2(202.00003, 344.00003)
 rotation = 5.3631124
 
 [node name="Dirt" parent="Enemies" instance=ExtResource("6_ljv8g")]
-position = Vector2(375, 458)
+position = Vector2(399, 453)
 
 [node name="Germ2" parent="Enemies" instance=ExtResource("5_dvlmk")]
 position = Vector2(566, 221)

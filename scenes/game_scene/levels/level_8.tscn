@@ -24,9 +24,9 @@ size = Vector2(105, 600)
 
 [sub_resource type="Curve2D" id="Curve2D_hehv2"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 727, 27, 0, 0, 0, 0, 103, 25, 0, 0, 0, 0, 294, 83, 0, 0, 0, 0, 438, 47, 0, 0, 0, 0, 557, 50, 0, 0, 0, 0, 607, 62, 0, 0, 0, 0, 727, 25)
+"points": PackedVector2Array(0, 0, 0, 0, 103, 25, 0, 0, 0, 0, 294, 83, 0, 0, 0, 0, 438, 47, 0, 0, 0, 0, 557, 50, 0, 0, 0, 0, 607, 62, 0, 0, 0, 0, 727, 25)
 }
-point_count = 7
+point_count = 6
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_feb5d"]
 normal = Vector2(0, 1)
@@ -66,7 +66,7 @@ expand_mode = 2
 [node name="SinkForces" type="Node" parent="."]
 
 [node name="Drain" parent="SinkForces" instance=ExtResource("3_vu8si")]
-position = Vector2(404, 393)
+position = Vector2(404, 357)
 
 [node name="Top" type="Area2D" parent="SinkForces"]
 visible = false
@@ -126,12 +126,12 @@ shape = SubResource("RectangleShape2D_vef74")
 [node name="Path2D" type="Path2D" parent="SinkForces"]
 curve = SubResource("Curve2D_hehv2")
 script = ExtResource("5_egu0v")
-spongeSpeed = 0.1
+sponge_speed = 0.2
 
 [node name="SpongeAttach" type="PathFollow2D" parent="SinkForces/Path2D"]
-position = Vector2(673.99774, 26.830124)
-rotation = -3.1383874
-progress = 53.00586
+position = Vector2(103, 25)
+rotation = 0.29481572
+loop = false
 
 [node name="Sponge" parent="SinkForces/Path2D/SpongeAttach" instance=ExtResource("6_b3wlk")]
 scale = Vector2(0.99999994, 0.99999994)
@@ -181,7 +181,7 @@ position = Vector2(619, 410)
 position = Vector2(53, 276)
 
 [node name="Dirt" parent="Enemies" instance=ExtResource("9_vu8si")]
-position = Vector2(271, 434)
+position = Vector2(254, 440)
 
 [node name="Pickups" type="Node" parent="."]
 unique_name_in_owner = true

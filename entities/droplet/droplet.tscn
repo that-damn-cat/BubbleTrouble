@@ -20,8 +20,9 @@ size_bonus = 2.0
 grow_component = NodePath("GrowComponent")
 sprite = NodePath("Sprite2D")
 friction = 0.01
-attraction_strength = 12.0
-max_attract_force = 30.0
+attraction_radius = 10.0
+attraction_strength = 5.0
+max_attract_force = 12.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 unique_name_in_owner = true
