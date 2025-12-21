@@ -409,7 +409,7 @@ theme_override_constants/separation = 2
 
 [node name="WarmthBar" type="ProgressBar" parent="StatbarPosition/Stats" node_paths=PackedStringArray("warmth")]
 self_modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(0, 5)
+custom_minimum_size = Vector2(50, 8)
 layout_mode = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_gx6sm")
 theme_override_styles/fill = SubResource("StyleBoxFlat_afbqv")
@@ -421,7 +421,7 @@ warm_color = Color(1, 0, 0, 1)
 frozen_color = Color(0, 0.5058824, 1, 1)
 
 [node name="HealthBar" type="ProgressBar" parent="StatbarPosition/Stats" node_paths=PackedStringArray("player")]
-custom_minimum_size = Vector2(20, 5)
+custom_minimum_size = Vector2(50, 8)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_styles/background = SubResource("StyleBoxFlat_yqrof")
