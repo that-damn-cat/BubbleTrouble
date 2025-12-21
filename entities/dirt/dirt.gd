@@ -83,8 +83,16 @@ func triangle_area(a: Vector2, b: Vector2, c: Vector2) -> float:
 func random_triangle_point(a: Vector2, b: Vector2, c: Vector2) -> Vector2:
 	return a + sqrt(randf()) * (-a + b + randf() * (c - b))
 
+func start_flash() -> void:
+	%AnimatedSprite2D.material.set_shader_parameter("enabled", true)
+	%DamageFlashTimer.start()
+
+func stop_flash() -> void:
+	%AnimatedSprite2D.material.set_shader_parameter("enabled", false)
+
 func _on_damaged(_amount: float) -> void:
 	%HurtSFX.play_jitter()
+	start_flash()
 	update_sprite()
 
 func _on_healed(_amount: float) -> void:
